@@ -4,25 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
-    public string userName;
-    public Controller controller;
-	void Start () {
-        controller = new FreeRoamController();
+    public Ship ship;
+    void Start () {
+        ship = Instantiate(ship, new Vector3(), Quaternion.identity);
 	}
-	
-	// Update is called once per frame
-	void FixedUpdate () {
-        if (Input.GetKey(KeyCode.W))
-        {
-            controller.Forward(GetComponent<Rigidbody2D>());
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            controller.Left(GetComponent<Rigidbody2D>());
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            controller.Right(GetComponent<Rigidbody2D>());
-        }
-    }
 }
