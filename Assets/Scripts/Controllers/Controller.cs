@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Controller {
-    private float thrust = 1f;
-    private float torque = .25f;
+
+    protected Rigidbody2D rigidbody;
+    private float thrust = .25f;
+    private float torque = 1f;
 
     public float Thrust
     {
@@ -18,11 +20,11 @@ public abstract class Controller {
         set { torque = value; }
     }
 
-    public abstract void Forward(Rigidbody2D rigidbody);
+    public abstract void Forward();
 
-    public abstract void Backward(Rigidbody2D rigidbody);
+    public abstract void Backward();
 
-    public abstract void Left(Rigidbody2D rigidbody);
+    public abstract void Left();
 
-    public abstract void Right(Rigidbody2D rigidbody);
+    public abstract void Right();
 }

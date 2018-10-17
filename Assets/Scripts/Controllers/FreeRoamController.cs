@@ -4,23 +4,26 @@ using UnityEngine;
 
 public class FreeRoamController : Controller
 {
-    public override void Backward(Rigidbody2D rigidbody)
-    {
-        rigidbody.AddForce(-rigidbody.transform.up * Thrust);
+    public FreeRoamController(Rigidbody2D rigidbody) {
+        this.rigidbody = rigidbody;
     }
 
-    public override void Forward(Rigidbody2D rigidbody)
+    public override void Backward()
     {
-        rigidbody.AddForce(rigidbody.transform.up * Thrust);
+        Debug.Log("You have no front facing thrusters");
     }
 
-    public override void Left(Rigidbody2D rigidbody)
+    public override void Forward()
     {
-        rigidbody.AddTorque(Torque);
+        this.rigidbody.AddForce(this.rigidbody.transform.up * Thrust);
     }
 
-    public override void Right(Rigidbody2D rigidbody)
+    public override void Left()
     {
-        rigidbody.AddTorque(-Torque);
+        this.rigidbody.transform.Rotate(Vector3.forward * Torque);
+    }
+    public override void Right()
+    {
+        this.rigidbody.transform.Rotate(Vector3.back * Torque);
     }
 }
