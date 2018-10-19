@@ -13,6 +13,11 @@ public class FreeRoamController : Controller
         Debug.Log("You have no front facing thrusters");
     }
 
+    public override void Fire()
+    {
+        Debug.Log("Click");
+    }
+
     public override void Forward()
     {
         this.rigidbody.AddForce(this.rigidbody.transform.up * Thrust);
