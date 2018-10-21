@@ -5,7 +5,10 @@ using UnityEngine;
 public class UIManager : MonoBehaviour {
 
 
-    public void slide() { }
+    public void slide()
+    {
+       
+    }
 
     public void DisableBoolAnimator(Animator anim)
     {
