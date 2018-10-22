@@ -1,14 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour {
 
-
-    public void slide()
-    {
-       
-    }
 
     public void DisableBoolAnimator(Animator anim)
     {
@@ -22,7 +18,7 @@ public class UIManager : MonoBehaviour {
 
     public void StartGame(int scene)
     {
-        Application.LoadLevel(scene);
+        SceneManager.LoadScene(scene);
     }
 
     public void ExitGame()
