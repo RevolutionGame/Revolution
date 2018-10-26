@@ -8,8 +8,11 @@ public class SlideController : MonoBehaviour {
     public Transform TargetPanel;
     public Transform HomeLocation;
     private Vector3 Home;
-    private float time;
+    public float time;
     private Vector3 target;
+
+    public GameObject main;
+    private SlideController slider;
 
 
 
@@ -18,6 +21,7 @@ public class SlideController : MonoBehaviour {
 
         Home = transform.position;
         time = 1F;
+        slider = main.GetComponent<SlideController>();
 
     }
 	
@@ -54,12 +58,24 @@ public class SlideController : MonoBehaviour {
 
     }
 
-    public void SlideInFlag()
+    public void SlideInFlag(SlideController main)
     { 
+        this.Target = TargetPanel.position;
+        main.SlideOutFlag();
+    }
+
+    public void SlideInFlag()
+    {
         this.Target = TargetPanel.position;
     }
 
     public void SlideOutFlag()
+    {
+        this.Target = Home;
+        
+    }
+
+    public void SlideOutFlag(SlideController main)
     {
         //this.Target = HomeLocation.position;
         this.Target = Home;
