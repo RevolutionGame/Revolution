@@ -11,24 +11,23 @@ public class SlideController : MonoBehaviour {
     public float time;
     private Vector3 target;
 
-    public GameObject main;
+    private GameObject main;
     private SlideController slider;
 
 
-
-    // Use this for initialization
-    void Start () {
-
-        Home = transform.position;
-        time = 1F;
+    void Awake()
+    {
+        main = GameObject.Find("MainPanel");
         slider = main.GetComponent<SlideController>();
-
+        
     }
-	
-	// Update is called once per frame
-	void Update ()
+        
+    // Use this for initialization
+     void Start ()
     {
 
+        Home = HomeLocation.position;
+        time = 1F;
     }
 
     public Vector3 Target
@@ -58,26 +57,15 @@ public class SlideController : MonoBehaviour {
 
     }
 
-    public void SlideInFlag(SlideController main)
-    { 
-        this.Target = TargetPanel.position;
-        main.SlideOutFlag();
-    }
-
     public void SlideInFlag()
     {
-        this.Target = TargetPanel.position;
+        Target = TargetPanel.position;
     }
 
     public void SlideOutFlag()
     {
-        this.Target = Home;
+        Target = Home;
         
     }
 
-    public void SlideOutFlag(SlideController main)
-    {
-        //this.Target = HomeLocation.position;
-        this.Target = Home;
-    }
 }

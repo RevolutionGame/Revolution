@@ -5,12 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour {
 
-    public GameObject mainpanel;
+    private GameObject mainpanel;
     private SlideController mainslide;
-
-    //public GameObject secondpanel;
-    //private SlideController secondslide;
-
 
 
     public void DisableBoolAnimator(Animator anim)
@@ -25,6 +21,7 @@ public class UIManager : MonoBehaviour {
 
     void Awake()
     {
+        mainpanel = GameObject.Find("MainPanel");
         mainslide = mainpanel.GetComponent<SlideController>();
         mainslide.time = 0.005f;
         mainslide.SlideInFlag();
