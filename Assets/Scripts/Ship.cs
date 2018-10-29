@@ -8,7 +8,7 @@ public class Ship : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        controller = new FreeRoamController(GetComponent<Rigidbody2D>());
+        controller = new RevolutionController(GetComponent<Rigidbody2D>());
 	}
 	
 	// Update is called once per frame
@@ -24,6 +24,10 @@ public class Ship : MonoBehaviour {
         if (Input.GetKey(KeyCode.D))
         {
             controller.Right();
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            controller.Fire();
         }
         Debug.Log("Position: " + transform.position.ToString());
     }

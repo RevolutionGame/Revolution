@@ -20,6 +20,16 @@ public abstract class Controller {
         set { torque = value; }
     }
 
+    public void IncreaseThrust(int increasePercentage) {
+        int increase = 1 + (increasePercentage / 100);
+        thrust += (thrust * increase);
+    }
+
+    public void DecreaseThrust(int decrasePercentage) {
+        int decrease = 1 + (decrasePercentage / 100);
+        thrust -= (thrust * decrease);
+    }
+
     public abstract void Forward();
 
     public abstract void Backward();
@@ -27,4 +37,6 @@ public abstract class Controller {
     public abstract void Left();
 
     public abstract void Right();
+
+    public abstract void Fire();
 }
