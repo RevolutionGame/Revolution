@@ -68,37 +68,9 @@ public class NetworkManager : MonoBehaviour
     IEnumerator ConnectToServer()
     {
         yield return new WaitForSeconds(0.5f);
-
         socket.Emit("USER_CONNECT");
 
         yield return new WaitForSeconds(1f);
-        //List<SpawnPoint> playerSpawnPoints = GetComponent<PlayerSpawner>().playerSpawnPoints;
-        //List<SpawnPoint> enemySpawnPoints = GetComponent<EnemySpawner>().enemySpawnPoints;
-        //PlayerJSON playerJSON = new PlayerJSON(playerName, playerSpawnPoints, enemySpawnPoints);
-        //string data = "";//JsonUtility.ToJson(playerJSON);
-        //socket.Emit("play", new JSONObject(data));
-
-        var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://url");
-        httpWebRequest.ContentType = "application/json";
-        httpWebRequest.Method = "POST";
-
-        /*using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
-        {
-            string json = "{\"email\":\"cs9stephen@gmail2.com\"," +
-                          "\"Pass\":\"showmethewayy\"}";
-
-            streamWriter.Write(json);
-            streamWriter.Flush();
-            streamWriter.Close();
-        }*/
-
-        var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-
-
-        using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
-        {
-            var result = streamReader.ReadToEnd();
-        }
     }
 
     private void OnConnectionSuccess(SocketIOEvent evt)
@@ -109,8 +81,6 @@ public class NetworkManager : MonoBehaviour
         Debug.Log("Room Info: " + evt.data);
         socket.Emit("ROOM_INFO", new JSONObject(data));
     }
-
-
 
     private void OnGameStart(SocketIOEvent evt)
     {
