@@ -4,27 +4,27 @@ using UnityEngine;
 
 public class Ship : MonoBehaviour {
 
-    Controller controller;
+    public Controller controller;
 
 	// Use this for initialization
 	void Start () {
-        controller = new FreeRoamController(GetComponent<Rigidbody2D>());
+        //this.controller = new FreeRoamController(GetComponent<Rigidbody2D>());
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
         if (Input.GetKey(KeyCode.W))
         {            
-            controller.Forward();
+            this.controller.Forward();
         }
         if (Input.GetKey(KeyCode.A))
         {
-            controller.Left();            
+            this.controller.Left();            
         }
         if (Input.GetKey(KeyCode.D))
         {
-            controller.Right();
+            this.controller.Right();
         }
-        Debug.Log("Position: " + transform.position.ToString());
+        //Debug.Log("Position: " + transform.position.ToString());
     }
 }
