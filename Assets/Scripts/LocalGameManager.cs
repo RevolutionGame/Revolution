@@ -7,6 +7,7 @@ public class LocalGameManager : MonoBehaviour {
     private Player localPlayer;
     public Ship ship;
     public NetworkManager networkManager;
+    private int localID;
 
     public NetworkPlayer[] NetworkPlayers = new NetworkPlayer[10];
 
@@ -21,10 +22,12 @@ public class LocalGameManager : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
         SendState();
-        float[] location = new float[2];
+        float[] location = new float[3];
         location[0] = System.Convert.ToSingle(networkManager.location[0].Trim('"'));
         location[1] = System.Convert.ToSingle(networkManager.location[1].Trim('"'));
+        location[2] = System.Convert.ToSingle(networkManager.location[2].Trim('"'));
         NetworkPlayers[0].Ship.GetComponent<Rigidbody2D>().transform.position = (new Vector3(location[0], location[1]));
+        NetworkPlayers[0].Ship.GetComponent<Rigidbody2D>().rotation = location[2];
         Debug.Log("x: " + networkManager.location[0] + " y: " + networkManager.location[1]);
 	}
 
@@ -34,7 +37,7 @@ public class LocalGameManager : MonoBehaviour {
 
     private void SendState() {
         //Debug.Log("character location: " + localPlayer.Ship.transform.position);
-        networkManager.sendLocationData("0", localPlayer.Ship.transform.position.x, localPlayer.Ship.transform.position.y);
+        networkManager.SendLocalTransform("0", this.localPlayer.Ship.transform);
     }
 
     private void UpdateFromNetwork (){
