@@ -4,25 +4,23 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
-    public string userName;
-    public Controller controller;
-	void Start () {
-        controller = new FreeRoamController();
+    public Ship ship;
+    private Vector3 StartPosition;
+    private GameController gameController;
+
+    void Start () {
+
+        //SERVER: Ask server for start/respawn position. If we decide to define these positions beforehand, server can
+        //just assign a number 0 to 9, and player can get its position from the predefined array/list of start positions
+        StartPosition = new Vector3(0, 0, 0);
+
+        ship = Instantiate(ship, StartPosition, Quaternion.identity);
 	}
-	
-	// Update is called once per frame
-	void FixedUpdate () {
-        if (Input.GetKey(KeyCode.W))
-        {
-            controller.Forward(GetComponent<Rigidbody2D>());
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            controller.Left(GetComponent<Rigidbody2D>());
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            controller.Right(GetComponent<Rigidbody2D>());
-        }
+
+    public void Respawn(GameObject RespawnedShip)
+    {
+        //Need to update server that ship was moved
+        RespawnedShip.transform.position = StartPosition;
+        
     }
 }
