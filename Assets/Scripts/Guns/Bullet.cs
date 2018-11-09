@@ -1,3 +1,3 @@
-﻿internal class Bullet : Projectile
+﻿internal class Bullet
 {
 }
