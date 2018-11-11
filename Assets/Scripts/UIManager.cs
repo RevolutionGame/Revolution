@@ -26,6 +26,7 @@ public class UIManager : MonoBehaviour
         mainslide = mainpanel.GetComponent<SlideController>();
         mainslide.time = 0.005f;
         mainslide.SlideInFlag();
+        
     }
 
     void Start()
@@ -46,7 +47,8 @@ public class UIManager : MonoBehaviour
 
     public void ExitGame()
     {
-       
+        UnityEngine.Application.Quit();
+        
 
     }
 
