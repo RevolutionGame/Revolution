@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour {
 
+    private GameObject mainpanel;
+    private SlideController mainslide;
 
-    public void slide() { }
 
     public void DisableBoolAnimator(Animator anim)
     {
@@ -17,9 +19,23 @@ public class UIManager : MonoBehaviour {
         anim.SetBool("IsDisplayed", true);
     }
 
+    void Awake()
+    {
+        mainpanel = GameObject.Find("MainPanel");
+        mainslide = mainpanel.GetComponent<SlideController>();
+        mainslide.time = 0.005f;
+        mainslide.SlideInFlag();
+    }
+
+    void Start()
+    {
+        
+    }
+
     public void StartGame(int scene)
     {
-        Application.LoadLevel(scene);
+        SceneManager.LoadScene(scene);
+        
     }
 
     public void ExitGame()
