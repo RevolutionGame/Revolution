@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using modelSpace;
 
-namespace modelSpace
-{
     public class ApiTester : MonoBehaviour
     {
 
@@ -40,4 +39,4 @@ namespace modelSpace
 
         }
     }
-}
+

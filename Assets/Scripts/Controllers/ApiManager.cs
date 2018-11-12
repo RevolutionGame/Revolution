@@ -4,10 +4,12 @@ using System.Net.Mail;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Networking;
+using modelSpace;
 
 
-namespace modelSpace
-{
+
+
+
     public class ApiManager : MonoBehaviour
     {
 
@@ -94,7 +96,7 @@ namespace modelSpace
 
         }
 
-    public IEnumerator CreateUser(string email, string fullName, string username, string playerCellNumber, string pass)
+    public IEnumerator reateUser(string email, string fullName, string username, string playerCellNumber, string pass)
     {
 
         reqObj.Clear();
@@ -129,4 +131,4 @@ namespace modelSpace
 
 }   
 
-}
+
