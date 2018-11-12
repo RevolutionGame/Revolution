@@ -25,7 +25,7 @@ public class LocalGameManager : MonoBehaviour {
         float[] location = new float[3];
         location[0] = System.Convert.ToSingle(networkManager.location[0].Trim('"'));
         location[1] = System.Convert.ToSingle(networkManager.location[1].Trim('"'));
-        location[2] = System.Convert.ToSingle(networkManager.location[2].Trim('"'));
+        //location[2] = System.Convert.ToSingle(networkManager.location[2].Trim('"'));
         NetworkPlayers[0].Ship.GetComponent<Rigidbody2D>().transform.position = (new Vector3(location[0], location[1]));
         NetworkPlayers[0].Ship.GetComponent<Rigidbody2D>().rotation = location[2];
         Debug.Log("x: " + networkManager.location[0] + " y: " + networkManager.location[1]);
