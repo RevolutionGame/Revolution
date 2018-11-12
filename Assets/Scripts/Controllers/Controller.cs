@@ -10,6 +10,7 @@ public abstract class Controller {
 
     public float Thrust
     {
+    
         get { return thrust; }
         set { thrust = value; }
     }

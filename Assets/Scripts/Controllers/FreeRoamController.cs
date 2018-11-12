@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FreeRoamController : Controller
 {
+
     public FreeRoamController(Rigidbody2D rigidbody) {
         this.rigidbody = rigidbody;
     }
@@ -15,6 +16,7 @@ public class FreeRoamController : Controller
 
     public override void Fire()
     {
+
         Debug.Log("Click");
     }
 
