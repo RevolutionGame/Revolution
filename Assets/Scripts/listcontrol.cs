@@ -9,13 +9,14 @@ public class listcontrol : MonoBehaviour {
     protected ScrollRect scrollRect;
     protected RectTransform contentPanel;
     public Button item;
+    public GameObject item2;
 
     // Use this for initialization
     void Start () {
         contentPanel = GetComponent<RectTransform>();
-
+        
         Button GO = Instantiate(item, contentPanel.transform);
-        GO = Instantiate(item, contentPanel.transform);
+        GameObject GOO = Instantiate(item2, contentPanel.transform);
         GO = Instantiate(item, contentPanel.transform);
         GO = Instantiate(item, contentPanel.transform);
         GO = Instantiate(item, contentPanel.transform);

@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using SocketIO;
 using UnityEngine;
+using modelSpace;
+using UnityEngine.UI;
+using TMPro;
 
 public class NetworkManager : MonoBehaviour{
 
@@ -10,17 +13,35 @@ public class NetworkManager : MonoBehaviour{
     public string[] location = new string[3];
 
     public SocketIOComponent socket;
-        
+
+    ApiManager apiManager = new ApiManager();
+
+    public TMP_InputField password;
+    public TMP_InputField mail;
+
+    public UserData MainPlayer;
+
+   /* private static NetworkManager networkManager;
+
+    private NetworkManager() { }
+
+    public static NetworkManager getInstance()
+    {
+        if (networkManager == null)
+            networkManager = new NetworkManager();
+        return networkManager;
+    }*/
+
     void Start()
     {
         location[0] = "0";
         location[1] = "0";
-        location[2] = "0";
+       // location[2] = "0";
         DontDestroyOnLoad(socket);
         StartCoroutine(ConnectToServer());
-        socket.On("CONNECTION_SUCCESS", OnConnectionSuccess);
-        socket.On("LOCATION_DATA", OnLocationData);
-        socket.On("GAME_START", OnGameStart);        
+        //socket.On("CONNECTION_SUCCESS", OnConnectionSuccess);
+        //socket.On("LOCATION_DATA", OnLocationData);
+        //socket.On("GAME_START", OnGameStart);        
     }
 
 
@@ -90,9 +111,27 @@ public class NetworkManager : MonoBehaviour{
         throw new System.NotImplementedException();
     }
 
+    public IEnumerator login()
+    {
+        string email = mail.text;
+        string pass = password.text;
+
+        CoroutineWithData cd = new CoroutineWithData(this, apiManager.LoginUser(email, pass));
+        yield return cd.coroutine;
+        LoginData ld = (LoginData)cd.result;
+
+        MainPlayer.email = ld.data.email;
+        
+
+        Debug.Log("result is " + ld.data.name);
+
+    }
+
     public void Login()
     {
-        throw new System.NotImplementedException();
+        
+        StartCoroutine(login());
+
     }
 
     public void Logout()
