@@ -6,10 +6,10 @@ public class LocalGameManager : MonoBehaviour {
 
     private Player localPlayer;
     public Ship ship;
-    public NetworkManager networkManager;
-    private int localID;
+    public NetworkManager networkManager;    
 
     public NetworkPlayer[] NetworkPlayers = new NetworkPlayer[10];
+    public Dictionary<string, NetworkPlayer> networkPlayers = new Dictionary<string, NetworkPlayer>();
 
     // Use this for initialization
     void Start () {
@@ -25,14 +25,18 @@ public class LocalGameManager : MonoBehaviour {
         float[] location = new float[3];
         location[0] = System.Convert.ToSingle(networkManager.location[0].Trim('"'));
         location[1] = System.Convert.ToSingle(networkManager.location[1].Trim('"'));
-        location[2] = System.Convert.ToSingle(networkManager.location[2].Trim('"'));
+        //location[2] = System.Convert.ToSingle(networkManager.location[2].Trim('"'));
         NetworkPlayers[0].Ship.GetComponent<Rigidbody2D>().transform.position = (new Vector3(location[0], location[1]));
         NetworkPlayers[0].Ship.GetComponent<Rigidbody2D>().rotation = location[2];
-        Debug.Log("x: " + networkManager.location[0] + " y: " + networkManager.location[1]);
+        //Debug.Log("x: " + networkManager.location[0] + " y: " + networkManager.location[1]);
 	}
 
     public void AddNetworkPlayer(int id) {
         NetworkPlayers[id] = new NetworkPlayer(id);
+    }
+
+    public void AddNetworkedPlayer(string name) {
+        networkPlayers.Add(name, new NetworkPlayer(0));
     }
 
     private void SendState() {

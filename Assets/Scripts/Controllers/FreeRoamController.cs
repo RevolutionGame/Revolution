@@ -2,28 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FreeRoamController : Controller
+public class FreeRoamController : MonoBehaviour
 {
-    public FreeRoamController(Rigidbody2D rigidbody) {
-        this.rigidbody = rigidbody;
+    private Rigidbody2D rigidbody2d;
+    public int speed = 10;
+    public int rotationSpeed = 200;
+
+    void Start()
+    {
+        rigidbody2d = GetComponent<Rigidbody2D>();
     }
 
-    public override void Backward()
+    private void FixedUpdate()
     {
-        Debug.Log("You have no front facing thrusters");
-    }
-
-    public override void Forward()
-    {
-        this.rigidbody.AddForce(this.rigidbody.transform.up * Thrust);
-    }
-
-    public override void Left()
-    {
-        this.rigidbody.transform.Rotate(Vector3.forward * Torque);
-    }
-    public override void Right()
-    {
-        this.rigidbody.transform.Rotate(Vector3.back * Torque);
+        float translattion = Input.GetAxis("Vertical") * speed * Time.deltaTime + 0.001f;
+        float rotation = Input.GetAxis("Horizontal") * rotationSpeed * Time.deltaTime;
+        transform.Translate(new Vector2(0, translattion));
+        transform.Rotate(new Vector3(0, 0, rotation));
     }
 }

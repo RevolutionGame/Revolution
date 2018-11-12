@@ -15,12 +15,13 @@ public class NetworkManager : MonoBehaviour{
     {
         location[0] = "0";
         location[1] = "0";
-        location[2] = "0";
+        //location[2] = "0";
         DontDestroyOnLoad(socket);
         StartCoroutine(ConnectToServer());
         socket.On("CONNECTION_SUCCESS", OnConnectionSuccess);
         socket.On("LOCATION_DATA", OnLocationData);
-        socket.On("GAME_START", OnGameStart);        
+        socket.On("GAME_START", OnGameStart);
+        socket.On("FORCE_GAME_START", OnForceGameStart);
     }
 
 
@@ -61,16 +62,27 @@ public class NetworkManager : MonoBehaviour{
 
     private void OnConnectionSuccess(SocketIOEvent evt)
     {
-        string roomId = "room1";
+        string roomId = evt.data.GetField("roomId").ToString().Replace("\"", "");
         Dictionary<string, string> data = new Dictionary<string, string>();
         data["roomId"] = roomId;
-        Debug.Log("Room Info: " + evt.data);
-        socket.Emit("ROOM_INFO", new JSONObject(data));      
+        data["userId"] = "1";
+        socket.Emit("ROOM_INFO", new JSONObject(data));
+    }
+
+    private void OnForceGameStart(SocketIOEvent evt)
+    {
+        socket.Emit("GAME_FORCE_STARTED", evt.data);
+    }
+
+    private void OnDataDumpTest(SocketIOEvent evt)
+    {
+        JSONObject data = evt.data;
+        Debug.Log(data);
     }
 
     private void OnGameStart(SocketIOEvent evt)
     {
-        Debug.Log("Server says: " + evt.data);        
+                
     }
 
     public void SendLocalTransform(string playerID, Transform transform)
