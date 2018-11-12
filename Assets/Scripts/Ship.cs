@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Ship : MonoBehaviour {
 
-    Controller controller;
+    public Controller controller;
 
 	// Use this for initialization
 	void Start () {
