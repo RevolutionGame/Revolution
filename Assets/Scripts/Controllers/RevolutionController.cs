@@ -9,18 +9,13 @@ public class RevolutionController : Controller {
 
     public RevolutionController(Rigidbody2D rigidbody) {
         this.rigidbody = rigidbody;
-        this.rigidbody.transform.Translate(new Vector3(0, radius, 0));
-        this.rigidbody.transform.Rotate(new Vector3(180, 0, 0));
+        //this.rigidbody.transform.Translate(new Vector3(0, radius, 0));
+        //this.rigidbody.transform.Rotate(new Vector3(180, 0, 0));
     }
 
     public override void Backward()
     {
         Debug.Log("You have no front facing thrusters");
-    }
-
-    public override void Fire()
-    {
-        Debug.Log("click");
     }
 
     public override void Forward()
