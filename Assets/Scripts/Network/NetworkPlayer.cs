@@ -13,4 +13,9 @@ public class NetworkPlayer : Player {
         this.Ship = ship;
         //ship.controller = new NullController();
     }
+
+    public void MoveTo(float x, float y, float theta) {
+        Ship.transform.Translate(new Vector2(x, y));
+        Ship.transform.Rotate(new Vector3(0, 0, theta));
+    }
 }
