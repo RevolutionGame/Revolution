@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ship : MonoBehaviour {
+public partial class Ship : MonoBehaviour {
 
     public MonoBehaviour controller;
  
 	// Use this for initialization
-	void Start () {        
-	}
+	//void Start () {        
+	//}
 	
 	// Update is called once per frame
     void FixedUpdate () {

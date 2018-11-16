@@ -1579,7 +1579,7 @@ GameObject:
   - component: {fileID: 500133408}
   - component: {fileID: 500133407}
   m_Layer: 5
-  m_Name: Log
+  m_Name: LogIn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1601,7 +1601,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 2880, y: 0.80096}
+  m_AnchoredPosition: {x: 2880, y: -4.199}
   m_SizeDelta: {x: 1920, y: 1078}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &500133407
@@ -2296,6 +2296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4265e8726ba184a41a692410a4ca9081, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  networkManager: {fileID: 719024831}
 --- !u!114 &719024828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4668,8 +4669,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: d94031f963dc0ad42be6469afa76cd44, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -5500,7 +5501,7 @@ GameObject:
   - component: {fileID: 1506719824}
   - component: {fileID: 1506719823}
   m_Layer: 5
-  m_Name: LogIn
+  m_Name: LogInButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6305,7 +6306,7 @@ GameObject:
   - component: {fileID: 1714285802}
   - component: {fileID: 1714285801}
   m_Layer: 5
-  m_Name: TextMeshPro Text
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7323,6 +7324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4265e8726ba184a41a692410a4ca9081, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  networkManager: {fileID: 719024831}
 --- !u!4 &1941926742
 Transform:
   m_ObjectHideFlags: 0
@@ -7522,7 +7524,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000030517578, y: 0}
+  m_AnchoredPosition: {x: -0.000030517578, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2066915713
