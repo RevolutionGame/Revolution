@@ -15,7 +15,7 @@ public class NetworkManager : MonoBehaviour{
     {
         location[0] = "0";
         location[1] = "0";
-        location[2] = "0";
+        //location[2] = "0";
         DontDestroyOnLoad(socket);
         StartCoroutine(ConnectToServer());
         socket.On("CONNECTION_SUCCESS", OnConnectionSuccess);
