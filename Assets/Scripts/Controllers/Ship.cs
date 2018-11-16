@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Ship : MonoBehaviour {
 
@@ -11,7 +12,18 @@ public class Ship : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        shipcontroller = new FreeRoamController(GetComponent<Rigidbody2D>());
+
+        Scene currentScene = SceneManager.GetActiveScene();
+        string sceneName = currentScene.name;
+
+        if (sceneName == "FreeRoamScene")
+        {
+            shipcontroller = new FreeRoamController(GetComponent<Rigidbody2D>());
+        }
+        else if (sceneName == "RevolutionScene")
+        {
+            shipcontroller = new RevolutionController(GetComponent<Rigidbody2D>());
+        }
 
         GameObject gameControllerObject =
             GameObject.FindWithTag("GameController");

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
 
@@ -21,6 +22,7 @@ public class GameController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
         GameObject PlayerObject =
             GameObject.FindWithTag("Player");
 
@@ -36,11 +38,59 @@ public class GameController : MonoBehaviour {
 	}
 
    void BeginGame(){
+        Scene currentScene = SceneManager.GetActiveScene();
+        string sceneName = currentScene.name;
 
-        SpawnAsteroids();
+        if (sceneName == "FreeRoamScene")
+        {
+            SpawnFreeAsteroids();
+        }else if (sceneName == "RevolutionScene")
+        {
+            SpawnRevolutionAsteroids();
+        }
+   }
+
+    void SpawnRevolutionAsteroids()
+    {
+        DestroyExistingAsteroids();
+
+        MaxAsteroidsSpawnable = 20;
+        AsteroidsRemaining = MaxAsteroidsSpawnable;
+
+        for (int i = 0; i < MaxAsteroidsSpawnable; i++)
+        {
+            //SERVER: This entire section has to be integrated with the server. The server needs to send a random number
+            //between 0 and 2 to select asteroid size, as well as random numbers for the vector and vector rotation to each
+            //client, for each asteroid.
+
+            AsteroidSize = Random.Range(0, 2);
+            if (AsteroidSize == 0)
+            {
+                Instantiate(smallasteroid,
+                        new Vector3(Random.Range(-4.0f, 4.0f),
+                            Random.Range(-4.0f, 4.0f), 0),
+                        Quaternion.Euler(0, 0, Random.Range(-0.0f, 359.0f)));
+            }
+            if (AsteroidSize == 1)
+            {
+                MediumAsteroidCounter++;
+                Instantiate(mediumasteroid,
+                        new Vector3(Random.Range(-4.0f, 4.0f),
+                            Random.Range(-4.0f, 4.0f), 0),
+                        Quaternion.Euler(0, 0, Random.Range(-0.0f, 359.0f)));
+            }
+            if (AsteroidSize == 0)
+            {
+                LargeAsteroidCounter++;
+                Instantiate(largeasteroid,
+                        new Vector3(Random.Range(-4.0f, 4.0f),
+                            Random.Range(-4.0f, 4.0f), 0),
+                        Quaternion.Euler(0, 0, Random.Range(-0.0f, 359.0f)));
+            }
+        }
     }
 
-    void SpawnAsteroids(){
+    void SpawnFreeAsteroids(){
 
         DestroyExistingAsteroids();
 
@@ -154,7 +204,7 @@ public class GameController : MonoBehaviour {
         {
             //SERVER: Inform server condition are met to spawn a new wave
             CurrentStage++;
-            SpawnAsteroids();
+            BeginGame();
         }
     }
 

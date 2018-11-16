@@ -18,12 +18,21 @@ public class AsteroidController : MonoBehaviour {
             gameControllerObject.GetComponent<GameController>();
 
         // Push the asteroid in the direction it is facing
-        GetComponent<Rigidbody2D>()
-            .AddForce(transform.up * Random.Range(-50.0f, 150.0f));
-
-        // Give a random angular velocity/rotation
-        GetComponent<Rigidbody2D>()
-            .angularVelocity = Random.Range(-0.0f, 90.0f);
+        if (gameObject.tag == "SmallAsteroid")
+        {
+            GetComponent<Rigidbody2D>().AddForce(transform.up * 150);
+            GetComponent<Rigidbody2D>().angularVelocity = 90;
+        }
+        else if(gameObject.tag == "MediumAsteroid")
+        {
+            GetComponent<Rigidbody2D>().AddForce(transform.up * 100);
+            GetComponent<Rigidbody2D>().angularVelocity = 60;
+        }
+        else if (gameObject.tag == "LargeAsteroid")
+        {
+            GetComponent<Rigidbody2D>().AddForce(transform.up * 50);
+            GetComponent<Rigidbody2D>().angularVelocity = 30;
+        }
 
     }
 
