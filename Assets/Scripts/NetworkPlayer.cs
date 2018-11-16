@@ -13,6 +13,6 @@ public class NetworkPlayer : Player {
     public void SpawnShip(Ship ship)
     {
         this.Ship = ship;
-        Ship.shipcontroller = new NullController();
+        //ship.controller = new NullController();
     }
 }
