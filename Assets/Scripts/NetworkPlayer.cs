@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class NetworkPlayer : Player {
 
+
+
     public NetworkPlayer(int id) {
         this.id = id;
     }
 
-    public override void SpawnShip(Ship ship)
+    public void SpawnShip(Ship ship)
     {
         this.Ship = ship;
-        ship.controller = new NullController();
+        //ship.controller = new NullController();
     }
 }

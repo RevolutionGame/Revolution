@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using modelSpace;
 
 public class UIManager : MonoBehaviour
 {
@@ -12,19 +13,7 @@ public class UIManager : MonoBehaviour
     private SlideController logslide;
 
 
-    NetworkManager networkManager;
-    
-
-    public void DisableBoolAnimator(Animator anim)
-    {
-        anim.SetBool("IsDisplayed", false);
-    }
-
-    public void EnableBoolAnimator(Animator anim)
-    {
-        anim.SetBool("IsDisplayed", true);
-        
-    }
+    public NetworkManager networkManager;
 
    void Awake()
     {
@@ -32,17 +21,15 @@ public class UIManager : MonoBehaviour
         mainslide = mainpanel.GetComponent<SlideController>();
         mainslide.time = 0.005f;
         mainslide.SlideInFlag();
-
-    
         
     }
 
     void Start()
     {
-        logpanel = GameObject.Find("Log");
+        logpanel = GameObject.Find("LogIn");
         logslide = logpanel.GetComponent<SlideController>();
 
-        networkManager = new NetworkManager();
+        
 
     }
 
@@ -66,17 +53,29 @@ public class UIManager : MonoBehaviour
 
     public void login()
     {
-        StartCoroutine(networkManager.login());
+        LoginData ld = networkManager.Login();
 
         if(networkManager.MainPlayer.Email != null)
         {
             mainslide.SlideInFlag();
             logslide.SlideOutFlag();
 
+            Debug.Log("result is succesful: " + ld.data.email);
         }
 
     }
 
+    #region random methods
+    public void DisableBoolAnimator(Animator anim)
+    {
+        anim.SetBool("IsDisplayed", false);
+    }
 
+    public void EnableBoolAnimator(Animator anim)
+    {
+        anim.SetBool("IsDisplayed", true);
+
+    }
+    #endregion
 
 }

@@ -23,9 +23,4 @@ public class NullController : Controller
     {
         Debug.Log("No movemnet this is a null controller");
     }
-
-    public override void Fire()
-    {
-        throw new System.NotImplementedException();
-    }
 }
