@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 50900673419259720}
   - component: {fileID: 58413888242763236}
   - component: {fileID: 114634703618764118}
+  - component: {fileID: 114957682809551354}
   m_Layer: 0
   m_Name: SmallAsteroid
   m_TagString: SmallAsteroid
@@ -72,10 +73,10 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 3.2, y: 0}
   serializedVersion: 2
   m_Radius: 2.5
 --- !u!114 &114634703618764118
@@ -89,6 +90,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5220bab3438145f49af1ecb5dfb324a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114957682809551354
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1345865674250524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3eb4cf0579976049aa459028496b9c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screenTop: 6
+  screenBottom: -6
+  screenLeft: -15
+  screenRight: 15
 --- !u!212 &212302777293938424
 SpriteRenderer:
   m_ObjectHideFlags: 1
