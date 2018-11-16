@@ -11,6 +11,6 @@ public class NetworkPlayer : Player {
     public override void SpawnShip(Ship ship)
     {
         this.Ship = ship;
-        ship.controller = new NullController();
+        //ship.controller = new NullController();
     }
 }
