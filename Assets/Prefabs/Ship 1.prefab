@@ -102,10 +102,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1286825989005178}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6752c34094bb74be0b5b6334cb3d6143, type: 3}
+  m_Script: {fileID: 11500000, guid: 5808d71287448e042b7dd9229642e94b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 1986892742119746, guid: cfe28a20dc60f4f4fb45edb4657da413, type: 2}
+  bullet: {fileID: 1845981773860750, guid: 8e012c26cf6b5412895388994c8f9673, type: 2}
 --- !u!212 &212516292902262142
 SpriteRenderer:
   m_ObjectHideFlags: 1

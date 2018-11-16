@@ -16,7 +16,7 @@ public class listcontrol : MonoBehaviour {
         contentPanel = GetComponent<RectTransform>();
         
         Button GO = Instantiate(item, contentPanel.transform);
-        GameObject GOO = Instantiate(item2, contentPanel.transform);
+       GameObject GOO = Instantiate(item2, contentPanel.transform);
         GO = Instantiate(item, contentPanel.transform);
         GO = Instantiate(item, contentPanel.transform);
         GO = Instantiate(item, contentPanel.transform);

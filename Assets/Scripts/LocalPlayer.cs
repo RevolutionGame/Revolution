@@ -7,6 +7,6 @@ public class LocalPlayer : Player
     public override void SpawnShip(Ship ship)
     {
         this.Ship = ship;
-        this.Ship.controller = new FreeRoamController(this.Ship.GetComponent<Rigidbody2D>());
+        this.Ship.shipcontroller = new FreeRoamController(this.Ship.GetComponent<Rigidbody2D>());
     }
 }

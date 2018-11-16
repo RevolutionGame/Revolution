@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c262396071534631bcf6f68f3dd2d9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship: {fileID: 114529689071195316, guid: 2b89785c86ad61441b465d317bb2c23c, type: 2}
+  Ship: {fileID: 114529689071195316, guid: 2b89785c86ad61441b465d317bb2c23c, type: 2}
 --- !u!4 &23623641
 Transform:
   m_ObjectHideFlags: 0
@@ -178,7 +178,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1225152917}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bc48519b670129468dc045f055b7079, type: 3}
+  m_Script: {fileID: 11500000, guid: cf951d8528b33d649ace86ee904f3e70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   smallasteroid: {fileID: 1345865674250524, guid: 8f5c77f656e36a347bc91e22fb041ed3,

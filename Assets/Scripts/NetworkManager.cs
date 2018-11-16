@@ -20,6 +20,7 @@ public class NetworkManager : MonoBehaviour{
     public TMP_InputField mail;
 
     public UserData MainPlayer;
+    LoginData ld;
 
    /* private static NetworkManager networkManager;
 
@@ -118,19 +119,22 @@ public class NetworkManager : MonoBehaviour{
 
         CoroutineWithData cd = new CoroutineWithData(this, apiManager.LoginUser(email, pass));
         yield return cd.coroutine;
-        LoginData ld = (LoginData)cd.result;
+
+        ld = (LoginData)cd.result;
+        //LoginData ld = (LoginData)cd.result;
 
         MainPlayer.email = ld.data.email;
         
-
         Debug.Log("result is " + ld.data.name);
 
     }
 
-    public void Login()
+    public LoginData Login()
     {
         
-        StartCoroutine(login());
+       StartCoroutine(login());
+
+        return ld;
 
     }
 

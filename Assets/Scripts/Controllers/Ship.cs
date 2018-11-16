@@ -5,13 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class Ship : MonoBehaviour {
 
-    Controller shipcontroller;
+    public Controller shipcontroller;
     public GameObject bullet;
 
     private GameController gameController;
 
-	// Use this for initialization
-	void Start () {
+
+
+    // Use this for initialization
+    void Start () {
 
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
