@@ -79,7 +79,7 @@ public class GameController : MonoBehaviour {
                             Random.Range(-4.0f, 4.0f), 0),
                         Quaternion.Euler(0, 0, Random.Range(-0.0f, 359.0f)));
             }
-            if (AsteroidSize == 0)
+            if (AsteroidSize == 2)
             {
                 LargeAsteroidCounter++;
                 Instantiate(largeasteroid,

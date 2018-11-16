@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public abstract class Player 
-{
+public class Player : MonoBehaviour {
 
     public Ship ship;
     private int PlayerID;
@@ -87,6 +86,4 @@ public abstract class Player
 
         }
     }
-
-    public abstract void SpawnShip(Ship ship);
 }

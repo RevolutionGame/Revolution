@@ -32,7 +32,7 @@ public abstract class Controller {
 
     public abstract void Forward(Rigidbody2D rigidbody);
 
-    public abstract void Right();
+    public abstract void Backward();
 
     public abstract void Right();
 
