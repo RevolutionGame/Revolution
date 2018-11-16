@@ -23,9 +23,10 @@ GameObject:
   - component: {fileID: 114762441275028462}
   - component: {fileID: 50228641185044256}
   - component: {fileID: 60999045080481750}
+  - component: {fileID: 114330524764388244}
   m_Layer: 0
   m_Name: Ship
-  m_TagString: Untagged
+  m_TagString: Ship
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72,7 +73,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -90,6 +91,21 @@ PolygonCollider2D:
     - - {x: 0, y: 0.5}
       - {x: -0.4330127, y: -0.25000003}
       - {x: 0.43301272, y: -0.24999996}
+--- !u!114 &114330524764388244
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1272287785280324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3eb4cf0579976049aa459028496b9c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screenTop: 6
+  screenBottom: -6
+  screenLeft: -15
+  screenRight: 15
 --- !u!114 &114762441275028462
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -101,6 +117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6752c34094bb74be0b5b6334cb3d6143, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bullet: {fileID: 1986892742119746, guid: cfe28a20dc60f4f4fb45edb4657da413, type: 2}
 --- !u!212 &212913620686497016
 SpriteRenderer:
   m_ObjectHideFlags: 1

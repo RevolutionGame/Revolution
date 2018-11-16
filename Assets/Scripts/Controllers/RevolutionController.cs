@@ -14,7 +14,8 @@ public class RevolutionController : MonoBehaviour {
         transform.RotateAround(Vector3.zero, Vector3.forward, translate);
     }
 
-    public void RemoveSelf() {
+    public void RemoveSelf()
+    {
         Destroy(this);
     }
 }
