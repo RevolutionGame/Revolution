@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class FreeRoamController : Controller
 {
+   
+
     public FreeRoamController(Rigidbody2D rigidbody) {
         this.rigidbody = rigidbody;
     }
@@ -13,10 +16,6 @@ public class FreeRoamController : Controller
         Debug.Log("You have no front facing thrusters");
     }
 
-    public override void Fire()
-    {
-        Debug.Log("Click");
-    }
 
     public override void Forward()
     {

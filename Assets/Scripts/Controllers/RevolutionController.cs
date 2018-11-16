@@ -18,11 +18,6 @@ public class RevolutionController : Controller {
         Debug.Log("You have no front facing thrusters");
     }
 
-    public override void Fire()
-    {
-        Debug.Log("click");
-    }
-
     public override void Forward()
     {
         Debug.Log("You have no back facing thrusters");
