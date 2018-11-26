@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AsteroidController : MonoBehaviour {
+public class AsteroidController : MonoBehaviour , ICollidable {
 
     private GameController gameController;
 
