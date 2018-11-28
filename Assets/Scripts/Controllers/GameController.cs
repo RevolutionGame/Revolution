@@ -7,7 +7,7 @@ public class GameController : MonoBehaviour {
 
     public GameObject smallasteroid;
     public GameObject mediumasteroid;
-    public GameObject largeasteroid;
+    GameObject largeasteroid;
 
     private Player player;
 
@@ -29,6 +29,10 @@ public class GameController : MonoBehaviour {
         player =
             PlayerObject.GetComponent<Player>();
 
+        //GameObject LA = GameObject.FindWithTag("LargeAsteroid");
+        largeasteroid = Resources.Load<GameObject>("LargeAsteroid");
+
+
         BeginGame();
 	}
 	
@@ -43,7 +47,7 @@ public class GameController : MonoBehaviour {
 
         if (sceneName == "FreeRoamScene")
         {
-            SpawnFreeAsteroids();
+            //SpawnFreeAsteroids();
         }else if (sceneName == "RevolutionScene")
         {
             SpawnRevolutionAsteroids();
@@ -54,7 +58,7 @@ public class GameController : MonoBehaviour {
     {
         DestroyExistingAsteroids();
 
-        MaxAsteroidsSpawnable = 20;
+        MaxAsteroidsSpawnable = 10;
         AsteroidsRemaining = MaxAsteroidsSpawnable;
 
         for (int i = 0; i < MaxAsteroidsSpawnable; i++)
@@ -74,7 +78,7 @@ public class GameController : MonoBehaviour {
             if (AsteroidSize == 1)
             {
                 MediumAsteroidCounter++;
-                Instantiate(mediumasteroid,
+                Instantiate(largeasteroid,
                         new Vector3(Random.Range(-4.0f, 4.0f),
                             Random.Range(-4.0f, 4.0f), 0),
                         Quaternion.Euler(0, 0, Random.Range(-0.0f, 359.0f)));
@@ -94,7 +98,7 @@ public class GameController : MonoBehaviour {
 
         DestroyExistingAsteroids();
 
-        MaxAsteroidsSpawnable = 20;
+        MaxAsteroidsSpawnable = 10;
         AsteroidsRemaining = MaxAsteroidsSpawnable;
 
         for (int i = 0; i < MaxAsteroidsSpawnable; i++)

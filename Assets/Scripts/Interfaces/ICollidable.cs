@@ -4,13 +4,9 @@ using UnityEngine;
 
 public interface ICollidable {
 
-    int myDamage { get; set; }
-    int yourDamage { get; set; }
+    int MyDamage { get; set; }
+    int YourDamage { get; set; }
 
-    int myClass { get; set; }
-    int yourClass { get; set; }
-
-    int damageToMe();
-
+    int ReciveDamage();
 
 }
