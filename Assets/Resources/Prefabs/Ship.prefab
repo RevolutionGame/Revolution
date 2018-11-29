@@ -114,10 +114,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1272287785280324}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6752c34094bb74be0b5b6334cb3d6143, type: 3}
+  m_Script: {fileID: 11500000, guid: 66bedf1fcfe384387bc9333e51330d00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 1986892742119746, guid: cfe28a20dc60f4f4fb45edb4657da413, type: 2}
+  speed: 1
 --- !u!212 &212913620686497016
 SpriteRenderer:
   m_ObjectHideFlags: 1
