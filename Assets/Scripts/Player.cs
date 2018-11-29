@@ -1,12 +1,19 @@
-﻿using System.Collections;
+﻿
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+<<<<<<< HEAD
 public class Player : MonoBehaviour {
+=======
+public class Player : MonoBehaviour
+{
+>>>>>>> 7106a4c1810f7872f91bde12901112bd1ef7b3e7
 
-    public Ship ship;
+    public Ship Ship;
     private int PlayerID;
+    protected int id;
     private readonly int radius = 6;
     private Vector3 SpawnPosition;
     private Vector3 SpawnRotation;
@@ -20,8 +27,8 @@ public class Player : MonoBehaviour {
 
        FindSpawnPosition();
 
-       ship = Instantiate(ship, SpawnPosition, Quaternion.identity);
-       ship.transform.Rotate(SpawnRotation);
+       Ship = Instantiate(Ship, SpawnPosition, Quaternion.identity);
+       Ship.transform.Rotate(SpawnRotation);
 
        // Trying out transform RotateAround
        // ship = Instantiate(ship, new Vector3 (radius, 0, 0), Quaternion.identity);
@@ -86,4 +93,18 @@ public class Player : MonoBehaviour {
 
         }
     }
+<<<<<<< HEAD
+=======
+
+    public int Id
+    {
+        get { return id; }
+
+    }
+
+    public virtual void SpawnShip(Ship ship)
+    {
+
+    }
+>>>>>>> 7106a4c1810f7872f91bde12901112bd1ef7b3e7
 }
