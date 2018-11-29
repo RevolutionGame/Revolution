@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LocalGameManager : MonoBehaviour {
 
-    private Player localPlayer;
+    private LocalPlayer localPlayer;
     public Ship ship;
     public NetworkManager networkManager;
     private int localID;

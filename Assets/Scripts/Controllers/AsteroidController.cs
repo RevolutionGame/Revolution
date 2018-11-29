@@ -2,10 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AsteroidController : MonoBehaviour {
+public class AsteroidController : ObjectController {
 
     private GameController gameController;
 
+
+    void Awake()
+    {
+
+
+
+    }
     // Use this for initialization
     void Start()
     {
@@ -16,6 +23,29 @@ public class AsteroidController : MonoBehaviour {
 
         gameController =
             gameControllerObject.GetComponent<GameController>();
+
+
+        /*
+        SpriteRenderer spriteRenderer;
+        spriteRenderer = gameObject.AddComponent<SpriteRenderer>() as SpriteRenderer;
+        spriteRenderer.sprite = Resources.Load<Sprite>("asteroid");
+        spriteRenderer.material = Resources.Load("Sprites/Materials/AsteroidDesign1", typeof(Material)) as Material;
+
+        CircleCollider2D hitBox;
+        hitBox = gameObject.AddComponent<CircleCollider2D>() as CircleCollider2D;
+        hitBox.radius = (float)2.4;
+
+        /*
+        Rigidbody2D body;
+        body = gameObject.AddComponent<Rigidbody2D>() as Rigidbody2D;
+        body.mass = 1;
+        body.bodyType = RigidbodyType2D.Dynamic;
+        body.simulated = true;
+        body.angularDrag = (float)1.0;
+        body.sleepMode = RigidbodySleepMode2D.StartAwake;
+        body.collisionDetectionMode = CollisionDetectionMode2D.Discrete;
+        body.gravityScale = (float)0.0;*/
+
 
         // Push the asteroid in the direction it is facing
         if (gameObject.tag == "SmallAsteroid")

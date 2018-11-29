@@ -332,8 +332,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd200bed8892e4d9484084f7c3c365da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship: {fileID: 114762441275028462, guid: 231d9be0562994a34b0dd8e04e613738, type: 2}
+  ship: {fileID: 114529689071195316, guid: 2b89785c86ad61441b465d317bb2c23c, type: 2}
   networkManager: {fileID: 224879057}
+  NetworkPlayers:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &1054705959 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 11400000, guid: 010d39cbd03ee4c99a746c1f8ecdc0d8,

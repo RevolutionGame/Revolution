@@ -2,9 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LocalPlayer : Player
+public class LocalPlayer
 {
-    public override void SpawnShip(Ship ship)
+
+    public Ship Ship;
+
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public string Username { get; set; }
+    public string Cell { get; set; }
+    public string Email { get; set; }
+
+
+    public void SpawnShip(Ship ship)
     {
         this.Ship = ship;
         this.Ship.UseRevolutionController();

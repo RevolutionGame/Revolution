@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using modelSpace;
+using TMPro;
+
 
 public class UIManager : MonoBehaviour
 {
@@ -11,25 +13,45 @@ public class UIManager : MonoBehaviour
     private SlideController mainslide;
     private GameObject logpanel;
     private SlideController logslide;
+    LocalPlayer PlayerProfile;
+
+    public TMP_Text NamePlate;
+    public GameObject plate;
 
 
     public NetworkManager networkManager;
 
    void Awake()
     {
+
+        //Mechanical stuff that positions the home screen properly
         mainpanel = GameObject.Find("MainPanel");
         mainslide = mainpanel.GetComponent<SlideController>();
         mainslide.time = 0.005f;
         mainslide.SlideInFlag();
+        //-------------------------
+
+
+        //Create Empty Player Profile
+        PlayerProfile = new LocalPlayer();
+
+        
         
     }
 
     void Start()
     {
+        //Position Login Screen properly
         logpanel = GameObject.Find("LogIn");
         logslide = logpanel.GetComponent<SlideController>();
 
-        
+
+        plate.GetComponent<UnityEngine.UI.Text>().text = "BlahBlah";
+        NamePlate = GetComponent<TMP_Text>();
+
+
+
+
 
     }
 
@@ -60,8 +82,17 @@ public class UIManager : MonoBehaviour
             mainslide.SlideInFlag();
             logslide.SlideOutFlag();
 
+
+
             Debug.Log("result is succesful: " + ld.data.email);
         }
+
+        PlayerProfile.Name= ld.data.name;
+        PlayerProfile.Email = ld.data.email;
+
+        NamePlate.text = PlayerProfile.Name;
+
+
 
     }
 
