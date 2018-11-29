@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public abstract class Player 
+public abstract class Player : MonoBehaviour
 {
 
     public Ship ship;

@@ -25,9 +25,9 @@ public class LocalGameManager : MonoBehaviour {
     private void SendState() {
         JSONObject json = new JSONObject();
         JSONObject location = new JSONObject();
-        location.AddField("locationX", localPlayer.Ship.transform.position.x);
-        location.AddField("locationY", localPlayer.Ship.transform.position.y);
-        location.AddField("rotationInDegrees", localPlayer.Ship.transform.rotation.eulerAngles.z);
+        location.AddField("locationX", localPlayer.ship.transform.position.x);
+        location.AddField("locationY", localPlayer.ship.transform.position.y);
+        location.AddField("rotationInDegrees", localPlayer.ship.transform.rotation.eulerAngles.z);
         json.AddField("roomId", "room1");
         json.AddField("location", location);
         networkManager.SendLocationData(json);

@@ -26,7 +26,7 @@ public class World {
         try
         {
             json.GetField("ships").list.ForEach(ProcessShipJSON);
-        } catch(UnassignedReferenceException e) {
+        } catch(System.NullReferenceException e) {
 
         }
     }

@@ -34,8 +34,6 @@ public abstract class Controller {
 
     public abstract void Right();
 
-    public abstract void Right();
-
     public abstract void Fire();
     
 }
