@@ -4,12 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-<<<<<<< HEAD
-public class Player : MonoBehaviour {
-=======
-public class Player : MonoBehaviour
-{
->>>>>>> 7106a4c1810f7872f91bde12901112bd1ef7b3e7
+public class Player : MonoBehaviour { 
 
     public Ship Ship;
     private int PlayerID;
@@ -93,8 +88,7 @@ public class Player : MonoBehaviour
 
         }
     }
-<<<<<<< HEAD
-=======
+
 
     public int Id
     {
@@ -106,5 +100,5 @@ public class Player : MonoBehaviour
     {
 
     }
->>>>>>> 7106a4c1810f7872f91bde12901112bd1ef7b3e7
+
 }
