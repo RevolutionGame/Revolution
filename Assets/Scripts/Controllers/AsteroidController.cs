@@ -24,6 +24,8 @@ public class AsteroidController : ObjectController {
         gameController =
             gameControllerObject.GetComponent<GameController>();
 
+
+        /*
         SpriteRenderer spriteRenderer;
         spriteRenderer = gameObject.AddComponent<SpriteRenderer>() as SpriteRenderer;
         spriteRenderer.sprite = Resources.Load<Sprite>("asteroid");
@@ -33,6 +35,7 @@ public class AsteroidController : ObjectController {
         hitBox = gameObject.AddComponent<CircleCollider2D>() as CircleCollider2D;
         hitBox.radius = (float)2.4;
 
+        /*
         Rigidbody2D body;
         body = gameObject.AddComponent<Rigidbody2D>() as Rigidbody2D;
         body.mass = 1;
@@ -41,7 +44,7 @@ public class AsteroidController : ObjectController {
         body.angularDrag = (float)1.0;
         body.sleepMode = RigidbodySleepMode2D.StartAwake;
         body.collisionDetectionMode = CollisionDetectionMode2D.Discrete;
-        body.gravityScale = (float)0.0;
+        body.gravityScale = (float)0.0;*/
 
 
         // Push the asteroid in the direction it is facing

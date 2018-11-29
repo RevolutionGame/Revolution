@@ -93,7 +93,7 @@ using modelSpace;
 
         }
 
-    public IEnumerator reateUser(string email, string fullName, string username, string playerCellNumber, string pass)
+    public IEnumerator CreateUser(string email, string fullName, string username, string playerCellNumber, string pass)
     {
 
         reqObj.Clear();
