@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NullController : Controller
+public class NullController
 {
     public override void Backward()
     {
@@ -23,4 +23,5 @@ public class NullController : Controller
     {
         Debug.Log("No movemnet this is a null controller");
     }
+
 }

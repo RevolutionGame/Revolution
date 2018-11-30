@@ -8,36 +8,29 @@ public class LocalGameManager : MonoBehaviour {
     public Ship ship;
     public NetworkManager networkManager;
     private int localID;
-
-    public NetworkPlayer[] NetworkPlayers = new NetworkPlayer[10];
+    private World world = new World();      
 
     // Use this for initialization
     void Start () {
         localPlayer = new LocalPlayer();
-        localPlayer.SpawnShip(Instantiate(ship,  new Vector3(0, 3), Quaternion.identity));
-        AddNetworkPlayer(0);
-        NetworkPlayers[0].SpawnShip(Instantiate(ship, new Vector3(3, 0), Quaternion.identity));
+        localPlayer.SpawnShip(Instantiate(ship,  new Vector3(0, 3), Quaternion.identity));                
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
         SendState();
-        float[] location = new float[3];
-        location[0] = System.Convert.ToSingle(networkManager.location[0].Trim('"'));
-        location[1] = System.Convert.ToSingle(networkManager.location[1].Trim('"'));
-        //location[2] = System.Convert.ToSingle(networkManager.location[2].Trim('"'));
-        NetworkPlayers[0].Ship.GetComponent<Rigidbody2D>().transform.position = (new Vector3(location[0], location[1]));
-        NetworkPlayers[0].Ship.GetComponent<Rigidbody2D>().rotation = location[2];
-        Debug.Log("x: " + networkManager.location[0] + " y: " + networkManager.location[1]);
+        world.UpdateFromJSON(world.WorldJSON);
 	}
 
-    public void AddNetworkPlayer(int id) {
-        NetworkPlayers[id] = new NetworkPlayer(id);
-    }
-
     private void SendState() {
-        //Debug.Log("character location: " + localPlayer.Ship.transform.position);
-        networkManager.SendLocalTransform("0", this.localPlayer.Ship.transform);
+        JSONObject json = new JSONObject();
+        JSONObject location = new JSONObject();
+        location.AddField("locationX", localPlayer.ship.transform.position.x);
+        location.AddField("locationY", localPlayer.ship.transform.position.y);
+        location.AddField("rotationInDegrees", localPlayer.ship.transform.rotation.eulerAngles.z);
+        json.AddField("roomId", "room1");
+        json.AddField("location", location);
+        networkManager.SendLocationData(json);
     }
 
     private void UpdateFromNetwork (){
@@ -45,5 +38,11 @@ public class LocalGameManager : MonoBehaviour {
 
     void StartGame() {        
         //this.localPlayer.SpawnShip(ship);
+    }
+
+    private void SpawnNetworkPlayerShips() {
+        foreach(NetworkPlayer networkPlayer in world.networkPlayers.Values) {            
+            networkPlayer.SpawnShip(ship);
+        }
     }
 }

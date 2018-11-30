@@ -30,13 +30,14 @@ public abstract class Controller {
         thrust -= (thrust * decrease);
     }
 
-    public abstract void Forward();
+    public abstract void Forward(Rigidbody2D rigidbody);
 
-    public abstract void Backward();
+    //public abstract void Backward();
 
     public abstract void Right();
 
-    public abstract void Left();
+    //public abstract void Left();
 
-    
+    public abstract void Fire();
+
 }

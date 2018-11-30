@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Player : MonoBehaviour { 
+
+public abstract class Player : MonoBehaviour
+{
 
     public Ship Ship;
     private int PlayerID;
