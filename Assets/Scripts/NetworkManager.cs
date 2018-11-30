@@ -19,7 +19,7 @@ public class NetworkManager : MonoBehaviour{
 
     public UserData MainPlayer;
     LoginData ld;
-    //public SocketManager socketManager = new SocketManager("ws://localhost:8080/lobby");
+    public SocketManager socketManager = new SocketManager("ws://localhost:8080/lobby");
 
    /* private static NetworkManager networkManager;
 
@@ -37,11 +37,11 @@ public class NetworkManager : MonoBehaviour{
         location[0] = "0";
         location[1] = "0";
        // location[2] = "0";        
-        StartCoroutine(ConnectToServer());
+        //StartCoroutine(ConnectToServer());
         //socket.On("CONNECTION_SUCCESS", OnConnectionSuccess);
         //socket.On("LOCATION_DATA", OnLocationData);
         //socket.On("GAME_START", OnGameStart);   
-        //socketManager.ConnectToSocket();
+        socketManager.ConnectToSocket();
     }
 
     public void SendLocationData(string username, Transform transform)

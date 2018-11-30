@@ -14,7 +14,7 @@ public class SocketManager {
     public Action onGameStart;
     public Action onGameEnd;
     public Action<ObjectLocation[]> onWorldInfo;
-    private World world = new World();
+    //private World world = new World();
 
     public SocketManager(string url) 
     {        

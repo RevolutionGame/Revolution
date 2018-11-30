@@ -9,34 +9,35 @@ public class LocalGameManager : MonoBehaviour {
     public NetworkManager networkManager;
     private int localID;
 
-    public NetworkPlayer[] NetworkPlayers = new NetworkPlayer[10];
-    public SocketManager socketManager = new SocketManager("ws://localhost:8080/lobby");
+    public NetworkPlayer[] NetworkPlayers = new NetworkPlayer[10];    
 
     // Use this for initialization
     void Start () {
         localPlayer = new LocalPlayer();
-        localPlayer.SpawnShip(Instantiate(ship,  new Vector3(0, 3), Quaternion.identity));
-        socketManager.onGameStart = OnGameStart;
-        socketManager.onGameEnd = OnGameEnd;
-        socketManager.onPlayerJoin = OnPlayerJoin;
-        socketManager.onPlayerDisconnect = OnPlayerDisconnect;
-        socketManager.onPlayerLocation = OnPlayerLocation;
-        socketManager.onWorldInfo = OnWorldInfo;
-        socketManager.ConnectToSocket();
+        //localPlayer.SpawnShip(Instantiate(ship,  new Vector3(0, 3), Quaternion.identity));
+        networkManager.socketManager.onGameStart = OnGameStart;
+        networkManager.socketManager.onGameEnd = OnGameEnd;
+        networkManager.socketManager.onPlayerJoin = OnPlayerJoin;
+        networkManager.socketManager.onPlayerDisconnect = OnPlayerDisconnect;
+        networkManager.socketManager.onPlayerLocation = OnPlayerLocation;
+        networkManager.socketManager.onWorldInfo = OnWorldInfo;
+        networkManager.socketManager.onLobbyInfo = OnLobbyInfo;
+        Debug.Log("Hello World");
+        networkManager.socketManager.ConnectToSocket();
         //AddNetworkPlayer(0);
         //NetworkPlayers[0].SpawnShip(Instantiate(ship, new Vector3(3, 0), Quaternion.identity));
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-        SendState();
-        float[] location = new float[3];
+        //SendState();
+        //float[] location = new float[3];
         //location[0] = System.Convert.ToSingle(networkManager.location[0].Trim('"'));
         //location[1] = System.Convert.ToSingle(networkManager.location[1].Trim('"'));
         //location[2] = System.Convert.ToSingle(networkManager.location[2].Trim('"'));
         //NetworkPlayers[0].Ship.GetComponent<Rigidbody2D>().transform.position = (new Vector3(location[0], location[1]));
         //NetworkPlayers[0].Ship.GetComponent<Rigidbody2D>().rotation = location[2];
-        Debug.Log("x: " + networkManager.location[0] + " y: " + networkManager.location[1]);
+        //Debug.Log("x: " + networkManager.location[0] + " y: " + networkManager.location[1]);
 	}
 
     public void AddNetworkPlayer(int id) {
