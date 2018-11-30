@@ -124,7 +124,6 @@ public class NetworkManager : MonoBehaviour{
         yield return cd.coroutine;
 
         ld = (LoginData)cd.result;
-        //LoginData ld = (LoginData)cd.result;
 
         MainPlayer.email = ld.data.email;
         
@@ -134,8 +133,21 @@ public class NetworkManager : MonoBehaviour{
 
     public LoginData Login()
     {
-        
-       StartCoroutine(login());
+        int spin = 0;
+        Coroutine status = null;
+
+        status = StartCoroutine(login());
+
+        while (status == null)
+        {
+            spin++;
+            if(spin > 10000)
+            {
+                return ld;
+            }
+        }
+
+        status = null;
 
         return ld;
 

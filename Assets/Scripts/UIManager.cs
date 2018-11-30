@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using modelSpace;
 using TMPro;
+using UnityEngine.UI;
 
 
 public class UIManager : MonoBehaviour
@@ -16,8 +17,8 @@ public class UIManager : MonoBehaviour
     LocalPlayer PlayerProfile;
 
     public TMP_Text NamePlate;
-    public GameObject plate;
-
+    public Text plate;
+    
 
     public NetworkManager networkManager;
 
@@ -35,8 +36,10 @@ public class UIManager : MonoBehaviour
         //Create Empty Player Profile
         PlayerProfile = new LocalPlayer();
 
-        
-        
+       
+
+
+
     }
 
     void Start()
@@ -46,8 +49,8 @@ public class UIManager : MonoBehaviour
         logslide = logpanel.GetComponent<SlideController>();
 
 
-        plate.GetComponent<UnityEngine.UI.Text>().text = "BlahBlah";
-        NamePlate = GetComponent<TMP_Text>();
+
+        plate.GetComponent<Text>().text = "BlahBlah";
 
 
 
@@ -90,7 +93,7 @@ public class UIManager : MonoBehaviour
         PlayerProfile.Name= ld.data.name;
         PlayerProfile.Email = ld.data.email;
 
-        NamePlate.text = PlayerProfile.Name;
+        plate.GetComponent<Text>().text = PlayerProfile.Name;
 
 
 
