@@ -6,8 +6,9 @@ public class NetworkPlayer : Player {
 
 
 
-    public NetworkPlayer(int id) {
+    public NetworkPlayer(int id, string name) {
         this.id = id;
+        this.name = name;
     }
 
     public void SpawnShip(Ship ship)
