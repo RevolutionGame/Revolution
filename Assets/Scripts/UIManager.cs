@@ -87,10 +87,10 @@ public class UIManager : MonoBehaviour
             Debug.Log("result is succesful: " + ld.data.email);
         }
 
-        PlayerProfile.Name= ld.data.name;
-        PlayerProfile.Email = ld.data.email;
+    //    PlayerProfile.Name= ld.data.name;
+      //  PlayerProfile.Email = ld.data.email;
 
-        NamePlate.text = PlayerProfile.Name;
+        // NamePlate.text = PlayerProfile.Name;
 
 
 

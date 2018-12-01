@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public abstract class Player : MonoBehaviour
 {
-
+    public Ship ship;
     public Ship Ship;
     private int PlayerID;
     protected int id;
@@ -98,9 +98,6 @@ public abstract class Player : MonoBehaviour
 
     }
 
-    public virtual void SpawnShip(Ship ship)
-    {
-
-    }
+    public abstract void SpawnShip(Ship ship);
 
 }

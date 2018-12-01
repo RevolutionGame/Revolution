@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LocalPlayer
+public class LocalPlayer : Player
 {
 
     public override void SpawnShip(Ship ship)

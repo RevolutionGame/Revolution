@@ -13,7 +13,8 @@ public class LocalGameManager : MonoBehaviour {
     // Use this for initialization
     void Start () {
         localPlayer = new LocalPlayer();
-        localPlayer.SpawnShip(Instantiate(ship,  new Vector3(0, 3), Quaternion.identity));                
+        localPlayer.SpawnShip(Instantiate(ship,  new Vector3(0, 3), Quaternion.identity));
+        
 	}
 	
 	// Update is called once per frame
@@ -36,13 +37,14 @@ public class LocalGameManager : MonoBehaviour {
     private void UpdateFromNetwork (){
     }
 
-    void StartGame() {        
-        //this.localPlayer.SpawnShip(ship);
+    void StartGame() {
+        
     }
 
     private void SpawnNetworkPlayerShips() {
-        foreach(NetworkPlayer networkPlayer in world.networkPlayers.Values) {            
+        foreach (NetworkPlayer networkPlayer in world.networkPlayers.Values) {
             networkPlayer.SpawnShip(ship);
         }
     }
+
 }

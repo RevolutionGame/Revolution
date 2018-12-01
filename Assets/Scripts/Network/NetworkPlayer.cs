@@ -11,14 +11,15 @@ public class NetworkPlayer : Player {
         this.id = id;
     }
 
-    public void SpawnShip(Ship ship)
+    
+    public override void SpawnShip(Ship ship)
     {
         this.ship = ship;
         //ship.controller = new NullController();
     }
 
     public void MoveTo(float x, float y, float theta) {
-        this.ship.transform.Translate(new Vector2(x, y));
-        this.ship.transform.Rotate(new Vector3(0, 0, theta));
+      this.ship.transform.Translate(new Vector2(x, y));
+      this.ship.transform.Rotate(new Vector3(0, 0, theta));
     }
 }
