@@ -98,7 +98,7 @@ using modelSpace;
 
         reqObj.Clear();
 
-        UnityWebRequest www = UnityWebRequest.Post(apiUrl + "/oAuth/google", reqObj);
+        UnityWebRequest www = UnityWebRequest.Post(apiUrl + "/auth/google", reqObj);
 
         yield return www.SendWebRequest();
 
@@ -124,7 +124,7 @@ using modelSpace;
 
         reqObj.Clear();
 
-        UnityWebRequest www = UnityWebRequest.Post(apiUrl + "/oAuth/twitter", reqObj);
+        UnityWebRequest www = UnityWebRequest.Post(apiUrl + "/auth/twitter", reqObj);
 
         yield return www.SendWebRequest();
 

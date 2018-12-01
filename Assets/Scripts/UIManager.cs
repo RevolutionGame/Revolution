@@ -4,11 +4,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using modelSpace;
 using TMPro;
+using UnityEngine.UI;
 
 
 public class UIManager : MonoBehaviour
 {
-    
+
     private GameObject mainpanel;
     private SlideController mainslide;
     private GameObject logpanel;
@@ -16,7 +17,7 @@ public class UIManager : MonoBehaviour
     LocalPlayer PlayerProfile;
 
     public TMP_Text NamePlate;
-    public GameObject plate;
+    public Text plate;
 
     ApiManager apiManager = new ApiManager();
 
@@ -26,10 +27,12 @@ public class UIManager : MonoBehaviour
     public UserData MainPlayer;
     LoginData ld;
 
+    public GameObject logbutton;
+
 
     public NetworkManager networkManager;
 
-   void Awake()
+    void Awake()
     {
 
         //Mechanical stuff that positions the home screen properly
@@ -43,8 +46,8 @@ public class UIManager : MonoBehaviour
         //Create Empty Player Profile
         PlayerProfile = new LocalPlayer();
 
-        
-        
+
+
     }
 
     void Start()
@@ -54,8 +57,8 @@ public class UIManager : MonoBehaviour
         logslide = logpanel.GetComponent<SlideController>();
 
 
-        plate.GetComponent<UnityEngine.UI.Text>().text = "BlahBlah";
-        NamePlate = GetComponent<TMP_Text>();
+        plate.GetComponent<Text>().text = "BlahBlah";
+        //NamePlate = GetComponent<TMP_Text>();
 
 
 
@@ -65,71 +68,164 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
-      
+
     }
 
     public void StartGame(int scene)
     {
         SceneManager.LoadScene(scene);
-        
+
     }
 
     public void ExitGame()
     {
         UnityEngine.Application.Quit();
-        
-
-    }
-
-    public void login()
-    {
-        LoginData ld = networkManager.Login();
-
-        if(networkManager.MainPlayer.Email != null)
-        {
-            mainslide.SlideInFlag();
-            logslide.SlideOutFlag();
-
-
-
-            Debug.Log("result is succesful: " + ld.data.email);
-        }
-
-        PlayerProfile.Name= ld.data.name;
-        PlayerProfile.Email = ld.data.email;
-
-        NamePlate.text = PlayerProfile.Name;
-
 
 
     }
-
-    public void GoogleLogin()
+    public void Log()
     {
-        LoginData ld = networkManager.Login();
+        StartCoroutine(Login());
+    }
 
-        if (networkManager.MainPlayer.Email != null)
-        {
-            mainslide.SlideInFlag();
-            logslide.SlideOutFlag();
+    public void Google()
+    {
+        StartCoroutine(GoogleLogin());
+    }
+
+    public void Twitter()
+    {
+        StartCoroutine(TwitterLogin());
+    }
+
+    public IEnumerator Login()
+    {
+
+        string email = mail.text;
+        string pass = password.text;
+
+        CoroutineWithData cd = new CoroutineWithData(this, apiManager.LoginUser(email, pass));
+        yield return cd.coroutine;
+
+        ld = (LoginData)cd.result;
 
 
-
-            Debug.Log("result is succesful: " + ld.data.email);
-        }
 
         PlayerProfile.Name = ld.data.name;
         PlayerProfile.Email = ld.data.email;
 
-        NamePlate.text = PlayerProfile.Name;
+        plate.GetComponent<Text>().text = PlayerProfile.Name;
 
 
+        logbutton.SetActive(false);
 
+
+        MainPlayer.email = ld.data.email;
+
+
+        mainslide.SlideInFlag();
+        logslide.SlideOutFlag();
+
+
+        Debug.Log("result is " + ld.data.name);
     }
 
-    public void 
+   /* 
+    * public void Login()
+    {
+        string email = mail.text;
+        string pass = password.text;
+
+        CoroutineWithData cd = new CoroutineWithData(this, apiManager.LoginUser(email, pass));
+        yield return cd.coroutine;
+
+        ld = (LoginData)cd.result;
+
+
+
+        PlayerProfile.Name = ld.data.name;
+        PlayerProfile.Email = ld.data.email;
+
+        plate.GetComponent<Text>().text = PlayerProfile.Name;
+
+
+        logbutton.SetActive(false);
+
+
+        MainPlayer.email = ld.data.email;
+
+
+        mainslide.SlideInFlag();
+        logslide.SlideOutFlag();
+
+
+        Debug.Log("result is " + ld.data.name);
+
+    }
+    */
+
+    public IEnumerator GoogleLogin()
+    {
+
+
+        CoroutineWithData cd = new CoroutineWithData(this, apiManager.GoogleLogin());
+        yield return cd.coroutine;
+
+        ld = (LoginData)cd.result;
+
+
+
+        PlayerProfile.Name = ld.data.name;
+        PlayerProfile.Email = ld.data.email;
+
+        plate.GetComponent<Text>().text = PlayerProfile.Name;
+
+
+        logbutton.SetActive(false);
+
+
+        MainPlayer.email = ld.data.email;
+
+
+        mainslide.SlideInFlag();
+        logslide.SlideOutFlag();
+
+
+        Debug.Log("result is " + ld.data.name);
+    }
+
+    public IEnumerator TwitterLogin()
+    {
+
+
+        CoroutineWithData cd = new CoroutineWithData(this, apiManager.TwitterLogin());
+        yield return cd.coroutine;
+
+        ld = (LoginData)cd.result;
+
+
+
+        PlayerProfile.Name = ld.data.name;
+        PlayerProfile.Email = ld.data.email;
+
+        plate.GetComponent<Text>().text = PlayerProfile.Name;
+
+
+        logbutton.SetActive(false);
+
+
+        MainPlayer.email = ld.data.email;
+
+
+        mainslide.SlideInFlag();
+        logslide.SlideOutFlag();
+
+
+        Debug.Log("result is " + ld.data.name);
+    }
 
     #region random methods
+
     public void DisableBoolAnimator(Animator anim)
     {
         anim.SetBool("IsDisplayed", false);
