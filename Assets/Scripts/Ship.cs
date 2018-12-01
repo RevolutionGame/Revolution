@@ -2,33 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ship : MonoBehaviour {
+public partial class Ship : MonoBehaviour {
 
-    public Controller controller;
-
+    public MonoBehaviour controller;
+ 
 	// Use this for initialization
-	void Start () {
-        controller = new RevolutionController(GetComponent<Rigidbody2D>());
-	}
+	//void Start () {        
+	//}
 	
 	// Update is called once per frame
-	void FixedUpdate () {
-        if (Input.GetKey(KeyCode.W))
-        {            
-            controller.Forward();
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            controller.Left();            
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            controller.Right();
-        }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            controller.Fire();
-        }
+    void FixedUpdate () {
         Debug.Log("Position: " + transform.position.ToString());
+    }
+
+    public void UseFreeRoamController() {
+        Destroy(gameObject.GetComponent<RevolutionController>());
+        controller = gameObject.AddComponent<FreeRoamController>();
+    }
+
+    public void UseRevolutionController() {
+        gameObject.GetComponent<FreeRoamController>();
+        controller = gameObject.AddComponent<RevolutionController>();
+        transform.Rotate(new Vector3(0, 0, -180));
     }
 }

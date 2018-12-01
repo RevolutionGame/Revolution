@@ -51,9 +51,8 @@ using modelSpace;
         }
         */
 
-
-
-    public IEnumerator LoginWrapper(string email, string pass){
+    public IEnumerator LoginWrapper(string email, string pass)
+    {
 
         CoroutineWithData cd = new CoroutineWithData(this, LoginUser(email,pass));
         yield return cd.coroutine;
@@ -94,7 +93,7 @@ using modelSpace;
 
         }
 
-    public IEnumerator reateUser(string email, string fullName, string username, string playerCellNumber, string pass)
+    public IEnumerator CreateUser(string email, string fullName, string username, string playerCellNumber, string pass)
     {
 
         reqObj.Clear();

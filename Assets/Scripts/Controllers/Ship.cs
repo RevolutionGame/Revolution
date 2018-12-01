@@ -1,18 +1,32 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class Ship : MonoBehaviour {
+public partial class Ship : MonoBehaviour {
 
-    Controller shipcontroller;
+    public Controller shipcontroller;
     public GameObject bullet;
 
     private GameController gameController;
 
-	// Use this for initialization
-	void Start () {
-        shipcontroller = new FreeRoamController(GetComponent<Rigidbody2D>());
 
+
+    // Use this for initialization
+    void Start () {
+
+        Scene currentScene = SceneManager.GetActiveScene();
+        string sceneName = currentScene.name;
+/*
+        if (sceneName == "FreeRoamScene")
+        {
+            shipcontroller = new FreeRoamController(GetComponent<Rigidbody2D>());
+        }
+        else if (sceneName == "RevolutionScene")
+        {
+            shipcontroller = new RevolutionController(GetComponent<Rigidbody2D>());
+        }
+*/
         GameObject gameControllerObject =
             GameObject.FindWithTag("GameController");
 
@@ -20,26 +34,6 @@ public class Ship : MonoBehaviour {
             gameControllerObject.GetComponent<GameController>();
     }
 	
-	// Update is called once per frame
-	void FixedUpdate () {
-        if (Input.GetKey(KeyCode.W))
-        {            
-            shipcontroller.Forward();
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            shipcontroller.Left();            
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            shipcontroller.Right();
-        }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            ShootBullet();
-        }
-        Debug.Log("Position: " + transform.position.ToString());
-    }
 
     void ShootBullet()
     {

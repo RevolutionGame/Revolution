@@ -194,6 +194,14 @@ MonoBehaviour:
   - 
   - 
   socket: {fileID: 1054705959}
+  password: {fileID: 0}
+  mail: {fileID: 0}
+  MainPlayer:
+    id: 0
+    name: 
+    username: 
+    cell_number: 
+    email: 
 --- !u!4 &224879058
 Transform:
   m_ObjectHideFlags: 0
@@ -255,7 +263,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -324,8 +332,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd200bed8892e4d9484084f7c3c365da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship: {fileID: 114762441275028462, guid: 231d9be0562994a34b0dd8e04e613738, type: 2}
+  ship: {fileID: 114529689071195316, guid: 2b89785c86ad61441b465d317bb2c23c, type: 2}
   networkManager: {fileID: 224879057}
+  NetworkPlayers:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &1054705959 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 11400000, guid: 010d39cbd03ee4c99a746c1f8ecdc0d8,

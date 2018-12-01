@@ -9,14 +9,17 @@ public class listcontrol : MonoBehaviour {
     protected ScrollRect scrollRect;
     protected RectTransform contentPanel;
     public Button item;
-    public GameObject item2;
+    GameObject item2;
 
     // Use this for initialization
     void Start () {
         contentPanel = GetComponent<RectTransform>();
+
+        item2 = Resources.Load<GameObject>("prefabs/spaceship_1");
         
         Button GO = Instantiate(item, contentPanel.transform);
         GameObject GOO = Instantiate(item2, contentPanel.transform);
+        /*
         GO = Instantiate(item, contentPanel.transform);
         GO = Instantiate(item, contentPanel.transform);
         GO = Instantiate(item, contentPanel.transform);
@@ -24,7 +27,7 @@ public class listcontrol : MonoBehaviour {
         GO = Instantiate(item, contentPanel.transform);
         GO = Instantiate(item, contentPanel.transform);
         GO = Instantiate(item, contentPanel.transform);
-
+        */
     }
 	
 	// Update is called once per frame
