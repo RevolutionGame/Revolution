@@ -154,7 +154,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 010d39cbd03ee4c99a746c1f8ecdc0d8, type: 2}
       propertyPath: url
-      value: ws://revtest2018.herokuapp.com//socket.io/?EIO=4&transport=websocket
+      value: ws://localhost:3004//socket.io/?EIO=4&transport=websocket
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 010d39cbd03ee4c99a746c1f8ecdc0d8, type: 2}
       propertyPath: autoConnect
@@ -190,9 +190,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cabf0197d1674390b21cb9d4350b2e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  location:
-  - 
-  - 
   socket: {fileID: 1054705959}
   password: {fileID: 0}
   mail: {fileID: 0}

@@ -9,7 +9,10 @@ public class GameController : MonoBehaviour {
     GameObject mediumAsteroid;
     GameObject largeAsteroid;
 
+    public NetworkManager networkManager;
+
     private Player player;
+
 
     public int MinimumAsteroidRemaining = 10;
     private int MaxAsteroidsSpawnable;
@@ -92,6 +95,53 @@ public class GameController : MonoBehaviour {
                         Quaternion.Euler(0, 0, Random.Range(-0.0f, 359.0f)));
             }
         }
+    }
+
+    void SpawnRevolutionAsteroidsWithConnection(int ID, int sectors, float[,] vectors) //[ID, (size, x, y, angle)]
+                                                                                       // The angle in vector[ID,3] must be < 360/sectors
+    {
+
+        AsteroidSize = (int)vectors[ID, 0];
+        
+            float radius = Mathf.Sqrt(((Mathf.Pow(vectors[ID,1], 2) + Mathf.Pow(vectors[ID,2], 2))));
+            
+            for (int i = 0; i < sectors; i++)
+            {
+                
+                float angle = ((i * (360 / sectors)) + vectors[ID, 3]);
+                
+                if (angle == 360) //Might not need this
+                {
+                    angle = 0;
+                }
+
+                if (AsteroidSize == 0)
+                {
+                        Instantiate(smallAsteroid,
+                                    new Vector3(radius*(Mathf.Cos(angle*Mathf.Deg2Rad)), radius*(Mathf.Sin(angle*Mathf.Deg2Rad)), 0), 
+                                    Quaternion.Euler(0, 0, angle));
+                }
+
+                if (AsteroidSize == 1)
+                {
+                        Instantiate(mediumAsteroid,
+                                new Vector3(radius * (Mathf.Cos(angle * Mathf.Deg2Rad)), radius * (Mathf.Sin(angle * Mathf.Deg2Rad)), 0),
+                                Quaternion.Euler(0, 0, angle));
+
+
+                }
+                if (AsteroidSize == 2)
+                {
+                    Instantiate(largeAsteroid,
+                                new Vector3(radius * (Mathf.Cos(angle * Mathf.Deg2Rad)), radius * (Mathf.Sin(angle * Mathf.Deg2Rad)), 0),
+                                Quaternion.Euler(0, 0, angle));
+
+
+                }
+            }
+
+        
+
     }
 
     void SpawnFreeAsteroids(){
