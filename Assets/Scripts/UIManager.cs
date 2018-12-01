@@ -18,6 +18,14 @@ public class UIManager : MonoBehaviour
     public TMP_Text NamePlate;
     public GameObject plate;
 
+    ApiManager apiManager = new ApiManager();
+
+    public TMP_InputField password;
+    public TMP_InputField mail;
+
+    public UserData MainPlayer;
+    LoginData ld;
+
 
     public NetworkManager networkManager;
 
@@ -95,6 +103,31 @@ public class UIManager : MonoBehaviour
 
 
     }
+
+    public void GoogleLogin()
+    {
+        LoginData ld = networkManager.Login();
+
+        if (networkManager.MainPlayer.Email != null)
+        {
+            mainslide.SlideInFlag();
+            logslide.SlideOutFlag();
+
+
+
+            Debug.Log("result is succesful: " + ld.data.email);
+        }
+
+        PlayerProfile.Name = ld.data.name;
+        PlayerProfile.Email = ld.data.email;
+
+        NamePlate.text = PlayerProfile.Name;
+
+
+
+    }
+
+    public void 
 
     #region random methods
     public void DisableBoolAnimator(Animator anim)

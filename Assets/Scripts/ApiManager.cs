@@ -93,6 +93,58 @@ using modelSpace;
 
         }
 
+    public IEnumerator GoogleLogin()
+    {
+
+        reqObj.Clear();
+
+        UnityWebRequest www = UnityWebRequest.Post(apiUrl + "/oAuth/google", reqObj);
+
+        yield return www.SendWebRequest();
+
+        if (www.isNetworkError || www.isHttpError)
+        {
+            Debug.Log(www.error);
+        }
+        else
+        {
+            Debug.Log(www.downloadHandler.text);
+
+            LoginData loadedData = JsonUtility.FromJson<LoginData>(www.downloadHandler.text);
+            yield return loadedData;
+
+
+            Debug.Log("login complete");
+        }
+
+    }
+
+    public IEnumerator TwitterLogin()
+    {
+
+        reqObj.Clear();
+
+        UnityWebRequest www = UnityWebRequest.Post(apiUrl + "/oAuth/twitter", reqObj);
+
+        yield return www.SendWebRequest();
+
+        if (www.isNetworkError || www.isHttpError)
+        {
+            Debug.Log(www.error);
+        }
+        else
+        {
+            Debug.Log(www.downloadHandler.text);
+
+            LoginData loadedData = JsonUtility.FromJson<LoginData>(www.downloadHandler.text);
+            yield return loadedData;
+
+
+            Debug.Log("login complete");
+        }
+
+    }
+
     public IEnumerator CreateUser(string email, string fullName, string username, string playerCellNumber, string pass)
     {
 
