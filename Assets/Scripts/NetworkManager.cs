@@ -22,6 +22,8 @@ public class NetworkManager : MonoBehaviour{
     public UserData MainPlayer;
     LoginData ld;
 
+    public UIManager uIManager;
+
    /* private static NetworkManager networkManager;
 
     private NetworkManager() { }
@@ -126,28 +128,26 @@ public class NetworkManager : MonoBehaviour{
         ld = (LoginData)cd.result;
 
         MainPlayer.email = ld.data.email;
+
+
         
         Debug.Log("result is " + ld.data.name);
 
     }
 
+    public IEnumerator spin()
+    {
+        yield return new WaitForSeconds(3);
+    }
+
     public LoginData Login()
     {
-        int spin = 0;
+      
         Coroutine status = null;
 
         status = StartCoroutine(login());
 
-        while (status == null)
-        {
-            spin++;
-            if(spin > 10000)
-            {
-                return ld;
-            }
-        }
-
-        status = null;
+        System.Threading.Thread.Sleep(3000);
 
         return ld;
 

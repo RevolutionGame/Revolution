@@ -14,11 +14,21 @@ public class UIManager : MonoBehaviour
     private SlideController mainslide;
     private GameObject logpanel;
     private SlideController logslide;
+    private GameObject logbutton;
+
     LocalPlayer PlayerProfile;
 
     public TMP_Text NamePlate;
     public Text plate;
-    
+
+    ApiManager apiManager = new ApiManager();
+
+    public TMP_InputField password;
+    public TMP_InputField mail;
+
+    public UserData MainPlayer;
+    LoginData ld;
+
 
     public NetworkManager networkManager;
 
@@ -32,6 +42,7 @@ public class UIManager : MonoBehaviour
         mainslide.SlideInFlag();
         //-------------------------
 
+        logbutton = GameObject.Find("LogInButton");
 
         //Create Empty Player Profile
         PlayerProfile = new LocalPlayer();
@@ -76,26 +87,48 @@ public class UIManager : MonoBehaviour
 
     }
 
+
+
     public void login()
     {
-        LoginData ld = networkManager.Login();
-
-        if(networkManager.MainPlayer.Email != null)
-        {
-            mainslide.SlideInFlag();
-            logslide.SlideOutFlag();
+        
+    
+        StartCoroutine(Login());
 
 
 
-            Debug.Log("result is succesful: " + ld.data.email);
-        }
 
-        PlayerProfile.Name= ld.data.name;
+    }
+
+    public IEnumerator Login()
+    {
+        string email = mail.text;
+        string pass = password.text;
+
+        CoroutineWithData cd = new CoroutineWithData(this, apiManager.LoginUser(email, pass));
+        yield return cd.coroutine;
+
+        ld = (LoginData)cd.result;
+
+
+
+        PlayerProfile.Name = ld.data.name;
         PlayerProfile.Email = ld.data.email;
 
         plate.GetComponent<Text>().text = PlayerProfile.Name;
 
+        
+        logbutton.SetActive(false);
 
+
+        MainPlayer.email = ld.data.email;
+
+
+        mainslide.SlideInFlag();
+        logslide.SlideOutFlag();
+
+
+        Debug.Log("result is " + ld.data.name);
 
     }
 
