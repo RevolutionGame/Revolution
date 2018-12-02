@@ -14,7 +14,7 @@ public class SocketManager {
     public Action onGameStart;
     public Action onGameEnd;
     public Action<ObjectLocation[]> onWorldInfo;
-    //private World world = new World();
+    public World world = new World();
 
     public SocketManager(string url) 
     {        
@@ -26,10 +26,6 @@ public class SocketManager {
             {
                 var packet = Packet.Parser.ParseFrom(e.RawData);
                 ParseMessage(packet);
-            }
-            else if(e.IsPing) 
-            {
-                Debug.Log("Ping recived from server");
             }
         };
         socket.OnOpen += (sender, e) =>
@@ -55,7 +51,7 @@ public class SocketManager {
     }
 
     public void ParseMessage(Packet packet)
-    {
+    {        
         switch (packet.BodyType)
         {
             case BodyType.LobbyInfo:
@@ -65,11 +61,13 @@ public class SocketManager {
                 var players = new List<PlayerInfo>();
                 foreach(PlayerInfo player in playersPacket) {
                     players.Add(player);
-                }                
+                }
                 onLobbyInfo((int)packet.LobbyInfo.PlayerId, players.ToArray());
+                world.UpdatePlayersInfos(players.ToArray());
                 break;
             case BodyType.PlayerJoin:
                 onPlayerJoin((int)packet.PlayerInfo.Id, packet.PlayerInfo.Name);
+                world.AddPlayerInfo(packet.PlayerInfo);
                 break;
             case BodyType.PlayerLocation:
                 Debug.Log("Player Location");
@@ -88,7 +86,6 @@ public class SocketManager {
                 break;
             case BodyType.WorldInfo:
                 Debug.Log("World Info");
-
                 break;
             case BodyType.GameStart:
                 Debug.Log("Game Start");
@@ -100,5 +97,12 @@ public class SocketManager {
     public void SendToServer(Packet packet)
     {
         socket.Send(packet.ToByteArray());
+    }
+
+    public void SendReady()
+    {
+        var packet = new Packet();
+        packet.BodyType = BodyType.PlayerReady;
+        SendToServer(packet);
     }
 }

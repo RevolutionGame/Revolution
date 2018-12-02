@@ -13,40 +13,26 @@ public class LocalGameManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        localPlayer = new LocalPlayer();
-        //localPlayer.SpawnShip(Instantiate(ship,  new Vector3(0, 3), Quaternion.identity));
+        localPlayer = new LocalPlayer();        
         networkManager.socketManager.onGameStart = OnGameStart;
         networkManager.socketManager.onGameEnd = OnGameEnd;
         networkManager.socketManager.onPlayerJoin = OnPlayerJoin;
         networkManager.socketManager.onPlayerDisconnect = OnPlayerDisconnect;
         networkManager.socketManager.onPlayerLocation = OnPlayerLocation;
         networkManager.socketManager.onWorldInfo = OnWorldInfo;
-        networkManager.socketManager.onLobbyInfo = OnLobbyInfo;
-        Debug.Log("Hello World");
-        networkManager.socketManager.ConnectToSocket();
-        //AddNetworkPlayer(0);
-        //NetworkPlayers[0].SpawnShip(Instantiate(ship, new Vector3(3, 0), Quaternion.identity));
+        networkManager.socketManager.onLobbyInfo = OnLobbyInfo;        
+        networkManager.socketManager.ConnectToSocket();        
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-        //SendState();
-        //float[] location = new float[3];
-        //location[0] = System.Convert.ToSingle(networkManager.location[0].Trim('"'));
-        //location[1] = System.Convert.ToSingle(networkManager.location[1].Trim('"'));
-        //location[2] = System.Convert.ToSingle(networkManager.location[2].Trim('"'));
-        //NetworkPlayers[0].Ship.GetComponent<Rigidbody2D>().transform.position = (new Vector3(location[0], location[1]));
-        //NetworkPlayers[0].Ship.GetComponent<Rigidbody2D>().rotation = location[2];
-        //Debug.Log("x: " + networkManager.location[0] + " y: " + networkManager.location[1]);
+        UpdateWorld();
 	}
 
-    public void AddNetworkPlayer(int id) {
-        //NetworkPlayers[id] = new NetworkPlayer(id);
+    public void AddNetworkPlayer(int id) {        
     }
 
     private void SendState() {
-        //Debug.Log("character location: " + localPlayer.Ship.transform.position);
-        //networkManager.SendLocalTransform("0", this.localPlayer.Ship.transform);
     }
 
     private void UpdateFromNetwork (){
@@ -64,7 +50,7 @@ public class LocalGameManager : MonoBehaviour {
 
     void OnGameStart() 
     {
-        StartGame();
+        networkManager.socketManager.onGameStart = StartGame;
     }
 
     void OnGameEnd() 
@@ -85,6 +71,8 @@ public class LocalGameManager : MonoBehaviour {
     void OnLobbyInfo(int id, PlayerInfo[] players)
     {
         Debug.Log($"LobbyInfo: Your ID is :{id} and there are {players.Length} in the lobby already");
+        localPlayer.Id = id;
+
     }
 
     void OnPlayerLocation(int id, float x, float y, float r)
@@ -95,5 +83,16 @@ public class LocalGameManager : MonoBehaviour {
     void OnWorldInfo(ObjectLocation[] aseroids)
     {
 
+    }
+
+    void UpdateWorld()
+    {
+        foreach(string playerName in networkManager.socketManager.world.playerInfos)
+        {
+            if(playerName != null)
+            {
+                //Debug.Log($"{playerName}");
+            }
+        }
     }
 }

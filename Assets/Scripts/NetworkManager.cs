@@ -117,4 +117,9 @@ public class NetworkManager : MonoBehaviour{
     {
         throw new System.NotImplementedException();
     }
+
+    public void SendReady()
+    {
+        socketManager.SendReady();
+    }
 }
