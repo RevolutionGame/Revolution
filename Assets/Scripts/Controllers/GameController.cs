@@ -193,32 +193,37 @@ public class GameController : MonoBehaviour {
 
     public void DestroyAsteroid(GameObject DestroyedAsteroid)
     {
-        
-        if(DestroyedAsteroid.tag.Equals("SmallAsteroid"))
+
+        Quaternion offset = Quaternion.FromToRotation(Vector3.up, DestroyedAsteroid.transform.rotation.eulerAngles);
+       
+        if (DestroyedAsteroid.tag.Equals("SmallAsteroid"))
         {
             Destroy(DestroyedAsteroid);
-            AsteroidsRemaining--;
+            //   AsteroidsRemaining--;
+            
         }
 
         if (DestroyedAsteroid.tag.Equals("MediumAsteroid"))
         {
-            
-           //SERVER: Must be updated with asteroid current position and send an offset of that vector to all clients
-           //to instantiate the asteroid split vectors
-           Instantiate(smallAsteroid,
-              new Vector3(DestroyedAsteroid.transform.position.x -.5f,
-                  DestroyedAsteroid.transform.position.y -.5f, 0),
-                  Quaternion.Euler(0, 0, 90));
+
+
+
+            GameObject temp1 =  Instantiate(smallAsteroid,
+                  new Vector3(DestroyedAsteroid.transform.position.x,
+                  DestroyedAsteroid.transform.position.y, 0),
+                  Quaternion.Euler(0, 0, offset.eulerAngles.z -45));
+
+
 
             Instantiate(smallAsteroid,
-              new Vector3(DestroyedAsteroid.transform.position.x + .5f,
-                  DestroyedAsteroid.transform.position.y + .0f, 0),
-                  Quaternion.Euler(0, 0, 0));
+              new Vector3(DestroyedAsteroid.transform.position.x,
+                  DestroyedAsteroid.transform.position.y, 0),
+                  Quaternion.Euler(0, 0, offset.eulerAngles.z + 45));
               
 
             Destroy(DestroyedAsteroid);
-            AsteroidsRemaining+=1;
-            MediumAsteroidCounter--;
+            //   AsteroidsRemaining+=1;
+            //   MediumAsteroidCounter--;
         }
 
         if (DestroyedAsteroid.tag.Equals("LargeAsteroid"))
@@ -227,39 +232,38 @@ public class GameController : MonoBehaviour {
             //SERVER: Must be updated with asteroid current position and send an offset of that vector to all clients
             //to instantiate the asteroid split vectors
             Instantiate(smallAsteroid,
-               new Vector3(DestroyedAsteroid.transform.position.x - .5f,
-                   DestroyedAsteroid.transform.position.y - .5f, 0),
-                   Quaternion.Euler(0, 0, 90));
+               new Vector3(DestroyedAsteroid.transform.position.x,
+                   DestroyedAsteroid.transform.position.y, 0),
+                   Quaternion.Euler(0, 0, offset.eulerAngles.z - 45));
 
             Instantiate(smallAsteroid,
-              new Vector3(DestroyedAsteroid.transform.position.x + .5f,
-                  DestroyedAsteroid.transform.position.y + .0f, 0),
-                  Quaternion.Euler(0, 0, 0));
+              new Vector3(DestroyedAsteroid.transform.position.x,
+                  DestroyedAsteroid.transform.position.y, 0),
+                  Quaternion.Euler(0, 0, offset.eulerAngles.z - 15));
 
             Instantiate(smallAsteroid,
-               new Vector3(DestroyedAsteroid.transform.position.x + .5f,
-                   DestroyedAsteroid.transform.position.y - .5f, 0),
-                   Quaternion.Euler(0, 0, 270));
+               new Vector3(DestroyedAsteroid.transform.position.x,
+                   DestroyedAsteroid.transform.position.y, 0),
+                   Quaternion.Euler(0, 0, offset.eulerAngles.z + 15));
 
             Instantiate(smallAsteroid,
-              new Vector3(DestroyedAsteroid.transform.position.x - .5f,
-                  DestroyedAsteroid.transform.position.y + .0f, 0),
-                  Quaternion.Euler(0, 0, 180));
+              new Vector3(DestroyedAsteroid.transform.position.x,
+                  DestroyedAsteroid.transform.position.y, 0),
+                  Quaternion.Euler(0, 0, offset.eulerAngles.z + 45));
 
-
-            Destroy(DestroyedAsteroid);
-            AsteroidsRemaining += 3;
-            LargeAsteroidCounter--;
+            //    AsteroidsRemaining += 3;
+            //    LargeAsteroidCounter--;
         }
 
-        if(AsteroidsRemaining <= MinimumAsteroidRemaining && 
-            ((MediumAsteroidCounter*2)+AsteroidsRemaining) <= MinimumAsteroidRemaining &&
-            ((LargeAsteroidCounter*4)+AsteroidsRemaining) <= MinimumAsteroidRemaining)
-        {
+        
+       // if(AsteroidsRemaining <= MinimumAsteroidRemaining && 
+        //   ((MediumAsteroidCounter*2)+AsteroidsRemaining) <= MinimumAsteroidRemaining &&
+        //   ((LargeAsteroidCounter*4)+AsteroidsRemaining) <= MinimumAsteroidRemaining)
+        //{
             //SERVER: Inform server condition are met to spawn a new wave
-            CurrentStage++;
-            BeginGame();
-        }
+        //    CurrentStage++;
+        //   BeginGame();
+        //}
     }
 
     void DestroyExistingAsteroids()
