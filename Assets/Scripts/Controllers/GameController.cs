@@ -11,7 +11,7 @@ public class GameController : MonoBehaviour {
 
     public NetworkManager networkManager;
 
-    private Player player;
+    private LocalPlayer player;
 
 
     public int MinimumAsteroidRemaining = 10;
@@ -30,7 +30,7 @@ public class GameController : MonoBehaviour {
             GameObject.FindWithTag("Player");
 
         player =
-            PlayerObject.GetComponent<Player>();
+            PlayerObject.GetComponent<LocalPlayer>();
 
         largeAsteroid = Resources.Load<GameObject>("Prefabs/LargeAsteroid");
         mediumAsteroid = Resources.Load<GameObject>("Prefabs/MediumAsteroid");
