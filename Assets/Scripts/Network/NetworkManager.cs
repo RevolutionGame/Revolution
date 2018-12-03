@@ -20,7 +20,8 @@ public class NetworkManager : MonoBehaviour{
     public UserData MainPlayer;
     LoginData ld;
     public SocketManager socketManager = new SocketManager("ws://localhost:8080/lobby");
-
+    
+    /*
     private JSONObject worldJSON;
 
     public JSONObject WorldJSON
@@ -28,7 +29,7 @@ public class NetworkManager : MonoBehaviour{
         get{ return worldJSON; }
         set{ worldJSON = value; }
     }
-
+    */
 
     /* private static NetworkManager networkManager;
 

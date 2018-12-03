@@ -59,6 +59,7 @@ public class SocketManager {
                 //Put players into a list then into an array
                 var playersPacket = packet.LobbyInfo.Players;
                 var players = new List<PlayerInfo>();
+
                 foreach(PlayerInfo player in playersPacket) {
                     players.Add(player);
                 }
