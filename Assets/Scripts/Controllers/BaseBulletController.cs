@@ -35,13 +35,14 @@ public class BaseBulletController : MonoBehaviour
             //When healthbar is implemented we want to decrement the bullet health, and destroy bullet upon health reach 0.
             //That way bullets can be used to defend against each other, and upgraded bullets will have the advantage
             //For now, all BaseBullets destroy each other on impact
-
+            Destroy(gameObject);
         }
 
         if(collision.gameObject.tag.Equals("Ship"))
         {
             //Decrement health of ship based on bulletupgrade, when ships health reaches 0 destroy ship
             gameController.DestroyShip(collision.gameObject);
+            Destroy(gameObject);
         }
 
         if (collision.gameObject.tag.Equals("SmallAsteroid") || collision.gameObject.tag.Equals("MediumAsteroid") ||
@@ -49,6 +50,7 @@ public class BaseBulletController : MonoBehaviour
         {
             //Decrement health of asteroid based on bulletupgrade, when asteroid health reaches 0 split/destroy asteroid
             gameController.DestroyAsteroid(collision.gameObject);
+            Destroy(gameObject);
         }
 
         //if bullethealth equals 0

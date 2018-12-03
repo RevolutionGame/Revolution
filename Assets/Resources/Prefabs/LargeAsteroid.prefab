@@ -19,11 +19,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4654941342151742}
-  - component: {fileID: 114649961607870196}
-  - component: {fileID: 114640162543144164}
+  - component: {fileID: 212836615024415356}
   - component: {fileID: 50123566168255462}
   - component: {fileID: 58623976136785750}
-  - component: {fileID: 212836615024415356}
+  - component: {fileID: 114649961607870196}
+  - component: {fileID: 114640162543144164}
   m_Layer: 0
   m_Name: LargeAsteroid
   m_TagString: LargeAsteroid
@@ -73,7 +73,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
