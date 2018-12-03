@@ -141,6 +141,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Ship: {fileID: 0}
+  PlayerID: 0
+  id: 0
+  SpawnPosition: {x: 0, y: 0, z: 0}
+  SpawnRotation: {x: 0, y: 0, z: 0}
+  gameController: {fileID: 0}
 --- !u!4 &23623641
 Transform:
   m_ObjectHideFlags: 0
@@ -184,10 +189,10 @@ RectTransform:
   m_Father: {fileID: 2061756396}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &227036329
 MonoBehaviour:
@@ -307,10 +312,10 @@ RectTransform:
   m_Father: {fileID: 2061756396}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &951320107
 MonoBehaviour:
@@ -374,10 +379,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf951d8528b33d649ace86ee904f3e70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smallasteroid: {fileID: 1345865674250524, guid: 8f5c77f656e36a347bc91e22fb041ed3,
-    type: 2}
-  mediumasteroid: {fileID: 1128657706438600, guid: e304ffdf98ef4134183f23f58bf36c19,
-    type: 2}
+  networkManager: {fileID: 1633040093}
   MinimumAsteroidRemaining: 10
 --- !u!4 &1225152919
 Transform:
@@ -404,18 +406,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ship: {fileID: 114529689071195316, guid: 2b89785c86ad61441b465d317bb2c23c, type: 2}
-  networkManager: {fileID: 0}
-  NetworkPlayers:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  networkManager: {fileID: 1633040093}
 --- !u!1 &1232254033
 GameObject:
   m_ObjectHideFlags: 0
@@ -583,10 +574,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cabf0197d1674390b21cb9d4350b2e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  location:
-  - 
-  - 
-  - 
   socket: {fileID: 1859077253}
   password: {fileID: 0}
   mail: {fileID: 0}

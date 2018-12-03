@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class BaseBulletController : MonoBehaviour
 {
-    public float BulletSpeed = 400f;
-    public float lifetime = 2.0f;
+    public float BulletSpeed = 200f;
+    public float lifetime = 0.5f;
     private GameController gameController;
     // Use this for initialization
     void Start()

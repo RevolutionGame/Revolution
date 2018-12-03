@@ -5,6 +5,9 @@ using UnityEngine;
 public class LocalPlayer : Player
 {
 
+    public string Email;
+    public string Name;
+
     public override void SpawnShip(Ship ship)
     {
         this.ship = ship;
