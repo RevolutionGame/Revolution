@@ -3,6 +3,7 @@
 /[Oo]bj/
 /[Bb]uild/
 /[Bb]uilds/
+.DS_Store
 */.DS_Store
 
 /Assets/AssetStoreTools*
