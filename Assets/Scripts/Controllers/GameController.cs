@@ -9,6 +9,8 @@ public class GameController : MonoBehaviour {
     GameObject mediumAsteroid;
     GameObject largeAsteroid;
 
+    public Canvas canvas;
+
     public NetworkManager networkManager;
 
     private Player player;
@@ -36,6 +38,8 @@ public class GameController : MonoBehaviour {
         mediumAsteroid = Resources.Load<GameObject>("Prefabs/MediumAsteroid");
         smallAsteroid = Resources.Load<GameObject>("Prefabs/SmallAsteroid");
 
+        
+
         BeginGame();
 	}
 	
@@ -61,6 +65,8 @@ public class GameController : MonoBehaviour {
     {
         DestroyExistingAsteroids();
 
+        GameObject ast;
+
         MaxAsteroidsSpawnable = 10;
         AsteroidsRemaining = MaxAsteroidsSpawnable;
 
@@ -73,26 +79,32 @@ public class GameController : MonoBehaviour {
             AsteroidSize = Random.Range(0, 2);
             if (AsteroidSize == 0)
             {
-                Instantiate(smallAsteroid,
+                ast = Instantiate(smallAsteroid,
                         new Vector3(Random.Range(-4.0f, 4.0f),
                             Random.Range(-4.0f, 4.0f), 0),
                         Quaternion.Euler(0, 0, Random.Range(-0.0f, 359.0f)));
+
+                ast.transform.SetParent(canvas.transform, false);
             }
             if (AsteroidSize == 1)
             {
                 MediumAsteroidCounter++;
-                Instantiate(mediumAsteroid,
+                ast = Instantiate(mediumAsteroid,
                         new Vector3(Random.Range(-4.0f, 4.0f),
                             Random.Range(-4.0f, 4.0f), 0),
                         Quaternion.Euler(0, 0, Random.Range(-0.0f, 359.0f)));
+
+                ast.transform.SetParent(canvas.transform, false);
             }
             if (AsteroidSize == 2)
             {
                 LargeAsteroidCounter++;
-                Instantiate(largeAsteroid,
+                ast = Instantiate(largeAsteroid,
                         new Vector3(Random.Range(-4.0f, 4.0f),
                             Random.Range(-4.0f, 4.0f), 0),
                         Quaternion.Euler(0, 0, Random.Range(-0.0f, 359.0f)));
+
+                ast.transform.SetParent(canvas.transform, false);
             }
         }
     }
