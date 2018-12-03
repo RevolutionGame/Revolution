@@ -49,7 +49,7 @@ public class BaseBulletController : MonoBehaviour
             collision.gameObject.tag.Equals("LargeAsteroid"))
         {
             //Decrement health of asteroid based on bulletupgrade, when asteroid health reaches 0 split/destroy asteroid
-            gameController.DestroyAsteroid(collision.gameObject);
+            gameController.DestroyAsteroidProd(collision.gameObject);
             Destroy(gameObject);
         }
 

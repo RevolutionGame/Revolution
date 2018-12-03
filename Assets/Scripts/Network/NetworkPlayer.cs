@@ -15,11 +15,13 @@ public class NetworkPlayer : Player {
     public override void SpawnShip(Ship ship)
     {
         this.ship = ship;
-        //ship.controller = new NullController();
+        //this.ship.UseRevolutionController();
     }
 
     public void MoveTo(float x, float y, float theta) {
       this.ship.transform.Translate(new Vector2(x, y));
       this.ship.transform.Rotate(new Vector3(0, 0, theta));
     }
+
+
 }

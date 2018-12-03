@@ -53,7 +53,7 @@ public class GameController : MonoBehaviour {
             //SpawnFreeAsteroids();
         }else if (sceneName == "RevolutionScene")
         {
-            SpawnRevolutionAsteroids();
+            SpawnRevolutionAsteroidsProd(4, 2);
         }
    }
 
@@ -143,6 +143,52 @@ public class GameController : MonoBehaviour {
         
 
     }
+
+    void SpawnRevolutionAsteroidsProd(int sectors, int size) //[ID, (size, x, y, angle)]                                                                                
+    {
+
+        AsteroidSize = size;
+
+        //float radius = Mathf.Sqrt(((Mathf.Pow(vectors[ID, 1], 2) + Mathf.Pow(vectors[ID, 2], 2))));
+
+        for (int i = 0; i < sectors; i++)
+        {
+
+            float angle = ((i * (360 / sectors)));
+
+            if (angle == 360) //Might not need this
+            {
+                angle = 0;
+            }
+
+            if (AsteroidSize == 0)
+            {
+                Instantiate(smallAsteroid,
+                            new Vector3(0, 0, 0),
+                            Quaternion.Euler(0, 0, angle));
+            }
+
+            if (AsteroidSize == 1)
+            {
+                Instantiate(mediumAsteroid,
+                        new Vector3(0, 0, 0),
+                        Quaternion.Euler(0, 0, angle));
+
+
+            }
+            if (AsteroidSize == 2)
+            {
+                Instantiate(largeAsteroid,
+                            new Vector3(0, 0, 0),
+                            Quaternion.Euler(0, 0, angle));
+
+            }
+        }
+
+
+
+    }
+
 
     void SpawnFreeAsteroids(){
 
@@ -262,6 +308,78 @@ public class GameController : MonoBehaviour {
         }
     }
 
+    public void DestroyAsteroidProd(GameObject DestroyedAsteroid)
+    {
+        Quaternion offset = Quaternion.FromToRotation(Vector3.up, DestroyedAsteroid.transform.rotation.eulerAngles);
+        if (DestroyedAsteroid.tag.Equals("SmallAsteroid"))
+        {
+            Destroy(DestroyedAsteroid);
+            //AsteroidsRemaining--;
+        }
+
+        if (DestroyedAsteroid.tag.Equals("MediumAsteroid"))
+        {
+
+            //SERVER: Must be updated with asteroid current position and send an offset of that vector to all clients
+            //to instantiate the asteroid split vectors
+            Instantiate(smallAsteroid,
+               new Vector3(DestroyedAsteroid.transform.position.x,
+                   DestroyedAsteroid.transform.position.y, 0),
+                   Quaternion.Euler(0, 0, offset.eulerAngles.z - 45));
+
+            Instantiate(smallAsteroid,
+              new Vector3(DestroyedAsteroid.transform.position.x,
+                  DestroyedAsteroid.transform.position.y, 0),
+                  Quaternion.Euler(0, 0, offset.eulerAngles.z + 45));
+
+
+            Destroy(DestroyedAsteroid);
+            AsteroidsRemaining+=1;
+            MediumAsteroidCounter--;
+        }
+
+        if (DestroyedAsteroid.tag.Equals("LargeAsteroid"))
+        {
+
+            //SERVER: Must be updated with asteroid current position and send an offset of that vector to all clients
+            //to instantiate the asteroid split vectors
+            Instantiate(smallAsteroid,
+               new Vector3(DestroyedAsteroid.transform.position.x,
+                   DestroyedAsteroid.transform.position.y, 0),
+                   Quaternion.Euler(0, 0, offset.eulerAngles.z - 45));
+
+            Instantiate(smallAsteroid,
+              new Vector3(DestroyedAsteroid.transform.position.x,
+                  DestroyedAsteroid.transform.position.y, 0),
+                  Quaternion.Euler(0, 0, offset.eulerAngles.z - 15));
+
+            Instantiate(smallAsteroid,
+               new Vector3(DestroyedAsteroid.transform.position.x,
+                   DestroyedAsteroid.transform.position.y, 0),
+                   Quaternion.Euler(0, 0, offset.eulerAngles.z + 15));
+
+            Instantiate(smallAsteroid,
+              new Vector3(DestroyedAsteroid.transform.position.x,
+                  DestroyedAsteroid.transform.position.y, 0),
+                  Quaternion.Euler(0, 0, offset.eulerAngles.z + 45));
+
+
+            Destroy(DestroyedAsteroid);
+            AsteroidsRemaining += 3;
+            LargeAsteroidCounter--;
+        }
+
+        if(AsteroidsRemaining <= MinimumAsteroidRemaining && 
+          ((MediumAsteroidCounter*2)+AsteroidsRemaining) <= MinimumAsteroidRemaining &&
+        ((LargeAsteroidCounter*4)+AsteroidsRemaining) <= MinimumAsteroidRemaining)
+        {
+        //SERVER: Inform server condition are met to spawn a new wave
+          CurrentStage++;
+         BeginGame();
+        }
+    }
+
+
     void DestroyExistingAsteroids()
     {
         GameObject[] asteroids =
@@ -288,6 +406,7 @@ public class GameController : MonoBehaviour {
             GameObject.Destroy(current);
         }
     }
+
 
 
 }
