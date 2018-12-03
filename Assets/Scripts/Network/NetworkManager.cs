@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using SocketIO;
+using WebSocketSharp;
 using UnityEngine;
 using modelSpace;
 using UnityEngine.UI;
@@ -10,7 +10,7 @@ public class NetworkManager : MonoBehaviour{
 
     public class Player { public string email; public string pass; }
 
-    public SocketIOComponent socket;
+    public string[] location = new string[3];      
 
     ApiManager apiManager = new ApiManager();
 
@@ -19,6 +19,7 @@ public class NetworkManager : MonoBehaviour{
 
     public UserData MainPlayer;
     LoginData ld;
+    public SocketManager socketManager = new SocketManager("ws://localhost:8080/lobby");
 
     private JSONObject worldJSON;
 
@@ -42,21 +43,26 @@ public class NetworkManager : MonoBehaviour{
 
     void Start()
     {
-        DontDestroyOnLoad(socket);
-        StartCoroutine(ConnectToServer());            
+        location[0] = "0";
+        location[1] = "0";
+       // location[2] = "0";        
+        //StartCoroutine(ConnectToServer());
+        //socket.On("CONNECTION_SUCCESS", OnConnectionSuccess);
+        //socket.On("LOCATION_DATA", OnLocationData);
+        //socket.On("GAME_START", OnGameStart);   
+        socketManager.ConnectToSocket();
     }
 
-
-    public void SendLocationData(JSONObject json)
+    public void SendLocationData(string username, Transform transform)
     {
-        socket.Emit("LOCATION_DATA", json);
-    }
 
-    private void OnLocationData(SocketIOEvent evt)
-    {
-        Debug.Log("packet colletcted");
-        Debug.Log(evt.data.GetField("xCoord"));
-        JSONObject theData = evt.data;
+        Dictionary<string, string> data = new Dictionary<string, string>();
+        string roomId = "room1";
+        data["roomId"] = roomId;
+        data["xCoord"] = transform.position.x.ToString();//x coordinate;
+        data["yCoord"] = transform.position.y.ToString();//y coordinate;
+        data["username"] = username;//name here;        
+
     }
 
     IEnumerator ConnectToServer()
@@ -64,27 +70,20 @@ public class NetworkManager : MonoBehaviour{
         yield return new WaitForSeconds(0.5f);
         string roomId = "room1";
         Dictionary<string, string> data = new Dictionary<string, string>();
-        data["roomId"] = roomId;
-        socket.Emit("USER_CONNECT", new JSONObject(data));
+        data["roomId"] = roomId;        
 
         yield return new WaitForSeconds(1f);
     }
 
-    private void OnConnectionSuccess(SocketIOEvent evt)
+    public void SendLocalTransform(string playerID, Transform transform)
     {
-        string roomId = evt.data.GetField("roomId").ToString().Replace("\"", "");
         Dictionary<string, string> data = new Dictionary<string, string>();
+        string roomId = "room1";
         data["roomId"] = roomId;
-        data["userId"] = "1";
-        //Debug.Log("Room Info: " + evt.data);
-        socket.Emit("ROOM_INFO", new JSONObject(data));      
-    }
-
-    private void OnForceGameStart(SocketIOEvent evt)
-    {
-
-        socket.Emit("GAME_FORCE_STARTED", evt.data);
-        Debug.Log("Server says: " + evt.data);        
+        data["xCoord"] = transform.position.x.ToString();
+        data["yCoord"] = transform.position.y.ToString();
+        data["rotation"] = transform.rotation.eulerAngles.z.ToString();
+        data["username"] = playerID;        
     }
 
     public void UpdateWorldFromServer()
@@ -126,5 +125,10 @@ public class NetworkManager : MonoBehaviour{
     public void EnterLobby()
     {
         throw new System.NotImplementedException();
+    }
+
+    public void SendReady()
+    {
+        socketManager.SendReady();
     }
 }

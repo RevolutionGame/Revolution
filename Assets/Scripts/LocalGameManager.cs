@@ -10,40 +10,101 @@ public class LocalGameManager : MonoBehaviour {
     private int localID;
     private World world = new World();      
 
+    public NetworkPlayer[] NetworkPlayers = new NetworkPlayer[10];
+    private static LocalGameManager instance;
+    public static LocalGameManager Instance
+    {
+        get { return instance ?? (instance = new GameObject("LocalGameManager")
+            .AddComponent<LocalGameManager>()); }
+    }
+
     // Use this for initialization
     void Start () {
-        localPlayer = new LocalPlayer();
-        localPlayer.SpawnShip(Instantiate(ship,  new Vector3(0, 3), Quaternion.identity));
-        
+        localPlayer = new LocalPlayer();        
+        networkManager.socketManager.onGameStart = OnGameStart;
+        networkManager.socketManager.onGameEnd = OnGameEnd;
+        networkManager.socketManager.onPlayerJoin = OnPlayerJoin;
+        networkManager.socketManager.onPlayerDisconnect = OnPlayerDisconnect;
+        networkManager.socketManager.onPlayerLocation = OnPlayerLocation;
+        networkManager.socketManager.onWorldInfo = OnWorldInfo;
+        networkManager.socketManager.onLobbyInfo = OnLobbyInfo;        
+        networkManager.socketManager.ConnectToSocket();        
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-        SendState();
-        world.UpdateFromJSON(world.WorldJSON);
+        UpdateWorld();
 	}
 
+    public void AddNetworkPlayer(int id) {        
+    }
+
     private void SendState() {
-        JSONObject json = new JSONObject();
-        JSONObject location = new JSONObject();
-        location.AddField("locationX", localPlayer.ship.transform.position.x);
-        location.AddField("locationY", localPlayer.ship.transform.position.y);
-        location.AddField("rotationInDegrees", localPlayer.ship.transform.rotation.eulerAngles.z);
-        json.AddField("roomId", "room1");
-        json.AddField("location", location);
-        networkManager.SendLocationData(json);
     }
 
     private void UpdateFromNetwork (){
     }
 
     void StartGame() {
-        
+        //this.localPlayer.SpawnShip(ship);
+        Debug.Log("Game Start");
     }
 
-    private void SpawnNetworkPlayerShips() {
-        foreach (NetworkPlayer networkPlayer in world.networkPlayers.Values) {
-            networkPlayer.SpawnShip(ship);
+    void EndGame()
+    {
+        Debug.Log("Game Over");
+    }
+
+    void OnGameStart() 
+    {
+        networkManager.socketManager.onGameStart = StartGame;
+    }
+
+    void OnGameEnd() 
+    {
+        EndGame();
+    }
+
+    void OnPlayerJoin(int id, string playerName)
+    {
+        Debug.Log($"Player Connected: {playerName} has connected with ID of {id}");
+        if(networkManager.socketManager.world.IsFull())
+        {
+            Packet packet = new Packet();
+            packet.BodyType = BodyType.PlayerReady;
+            networkManager.socketManager.SendToServer(packet);
+        }
+    }
+
+    void OnPlayerDisconnect(int id)
+    {
+        Debug.Log($"Player Disconnected: ID {id} has discconected");
+    }
+
+    void OnLobbyInfo(int id, PlayerInfo[] players)
+    {
+        Debug.Log($"LobbyInfo: Your ID is :{id} and there are {players.Length} in the lobby already");
+        localPlayer.Id = id;
+    }
+
+    void OnPlayerLocation(int id, float x, float y, float r)
+    {
+        Debug.Log($"PlayerLocation: Player{id}'s location is x: {x} y: {y} r: {r}");
+    }
+
+    void OnWorldInfo(ObjectLocation[] aseroids)
+    {
+
+    }
+
+    void UpdateWorld()
+    {
+        foreach(string playerName in networkManager.socketManager.world.playerInfos)
+        {
+            if(playerName != null)
+            {
+                //Debug.Log($"{playerName}");
+            }
         }
     }
 

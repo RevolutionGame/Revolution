@@ -95,6 +95,7 @@ public class Player : MonoBehaviour
     public int Id
     {
         get { return id; }
+        set { id = value; }
 
     }
 
