@@ -66,8 +66,8 @@ public class SocketManager {
                 world.UpdatePlayersInfos(players.ToArray());
                 break;
             case BodyType.PlayerJoin:
-                onPlayerJoin((int)packet.PlayerInfo.Id, packet.PlayerInfo.Name);
                 world.AddPlayerInfo(packet.PlayerInfo);
+                onPlayerJoin((int)packet.PlayerInfo.Id, packet.PlayerInfo.Name);
                 break;
             case BodyType.PlayerLocation:
                 Debug.Log("Player Location");

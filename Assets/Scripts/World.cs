@@ -21,8 +21,8 @@ public class World
 
     public World()
     {
-        this.playerInfos = new string[10];
-        this.playerLocations = new Coords[10];
+        this.playerInfos = new string[2];
+        this.playerLocations = new Coords[2];
     }
 
     public void UpdatePlayersInfos(PlayerInfo[] playerInfos)
@@ -51,5 +51,17 @@ public class World
     public void SetPlayerLocation(PlayerLocation location)
     {
         this.playerLocations[location.PlayerId] = new Coords(location);
+    }
+
+    public bool IsFull()
+    {        
+        foreach(string player in playerInfos)
+        {
+            if(player == null)
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }

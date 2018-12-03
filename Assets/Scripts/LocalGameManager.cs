@@ -9,7 +9,13 @@ public class LocalGameManager : MonoBehaviour {
     public NetworkManager networkManager;
     private int localID;
 
-    public NetworkPlayer[] NetworkPlayers = new NetworkPlayer[10];    
+    public NetworkPlayer[] NetworkPlayers = new NetworkPlayer[10];
+    private static LocalGameManager instance;
+    public static LocalGameManager Instance
+    {
+        get { return instance ?? (instance = new GameObject("LocalGameManager")
+            .AddComponent<LocalGameManager>()); }
+    }
 
     // Use this for initialization
     void Start () {
@@ -61,6 +67,12 @@ public class LocalGameManager : MonoBehaviour {
     void OnPlayerJoin(int id, string playerName)
     {
         Debug.Log($"Player Connected: {playerName} has connected with ID of {id}");
+        if(networkManager.socketManager.world.IsFull())
+        {
+            Packet packet = new Packet();
+            packet.BodyType = BodyType.PlayerReady;
+            networkManager.socketManager.SendToServer(packet);
+        }
     }
 
     void OnPlayerDisconnect(int id)
@@ -72,7 +84,6 @@ public class LocalGameManager : MonoBehaviour {
     {
         Debug.Log($"LobbyInfo: Your ID is :{id} and there are {players.Length} in the lobby already");
         localPlayer.Id = id;
-
     }
 
     void OnPlayerLocation(int id, float x, float y, float r)
