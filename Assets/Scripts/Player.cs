@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
-public abstract class Player : MonoBehaviour
+public class Player : MonoBehaviour
 {
     public Ship ship;
     public Ship Ship;
@@ -98,6 +98,10 @@ public abstract class Player : MonoBehaviour
 
     }
 
-    public abstract void SpawnShip(Ship ship);
+    public virtual void SpawnShip(Ship ship)
+    {
+        this.ship = ship;
+        this.ship.UseRevolutionController();
+    }
 
 }
