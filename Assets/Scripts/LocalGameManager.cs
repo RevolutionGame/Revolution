@@ -19,10 +19,11 @@ public class LocalGameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-        SendState();
-        world.UpdateFromJSON(world.WorldJSON);
+        //SendState();
+        //world.UpdateFromJSON(world.WorldJSON);
 	}
 
+    /*
     private void SendState() {
         JSONObject json = new JSONObject();
         JSONObject location = new JSONObject();
@@ -33,6 +34,7 @@ public class LocalGameManager : MonoBehaviour {
         json.AddField("location", location);
         networkManager.SendLocationData(json);
     }
+    */
 
     private void UpdateFromNetwork (){
     }
