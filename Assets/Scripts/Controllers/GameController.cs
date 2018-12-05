@@ -284,7 +284,7 @@ public class GameController : MonoBehaviour {
             Instantiate(smallAsteroid,
                new Vector3(DestroyedAsteroid.transform.position.x,
                    DestroyedAsteroid.transform.position.y, 0),
-                   Quaternion.Euler(0, 0, offset.eulerAngles.z + 15);
+                   Quaternion.Euler(0, 0, offset.eulerAngles.z + 15));
 
             Instantiate(smallAsteroid,
               new Vector3(DestroyedAsteroid.transform.position.x,
