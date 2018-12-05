@@ -16,8 +16,6 @@ public class NetworkManager : MonoBehaviour{
 
     public class Player { public string email; public string pass; }
 
-    //public SocketIOComponent socket;
-
     ApiManager apiManager = new ApiManager();
 
     public TMP_InputField password;
@@ -26,17 +24,11 @@ public class NetworkManager : MonoBehaviour{
     public UserData MainPlayer;
     LoginData ld;
 
-    //private JSONObject worldJSON;
-    /*
-    public JSONObject WorldJSON
-    {
-        get{ return worldJSON; }
-        set{ worldJSON = value; }
-    }*/
-
     void Awake()
     {
 
+        
+        #region Enforce Sigelton Pattern on Network Manager and ensure its persistant
         if (NetworkInstance == null)
         {
                     NetworkInstance = this;
@@ -47,6 +39,7 @@ public class NetworkManager : MonoBehaviour{
         }
 
         DontDestroyOnLoad(gameObject);
+        #endregion
 
     }
     /* private static NetworkManager networkManager;
@@ -63,7 +56,7 @@ public class NetworkManager : MonoBehaviour{
     void Start()
     {
         //DontDestroyOnLoad(socket);
-        StartCoroutine(ConnectToServer());            
+        //StartCoroutine(ConnectToServer());            
     }
 
     /*

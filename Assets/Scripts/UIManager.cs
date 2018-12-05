@@ -46,21 +46,17 @@ public class UIManager : MonoBehaviour
         }
 
 
-        //Mechanical stuff that positions the home screen properly
+        #region  Mechanical stuff that positions the home screen properly
         mainpanel = GameObject.Find("MainPanel");
         mainslide = mainpanel.GetComponent<SlideController>();
         mainslide.time = 0.005f;
         mainslide.SlideInFlag();
-        //-------------------------
+        #endregion
 
         logbutton = GameObject.Find("LogInButton");
 
         //Create Empty Player Profile
         PlayerProfile = new LocalPlayer();
-
-       
-
-
 
     }
 
@@ -70,23 +66,21 @@ public class UIManager : MonoBehaviour
         logpanel = GameObject.Find("LogIn");
         logslide = logpanel.GetComponent<SlideController>();
 
-
-
         plate.GetComponent<Text>().text = "BlahBlah";
-
-
-
-
 
     }
 
-    void Update()
+    public void ConnectToLobby()
     {
-      
+        //Make Connection to Server and Load Lobby
+        NetworkManager.NetworkInstance.socketManager.Connect();
+
     }
 
     public void StartGame(int scene)
     {
+
+
         SceneManager.LoadScene(scene);
         
     }
