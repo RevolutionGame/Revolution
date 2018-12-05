@@ -11,12 +11,8 @@ using System;
 public class NetworkManager : MonoBehaviour{
 
     public SocketManager socketManager = new SocketManager();
-    private static NetworkManager instance;
 
-    public static NetworkManager Instance
-    {
-        get { return instance ?? (instance = new GameObject("NetworkManager").AddComponent<NetworkManager>()); }
-    }
+    public static NetworkManager NetworkInstance = null;
 
     public class Player { public string email; public string pass; }
 
@@ -38,7 +34,21 @@ public class NetworkManager : MonoBehaviour{
         set{ worldJSON = value; }
     }*/
 
+    void Awake()
+    {
 
+        if (NetworkInstance == null)
+        {
+                    NetworkInstance = this;
+        }
+        else if (NetworkInstance != this)
+        {
+                    Destroy(gameObject);
+        }
+
+        DontDestroyOnLoad(gameObject);
+
+    }
     /* private static NetworkManager networkManager;
 
      private NetworkManager() { }
@@ -55,6 +65,13 @@ public class NetworkManager : MonoBehaviour{
         //DontDestroyOnLoad(socket);
         StartCoroutine(ConnectToServer());            
     }
+
+    /*
+    public static NetworkManager Instance
+    {
+        get { return instance ?? (instance = new GameObject("NetworkManager").AddComponent<NetworkManager>()); }
+    }
+    */
 
     /*
     public void SendLocationData(JSONObject json)

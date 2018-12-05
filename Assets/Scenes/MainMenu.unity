@@ -2328,6 +2328,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4265e8726ba184a41a692410a4ca9081, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  networkManager: {fileID: 0}
   NamePlate: {fileID: 0}
   plate: {fileID: 0}
   password: {fileID: 0}
@@ -2338,7 +2339,6 @@ MonoBehaviour:
     username: 
     cell_number: 
     email: 
-  networkManager: {fileID: 719024831}
 --- !u!114 &719024828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8014,6 +8014,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4265e8726ba184a41a692410a4ca9081, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  networkManager: {fileID: 1484906230328764, guid: 3abef708ef78d7346914468c8bb4d3f7,
+    type: 2}
   NamePlate: {fileID: 0}
   plate: {fileID: 753805775}
   password: {fileID: 2106428315}
@@ -8024,7 +8026,6 @@ MonoBehaviour:
     username: 
     cell_number: 
     email: 
-  networkManager: {fileID: 719024831}
 --- !u!4 &1941926742
 Transform:
   m_ObjectHideFlags: 0
@@ -8224,7 +8225,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.000061035156, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2066915713

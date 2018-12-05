@@ -9,7 +9,9 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    
+
+    public GameObject networkManager;
+
     private GameObject mainpanel;
     private SlideController mainslide;
     private GameObject logpanel;
@@ -30,10 +32,19 @@ public class UIManager : MonoBehaviour
     LoginData ld;
 
 
-    public NetworkManager networkManager;
+
 
    void Awake()
     {
+
+        //Check if Network Manager Already Exist
+        if(NetworkManager.NetworkInstance == null)
+        {
+            //Create an instance of Network Manager if none exist
+            Instantiate(networkManager);
+
+        }
+
 
         //Mechanical stuff that positions the home screen properly
         mainpanel = GameObject.Find("MainPanel");
