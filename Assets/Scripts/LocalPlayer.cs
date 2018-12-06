@@ -10,8 +10,8 @@ public class LocalPlayer : Player
 
     public override void SpawnShip(Ship ship)
     {
-        this.ship = ship;
-        this.ship.UseRevolutionController();
+        //this.Ship = ship;
+        //this.Ship.UseRevolutionController();
         //this.Ship.controller = new FreeRoamController(this.Ship.GetComponent<Rigidbody2D>());
     }
 }

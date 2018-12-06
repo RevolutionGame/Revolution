@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class NetworkPlayer : Player {
+
     int id;
-
-
+    public Ship ship;
 
     public NetworkPlayer(int id) {
         this.id = id;

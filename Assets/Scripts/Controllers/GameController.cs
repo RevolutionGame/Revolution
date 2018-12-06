@@ -9,7 +9,7 @@ public class GameController : MonoBehaviour {
     GameObject mediumAsteroid;
     GameObject largeAsteroid;
 
-    public NetworkManager networkManager;
+    //public NetworkManager networkManager;
 
     private LocalPlayer player;
 
@@ -230,11 +230,11 @@ public class GameController : MonoBehaviour {
 
     }
 
-    public void DestroyShip(GameObject DestroyedShip)
+    /*public void DestroyShip(GameObject DestroyedShip)
     {
         //Things to implement: Respawn at start position, Decrement Lives, invulnerabilty time
         player.Respawn(DestroyedShip);
-    }
+    }*/
 
     public void DestroyAsteroid(GameObject DestroyedAsteroid)
     {

@@ -11,6 +11,9 @@ public partial class Ship : MonoBehaviour {
 	//Use this for initialization
     void Start ()
     {
+        //this.transform.position = new Vector2(0, 0);
+        gameObject.AddComponent<RevolutionController>();
+
         Bullet = Resources.Load<GameObject>("Prefabs/Bullet");
 
         InvokeRepeating("Fire", 0.5f, 0.25f);
@@ -39,7 +42,7 @@ public partial class Ship : MonoBehaviour {
     public void UseRevolutionController() {
         gameObject.GetComponent<FreeRoamController>();
         controller = gameObject.AddComponent<RevolutionController>();
-        transform.Rotate(new Vector3(0, 0, -180));
+        //transform.Rotate(new Vector3(0, 0, -180));
     }
 
     public void Fire()

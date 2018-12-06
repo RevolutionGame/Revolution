@@ -6,8 +6,9 @@ public class LocalGameManager : MonoBehaviour {
 
     public Player[] players = new Player[9];
     public Player playerPrefab;
-    private Player localPlayer;
-    public FreeRoamController freeRoamController;
+    public Player localPlayer;
+
+    public RevolutionController freeRoamController;
     public bool isEnabled = false;
 
     public Ship ship;
@@ -18,6 +19,15 @@ public class LocalGameManager : MonoBehaviour {
     private void Awake()
     {
 
+
+        //Check if Network Manager Already Exist
+        if (NetworkManager.NetworkInstance == null)
+        {
+            //Create an instance of Network Manager if none exist
+            Instantiate(networkManager);
+
+        }
+
         NetworkManager.NetworkInstance.socketManager.onGameStart = EnableMovement;
 
     }
@@ -25,8 +35,14 @@ public class LocalGameManager : MonoBehaviour {
     // Use this for initialization
     void Start () {
         //NetworkManager.Instance.socketManager.OnReadyUp();
+
         PopulateNetworkPlayers();
+
+        /*
         localPlayer = Instantiate<Player>(playerPrefab);
+        localPlayer.SpawnShip(ship);
+        */
+
         //localPlayer.Id = NetworkManager.NetworkInstance.socketManager.localId;
 
     }
@@ -50,10 +66,11 @@ public class LocalGameManager : MonoBehaviour {
         {
             if (playerData.name != null)
             {
-                Player newNetworkPlayer = Instantiate(playerPrefab);
-                players[playerData.id] = newNetworkPlayer;
+                //Player newNetworkPlayer = Instantiate(playerPrefab);
+                //players[playerData.id] = newNetworkPlayer;
             }
         }
+
         NetworkManager.NetworkInstance.socketManager.OnReadyUp();
     }
 

@@ -140,8 +140,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c262396071534631bcf6f68f3dd2d9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ship: {fileID: 114529689071195316, guid: 2b89785c86ad61441b465d317bb2c23c, type: 2}
-  Ship: {fileID: 0}
+  shipPrefab: {fileID: 114529689071195316, guid: 2b89785c86ad61441b465d317bb2c23c,
+    type: 2}
+  shipInstance: {fileID: 0}
 --- !u!4 &23623641
 Transform:
   m_ObjectHideFlags: 0
@@ -224,6 +225,50 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 227036327}
   m_CullTransparentMesh: 0
+--- !u!1 &538181252
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 538181254}
+  - component: {fileID: 538181253}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &538181253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 538181252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c262396071534631bcf6f68f3dd2d9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shipPrefab: {fileID: 114529689071195316, guid: 2b89785c86ad61441b465d317bb2c23c,
+    type: 2}
+  shipInstance: {fileID: 114529689071195316, guid: 2b89785c86ad61441b465d317bb2c23c,
+    type: 2}
+--- !u!4 &538181254
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 538181252}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.89729553, y: 0.14502804, z: 123.998215}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &951320105
 GameObject:
   m_ObjectHideFlags: 0
@@ -436,12 +481,11 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1225152917}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf951d8528b33d649ace86ee904f3e70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  networkManager: {fileID: 1633040093}
   MinimumAsteroidRemaining: 10
 --- !u!4 &1225152919
 Transform:
@@ -467,6 +511,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd200bed8892e4d9484084f7c3c365da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  players:
+  - {fileID: 23623640}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  playerPrefab: {fileID: 0}
+  freeRoamController: {fileID: 0}
+  isEnabled: 0
   ship: {fileID: 114529689071195316, guid: 2b89785c86ad61441b465d317bb2c23c, type: 2}
   networkManager: {fileID: 1633040093}
 --- !u!1 &1232254033
@@ -630,7 +687,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1633040092}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8cabf0197d1674390b21cb9d4350b2e5, type: 3}
   m_Name: 
@@ -643,6 +700,29 @@ MonoBehaviour:
     username: 
     cell_number: 
     email: 
+  players:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  playerStatuses:
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  lobbyStatus: {fileID: 0}
 --- !u!4 &1633040094
 Transform:
   m_ObjectHideFlags: 0

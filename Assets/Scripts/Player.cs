@@ -7,41 +7,42 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-    public Ship ship;
-    public Ship Ship;
-    private int PlayerID;
-    //protected int id;
-    private readonly int radius = 6;
-    private Vector3 SpawnPosition;
-    private Vector3 SpawnRotation;
-    private Vector3[,] Positions = new Vector3[8, 2];
-    private GameController gameController;
-
+    private uint id;
     public Ship shipPrefab;
     public Ship shipInstance;
-    public uint Id { get; set; } 
+    Ship Ship;
+
+    public uint Id
+    {
+        get { return id; }
+        set { id = value; }
+    }
+
+    private string playerName;
+    public string PlayerName
+    {
+        get { return playerName; }
+        set { playerName = value; }
+    }
 
     void Start () {
 
-        //SERVER: Set player ID 0 to 7 to choose start position
-        PlayerID = 4;
+        shipInstance = Instantiate(shipPrefab, new Vector3(0, -3, 0), transform.rotation);
+        //shipInstance.transform.position = new Vector2(50, 0);
 
-       FindSpawnPosition();
-
-       Ship = Instantiate(Ship, SpawnPosition, Quaternion.identity);
-       Ship.transform.Rotate(SpawnRotation);
-
-       // Trying out transform RotateAround
-       // ship = Instantiate(ship, new Vector3 (radius, 0, 0), Quaternion.identity);
-       // ship.transform.RotateAround(Vector3.zero, Vector3.back, -45);
+        if (this.id == NetworkManager.NetworkInstance.socketManager.localId)
+        {
+            //shipInstance.gameObject.AddComponent<FreeRoamController>();
+            //shipInstance.GetComponent<SpriteRenderer>().color = Color.red;
+        }
     }
 
     public void Respawn(GameObject RespawnedShip)
     {
         //Need to update server that ship was moved
-        RespawnedShip.transform.position = SpawnPosition;
-        RespawnedShip.transform.rotation = Quaternion.identity;
-        RespawnedShip.transform.Rotate(SpawnRotation);
+       // RespawnedShip.transform.position = SpawnPosition;
+        //RespawnedShip.transform.rotation = Quaternion.identity;
+        //RespawnedShip.transform.Rotate(SpawnRotation);
     
        // Trying out transform RotateAround
        // RespawnedShip.transform.position = new Vector3(radius, 0, 0);
@@ -59,12 +60,13 @@ public class Player : MonoBehaviour
         {
             //Fill in spawn position array and assign spawn position based off of PlayerID;
             //Temporary code:
-            SpawnPosition = new Vector3(0, 0, 0);
-            SpawnRotation = new Vector3(0, 0, 0);
+            //SpawnPosition = new Vector3(0, 0, 0);
+            //SpawnRotation = new Vector3(0, 0, 0);
         }
         else if (sceneName == "RevolutionScene")
         {
             //Assign Spawn position and Spawn rotation based off of Player ID
+            /*
             Positions[0, 0] = new Vector3((radius * Mathf.Cos(0)), (radius * Mathf.Sin(0)), 0);
             Positions[0, 1] = new Vector3(0, 0, 90);
 
@@ -91,6 +93,7 @@ public class Player : MonoBehaviour
 
             SpawnPosition = Positions[PlayerID,0];
             SpawnRotation = Positions[PlayerID, 1];
+            */
 
         }
     }
@@ -98,8 +101,9 @@ public class Player : MonoBehaviour
 
     public virtual void SpawnShip(Ship ship)
     {
-        this.ship = ship;
-        this.ship.UseRevolutionController();
+        this.Ship = ship;
+        this.Ship.UseRevolutionController();
+        //transform.Rotate(new Vector3(0, 0, -180));
     }
 
 }

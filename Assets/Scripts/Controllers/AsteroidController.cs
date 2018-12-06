@@ -73,7 +73,7 @@ public class AsteroidController : ObjectController {
 
         if (collision.gameObject.tag.Equals("Ship"))
         {
-            gameController.DestroyShip(collision.gameObject);
+            //gameController.DestroyShip(collision.gameObject);
         }
 
 
