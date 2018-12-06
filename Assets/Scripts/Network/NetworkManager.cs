@@ -24,6 +24,11 @@ public class NetworkManager : MonoBehaviour{
     public UserData MainPlayer;
     LoginData ld;
 
+    public Text[] players = new Text[10];
+    public string[] playerStatuses = new string[10];
+    public Text lobbyStatus;
+    private bool isReady = false;
+
     void Awake()
     {
 
@@ -79,6 +84,8 @@ public class NetworkManager : MonoBehaviour{
         JSONObject theData = evt.data;
     }
     */
+
+    /*
     IEnumerator ConnectToServer()
     {
         yield return new WaitForSeconds(0.5f);
@@ -89,6 +96,8 @@ public class NetworkManager : MonoBehaviour{
 
         yield return new WaitForSeconds(1f);
     }
+    */
+
     /*
     private void OnConnectionSuccess(SocketIOEvent evt)
     {

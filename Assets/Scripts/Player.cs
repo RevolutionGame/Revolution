@@ -10,12 +10,16 @@ public class Player : MonoBehaviour
     public Ship ship;
     public Ship Ship;
     private int PlayerID;
-    protected int id;
+    //protected int id;
     private readonly int radius = 6;
     private Vector3 SpawnPosition;
     private Vector3 SpawnRotation;
     private Vector3[,] Positions = new Vector3[8, 2];
     private GameController gameController;
+
+    public Ship shipPrefab;
+    public Ship shipInstance;
+    public uint Id { get; set; } 
 
     void Start () {
 
@@ -91,12 +95,6 @@ public class Player : MonoBehaviour
         }
     }
 
-
-    public int Id
-    {
-        get { return id; }
-
-    }
 
     public virtual void SpawnShip(Ship ship)
     {

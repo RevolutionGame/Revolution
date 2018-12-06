@@ -12,6 +12,8 @@ public class UIManager : MonoBehaviour
 
     public GameObject networkManager;
 
+
+
     private GameObject mainpanel;
     private SlideController mainslide;
     private GameObject logpanel;
@@ -51,6 +53,10 @@ public class UIManager : MonoBehaviour
         mainslide = mainpanel.GetComponent<SlideController>();
         mainslide.time = 0.005f;
         mainslide.SlideInFlag();
+
+        //Position Login Screen properly
+        logpanel = GameObject.Find("LogIn");
+        logslide = logpanel.GetComponent<SlideController>();
         #endregion
 
         logbutton = GameObject.Find("LogInButton");
@@ -62,10 +68,7 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
-        //Position Login Screen properly
-        logpanel = GameObject.Find("LogIn");
-        logslide = logpanel.GetComponent<SlideController>();
-
+        
         plate.GetComponent<Text>().text = "BlahBlah";
 
     }
@@ -80,8 +83,7 @@ public class UIManager : MonoBehaviour
     public void StartGame(int scene)
     {
 
-
-        SceneManager.LoadScene(scene);
+       SceneManager.LoadScene(scene);
         
     }
 
@@ -89,19 +91,14 @@ public class UIManager : MonoBehaviour
     {
         UnityEngine.Application.Quit();
         
-
     }
 
 
 
     public void login()
     {
-        
-    
+            
         StartCoroutine(Login());
-
-
-
 
     }
 
