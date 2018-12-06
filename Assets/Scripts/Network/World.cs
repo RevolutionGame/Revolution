@@ -6,7 +6,7 @@ public class World {
 
     public Dictionary<string, NetworkPlayer> networkPlayers = new Dictionary<string, NetworkPlayer>();
     LocalPlayer localPlayer;
-    private JSONObject worldJSON = new JSONObject();
+    /*private JSONObject worldJSON = new JSONObject();
 
     public JSONObject WorldJSON
     {
@@ -37,4 +37,6 @@ public class World {
                     ship.GetField("locationY").n,
                     ship.GetField("angleInDegrees").n);
     }
+
+    */
 }

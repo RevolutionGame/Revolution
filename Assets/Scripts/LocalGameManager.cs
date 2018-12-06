@@ -4,34 +4,86 @@ using UnityEngine;
 
 public class LocalGameManager : MonoBehaviour {
 
-    private LocalPlayer localPlayer;
+    public Player[] players = new Player[9];
+    public Player playerPrefab;
+    private Player localPlayer;
+    public FreeRoamController freeRoamController;
+    public bool isEnabled = false;
+
     public Ship ship;
     public NetworkManager networkManager;
     private int localID;
     private World world = new World();      
 
+    private void Awake()
+    {
+
+        NetworkManager.NetworkInstance.socketManager.onGameStart = EnableMovement;
+
+    }
+
     // Use this for initialization
     void Start () {
-        localPlayer = new LocalPlayer();
-        localPlayer.SpawnShip(Instantiate(ship,  new Vector3(0, 3), Quaternion.identity));
-        
-	}
-	
-	// Update is called once per frame
-	void FixedUpdate () {
-        SendState();
-        world.UpdateFromJSON(world.WorldJSON);
-	}
+        //NetworkManager.Instance.socketManager.OnReadyUp();
+        PopulateNetworkPlayers();
+        localPlayer = Instantiate<Player>(playerPrefab);
+        //localPlayer.Id = NetworkManager.NetworkInstance.socketManager.localId;
 
-    private void SendState() {
-        JSONObject json = new JSONObject();
-        JSONObject location = new JSONObject();
-        location.AddField("locationX", localPlayer.ship.transform.position.x);
-        location.AddField("locationY", localPlayer.ship.transform.position.y);
-        location.AddField("rotationInDegrees", localPlayer.ship.transform.rotation.eulerAngles.z);
-        json.AddField("roomId", "room1");
-        json.AddField("location", location);
-        networkManager.SendLocationData(json);
+    }
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+        if (isEnabled)
+        {
+        }
+        if (isEnabled)
+        {
+            SendLocation();
+            UpdatePlayers();
+        }
+    }
+
+    private void PopulateNetworkPlayers()
+    {
+        foreach (PlayerData playerData in NetworkManager.NetworkInstance.socketManager.players)
+        {
+            if (playerData.name != null)
+            {
+                Player newNetworkPlayer = Instantiate(playerPrefab);
+                players[playerData.id] = newNetworkPlayer;
+            }
+        }
+        NetworkManager.NetworkInstance.socketManager.OnReadyUp();
+    }
+
+    void EnableMovement()
+    {
+        isEnabled = true;
+    }
+
+    void SendLocation()
+    {
+        RevProtocol.Packet packet = new RevProtocol.Packet();
+        packet.BodyType = RevProtocol.BodyType.PlayerLocation;
+        RevProtocol.PlayerLocation location = new RevProtocol.PlayerLocation();
+        location.Id = NetworkManager.NetworkInstance.socketManager.localId;
+        location.X = localPlayer.shipInstance.transform.position.x;
+        location.Y = localPlayer.shipInstance.transform.position.y;
+        location.R = localPlayer.shipInstance.transform.rotation.eulerAngles.z;
+        packet.Location = location;
+        NetworkManager.NetworkInstance.socketManager.Send(packet);
+    }
+
+    void UpdatePlayers()
+    {
+        foreach (PlayerData playerData in NetworkManager.NetworkInstance.socketManager.Players)
+        {
+
+            Debug.Log($"PLAYER LOCATION: x: {playerData.x} y: {playerData.y} r: {playerData.r}");
+            players[playerData.id].shipInstance.transform.position = new Vector2(playerData.x, playerData.y);
+            players[playerData.id].shipInstance.transform.rotation = Quaternion.Euler(new Vector3(0, 0, playerData.r));
+        }
     }
 
     private void UpdateFromNetwork (){
