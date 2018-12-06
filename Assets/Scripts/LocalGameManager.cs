@@ -8,6 +8,7 @@ public class LocalGameManager : MonoBehaviour {
     public Player playerPrefab;
     public Player localPlayer;
 
+
     public RevolutionController freeRoamController;
     public bool isEnabled = false;
 
@@ -33,15 +34,30 @@ public class LocalGameManager : MonoBehaviour {
     }
 
     // Use this for initialization
-    void Start () {
+    void Start() {
         //NetworkManager.Instance.socketManager.OnReadyUp();
+
+        GameObject smallAsteroid = Resources.Load<GameObject>("Prefabs/SmallAsteroid");
+
+        GameObject playerShip = Resources.Load<GameObject>("Prefabs/Player");
+
+        Instantiate(playerShip);
+
+        Instantiate(smallAsteroid,
+        new Vector3(Random.Range(-4.0f, 4.0f),
+            Random.Range(-4.0f, 4.0f), 0),
+        Quaternion.Euler(0, 0, Random.Range(-0.0f, 359.0f)));
+
+
+
+//        Instantiate(playerShip, new Vector3(Random.Range(-4.0f, 4.0f), Random.Range(-4.0f, 4.0f), 0), Quaternion.Euler(0, 0, Random.Range(-0.0f, 359.0f)));
 
         PopulateNetworkPlayers();
 
-        /*
-        localPlayer = Instantiate<Player>(playerPrefab);
-        localPlayer.SpawnShip(ship);
-        */
+
+
+        //localPlayer.SpawnShip(ship);
+
 
         //localPlayer.Id = NetworkManager.NetworkInstance.socketManager.localId;
 
@@ -112,7 +128,7 @@ public class LocalGameManager : MonoBehaviour {
 
     private void SpawnNetworkPlayerShips() {
         foreach (NetworkPlayer networkPlayer in world.networkPlayers.Values) {
-            networkPlayer.SpawnShip(ship);
+            //networkPlayer.SpawnShip(ship);
         }
     }
 

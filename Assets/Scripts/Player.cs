@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
     void Start () {
 
         shipInstance = Instantiate(shipPrefab, new Vector3(0, -3, 0), transform.rotation);
+
         //shipInstance.transform.position = new Vector2(50, 0);
 
         if (this.id == NetworkManager.NetworkInstance.socketManager.localId)
@@ -101,8 +102,8 @@ public class Player : MonoBehaviour
 
     public virtual void SpawnShip(Ship ship)
     {
-        this.Ship = ship;
-        this.Ship.UseRevolutionController();
+        //this.Ship = ship;
+        //this.Ship.UseRevolutionController();
         //transform.Rotate(new Vector3(0, 0, -180));
     }
 

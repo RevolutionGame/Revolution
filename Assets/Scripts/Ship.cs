@@ -5,18 +5,16 @@ using UnityEngine;
 public partial class Ship : MonoBehaviour {
 
     public MonoBehaviour controller;
-
-    GameObject Bullet;
+    public GameObject Bullet;
  
 	//Use this for initialization
     void Start ()
     {
-        //this.transform.position = new Vector2(0, 0);
         gameObject.AddComponent<RevolutionController>();
 
         Bullet = Resources.Load<GameObject>("Prefabs/Bullet");
 
-        InvokeRepeating("Fire", 0.5f, 0.25f);
+        InvokeRepeating("Fire", 0.5f, 0.2f);
 
     }
 
@@ -39,7 +37,9 @@ public partial class Ship : MonoBehaviour {
 
     }
 
-    public void UseRevolutionController() {
+    public void UseRevolutionController()
+    {
+
         gameObject.GetComponent<FreeRoamController>();
         controller = gameObject.AddComponent<RevolutionController>();
         //transform.Rotate(new Vector3(0, 0, -180));
@@ -47,11 +47,9 @@ public partial class Ship : MonoBehaviour {
 
     public void Fire()
     {
-        //Instantiate(Bullet, new Vector3( Random.Range(-4.0f, 4.0f), Random.Range(-4.0f, 4.0f), 0), Quaternion.Euler(0, 0, Random.Range(-0.0f, 359.0f)));
 
-        Instantiate(Bullet, transform );
-        //timeAtLastShot = Time.time;
-
+        Debug.Log("Fire");
+        Instantiate(Bullet, this.transform.position, transform.rotation );
     }
 
 }

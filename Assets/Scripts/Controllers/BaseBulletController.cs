@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class BaseBulletController : MonoBehaviour
 {
-    public float BulletSpeed = 200f;
-    public float lifetime = 0.5f;
+    public float BulletSpeed = 300f;
+    public float lifetime = 1.0f;
     private GameController gameController;
+
     // Use this for initialization
     void Start()
     {
@@ -35,14 +36,14 @@ public class BaseBulletController : MonoBehaviour
             //When healthbar is implemented we want to decrement the bullet health, and destroy bullet upon health reach 0.
             //That way bullets can be used to defend against each other, and upgraded bullets will have the advantage
             //For now, all BaseBullets destroy each other on impact
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
 
         if(collision.gameObject.tag.Equals("Ship"))
         {
             //Decrement health of ship based on bulletupgrade, when ships health reaches 0 destroy ship
             //gameController.DestroyShip(collision.gameObject);
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
 
         if (collision.gameObject.tag.Equals("SmallAsteroid") || collision.gameObject.tag.Equals("MediumAsteroid") ||
@@ -53,8 +54,6 @@ public class BaseBulletController : MonoBehaviour
             Destroy(gameObject);
         }
 
-        //if bullethealth equals 0
-        Destroy(gameObject);
     }
 
 }

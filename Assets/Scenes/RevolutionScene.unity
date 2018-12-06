@@ -113,49 +113,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &23623639
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 23623641}
-  - component: {fileID: 23623640}
-  m_Layer: 0
-  m_Name: Player
-  m_TagString: Player
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &23623640
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 23623639}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c262396071534631bcf6f68f3dd2d9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shipPrefab: {fileID: 114529689071195316, guid: 2b89785c86ad61441b465d317bb2c23c,
-    type: 2}
-  shipInstance: {fileID: 0}
---- !u!4 &23623641
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 23623639}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
-  m_LocalScale: {x: 4.6599994, y: 4.6599994, z: 4.6599994}
-  m_Children: []
-  m_Father: {fileID: 2061756396}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &227036327
 GameObject:
   m_ObjectHideFlags: 0
@@ -225,50 +182,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 227036327}
   m_CullTransparentMesh: 0
---- !u!1 &538181252
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 538181254}
-  - component: {fileID: 538181253}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &538181253
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 538181252}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c262396071534631bcf6f68f3dd2d9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shipPrefab: {fileID: 114529689071195316, guid: 2b89785c86ad61441b465d317bb2c23c,
-    type: 2}
-  shipInstance: {fileID: 114529689071195316, guid: 2b89785c86ad61441b465d317bb2c23c,
-    type: 2}
---- !u!4 &538181254
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 538181252}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.89729553, y: 0.14502804, z: 123.998215}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &951320105
 GameObject:
   m_ObjectHideFlags: 0
@@ -383,17 +296,17 @@ Prefab:
     - target: {fileID: 224109374725581840, guid: 185a5bb852c4fba429670fedf8a18aa0,
         type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 224109374725581840, guid: 185a5bb852c4fba429670fedf8a18aa0,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: -217
+      value: -421
       objectReference: {fileID: 0}
     - target: {fileID: 224109374725581840, guid: 185a5bb852c4fba429670fedf8a18aa0,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 17.3
+      value: 212
       objectReference: {fileID: 0}
     - target: {fileID: 224109374725581840, guid: 185a5bb852c4fba429670fedf8a18aa0,
         type: 2}
@@ -512,7 +425,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players:
-  - {fileID: 23623640}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -521,7 +433,11 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  playerPrefab: {fileID: 0}
+  - {fileID: 0}
+  playerPrefab: {fileID: 114441704691573144, guid: 055bc1f22c0fe4348a85288f3b9ea3d5,
+    type: 2}
+  localPlayer: {fileID: 114441704691573144, guid: 055bc1f22c0fe4348a85288f3b9ea3d5,
+    type: 2}
   freeRoamController: {fileID: 0}
   isEnabled: 0
   ship: {fileID: 114529689071195316, guid: 2b89785c86ad61441b465d317bb2c23c, type: 2}
@@ -770,7 +686,6 @@ RectTransform:
   - {fileID: 227036328}
   - {fileID: 1225152919}
   - {fileID: 1633040094}
-  - {fileID: 23623641}
   - {fileID: 984575271}
   m_Father: {fileID: 0}
   m_RootOrder: 1

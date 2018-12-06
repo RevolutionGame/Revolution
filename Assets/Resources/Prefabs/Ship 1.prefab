@@ -106,6 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
+  Bullet: {fileID: 1845981773860750, guid: 8e012c26cf6b5412895388994c8f9673, type: 2}
 --- !u!212 &212516292902262142
 SpriteRenderer:
   m_ObjectHideFlags: 1
