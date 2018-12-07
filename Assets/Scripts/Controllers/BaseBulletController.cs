@@ -4,19 +4,26 @@ using UnityEngine;
 
 public class BaseBulletController : MonoBehaviour
 {
-    public float BulletSpeed = 300f;
-    public float lifetime = 1.0f;
+
+
+    public float BulletSpeed    { get; } = 300;
+    public float BullteLifetime       { get; } = 1.0f;
+    public float ShotInterval   { get; } = 0.2f;
+
     private GameController gameController;
 
-    float GunDelay;
-    float ShotInterval;
+    /*readonly float _shotInterval = 0.2f;
 
-    // Use this for initialization
+    public float ShotInterval
+    {
+        get { return _shotInterval; }
+    }
+    */
     void Start()
     {
 
         // Set the bullet to destroy itself after 1 seconds
-        Destroy(gameObject, lifetime);
+        Destroy(gameObject, BullteLifetime);
 
         // Push the bullet in the direction it is facing
         GetComponent<Rigidbody2D>()
