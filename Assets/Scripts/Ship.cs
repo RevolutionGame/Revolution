@@ -56,4 +56,6 @@ public partial class Ship : MonoBehaviour {
         Instantiate(Bullets[1], this.transform.position, transform.rotation );
     }
 
+   
+
 }

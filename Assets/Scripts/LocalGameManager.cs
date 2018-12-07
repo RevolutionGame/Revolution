@@ -7,6 +7,7 @@ public class LocalGameManager : MonoBehaviour {
     public Player[] players = new Player[9];
     public Player playerPrefab;
     public Player localPlayer;
+   
 
     public RevolutionController freeRoamController;
     public bool isEnabled = false;
@@ -36,11 +37,11 @@ public class LocalGameManager : MonoBehaviour {
     void Start() {
         //NetworkManager.Instance.socketManager.OnReadyUp();
 
-        GameObject smallAsteroid = Resources.Load<GameObject>("Prefabs/SmallAsteroid");
+      GameObject smallAsteroid = Resources.Load<GameObject>("Prefabs/SmallAsteroid");
 
-        GameObject playerShip = Resources.Load<GameObject>("Prefabs/Player");
-
-        Instantiate(playerShip);
+      GameObject playerShip = Resources.Load<GameObject>("Prefabs/Player");
+      
+      Instantiate(playerShip);
 
         Instantiate(smallAsteroid,
         new Vector3(Random.Range(-4.0f, 4.0f),
@@ -130,5 +131,6 @@ public class LocalGameManager : MonoBehaviour {
             //networkPlayer.SpawnShip(ship);
         }
     }
+
 
 }

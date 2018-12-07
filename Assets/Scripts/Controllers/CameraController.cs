@@ -4,25 +4,25 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour {
 
-    private GameObject player;
+    private Transform playerTransform;
+    public int depth = 0;
+    
 
-    private Vector3 offset;
 
-    private GameObject gameController;
+    // Update is called once per frame
+    void LateUpdate () {
+        if (playerTransform != null)
+        {
+            transform.position = playerTransform.position + new Vector3(0, 0, depth);
+        }
+        else
+        {
+            Debug.Log("This is empty");
+        }
+    }
 
-	// Use this for initialization
-	void Start () {
-
-        gameController = GameObject.FindWithTag("GameController");
-
-	}
-	
-	// Update is called once per frame
-	void LateUpdate () {
-       // player = gameController.GetComponent<LocalGameManager>().playerShip;
-
-        // offset = transform.position - player.transform.position;
-
-        //  transform.position = player.transform.position + offset;
-	}
+    public void setTarget(Transform target)
+    {
+        playerTransform = target;
+    }
 }
