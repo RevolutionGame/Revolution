@@ -36,21 +36,25 @@ public class LocalGameManager : MonoBehaviour {
     // Use this for initialization
     void Start() {
 
-        //NetworkManager.Instance.socketManager.OnReadyUp();
-
+        
+        /*
         GameObject playerShip = Resources.Load<GameObject>("Prefabs/Player");
 
         Instantiate(playerShip);
+        */
+        
+                GameObject playerShip = (GameObject)Instantiate(Resources.Load("Prefabs/Player"));
 
-//        Instantiate(playerShip, new Vector3(Random.Range(-4.0f, 4.0f), Random.Range(-4.0f, 4.0f), 0), Quaternion.Euler(0, 0, Random.Range(-0.0f, 359.0f)));
+                localPlayer = playerShip.GetComponent<Player>();
 
+                localPlayer.Id = NetworkManager.NetworkInstance.socketManager.localId;
+        
+        //Instantiate(playerShip, new Vector3(Random.Range(-4.0f, 4.0f), Random.Range(-4.0f, 4.0f), 0), Quaternion.Euler(0, 0, Random.Range(-0.0f, 359.0f)));
+
+        NetworkManager.NetworkInstance.socketManager.OnReadyUp();
         PopulateNetworkPlayers();
 
-
-
         //localPlayer.SpawnShip(ship);
-
-
         //localPlayer.Id = NetworkManager.NetworkInstance.socketManager.localId;
 
     }

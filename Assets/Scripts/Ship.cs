@@ -6,6 +6,7 @@ public partial class Ship : MonoBehaviour {
 
     public MonoBehaviour controller;
     public GameObject[] Bullets;
+    GameObject Bullet;
  
 	//Use this for initialization
     void Start ()
@@ -14,10 +15,8 @@ public partial class Ship : MonoBehaviour {
 
         Bullets = new GameObject[10];
 
-        
         Bullets[1] = Resources.Load<GameObject>("Prefabs/Bullet");
-
-        
+       
         InvokeRepeating("Fire", 0.5f, 0.2f);
 
     }
@@ -53,7 +52,10 @@ public partial class Ship : MonoBehaviour {
     {
 
         Debug.Log("Fire");
-        Instantiate(Bullets[1], this.transform.position, transform.rotation );
+        Bullet = Instantiate(Bullets[1], this.transform.position, transform.rotation );
+        
+        //Setting Parent of bullet to ship causes matrix effect on bullets
+        //Bullet.transform.SetParent(this.transform);
     }
 
 }
