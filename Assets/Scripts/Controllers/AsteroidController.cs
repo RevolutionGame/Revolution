@@ -5,7 +5,7 @@ using UnityEngine;
 public class AsteroidController : ObjectController {
 
     private GameController gameController;
-
+ 
   
 
     void Awake()

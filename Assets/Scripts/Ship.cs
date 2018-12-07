@@ -16,14 +16,20 @@ public partial class Ship : MonoBehaviour {
         Bullets = new GameObject[10];
 
         Bullets[1] = Resources.Load<GameObject>("Prefabs/Bullet");
-       
-        InvokeRepeating("Fire", 0.5f, 0.2f);
+        Bullets[2] = Resources.Load<GameObject>("Prefabs/RedBullet");
+        Bullets[3] = Resources.Load<GameObject>("Prefabs/BlueBullet");
+
+        // InvokeRepeating("Fire", 0.5f, 0.2f);
 
     }
 
     void Update()
     {
-
+        //for quick testing purposes only
+        if(Input.GetKeyDown("space"))
+        {
+            Fire();
+        }
     }
 	
 	// Update is called once per frame
