@@ -8,7 +8,6 @@ public class LocalGameManager : MonoBehaviour {
     public Player playerPrefab;
     public Player localPlayer;
 
-
     public RevolutionController freeRoamController;
     public bool isEnabled = false;
 
