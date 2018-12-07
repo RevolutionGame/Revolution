@@ -31,6 +31,7 @@ public class SocketManager
     public Action onGameStart;
     public bool isReady = false;
     public uint localId;
+
     public PlayerData[] players = new PlayerData[10];
     public PlayerData[] Players
     {
@@ -42,7 +43,7 @@ public class SocketManager
         socket = new WebSocket(URL);
     }
 
-    public void Connect()
+    public void Connect(Action onSuccess)
     {
         socket.EmitOnPing = true;
         socket.OnError += (sender, e) =>
@@ -62,7 +63,10 @@ public class SocketManager
             RevProtocol.Packet packet = new RevProtocol.Packet();
             packet.BodyType = RevProtocol.BodyType.RequestSlot;
             Send(packet);
+
+            onSuccess();
         };
+
         socket.Connect();
     }
 

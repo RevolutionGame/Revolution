@@ -12,21 +12,14 @@ public class LocalGameManager : MonoBehaviour {
     public bool isEnabled = false;
 
     public Ship ship;
-    public NetworkManager networkManager;
+    //public NetworkManager networkManager;
     private int localID;
-    private World world = new World();      
+    private World world = new World();
+
+    public bool Flag = false;
 
     private void Awake()
     {
-
-
-        //Check if Network Manager Already Exist
-        if (NetworkManager.NetworkInstance == null)
-        {
-            //Create an instance of Network Manager if none exist
-            Instantiate(networkManager);
-
-        }
 
         NetworkManager.NetworkInstance.socketManager.onGameStart = EnableMovement;
 
@@ -47,9 +40,15 @@ public class LocalGameManager : MonoBehaviour {
         GameObject playerShip = (GameObject)Instantiate(Resources.Load("Prefabs/Player"));
         localPlayer = playerShip.GetComponent<Player>();
 
+
+        //TODO move to UIManager
+        while (!Flag)
+        {
+            NetworkManager.NetworkInstance.socketManager.Connect(Connected);
+        }
+
         localPlayer.Id = NetworkManager.NetworkInstance.socketManager.localId;
        
-        NetworkManager.NetworkInstance.socketManager.OnReadyUp();
         PopulateNetworkPlayers();
 
     }
@@ -73,8 +72,9 @@ public class LocalGameManager : MonoBehaviour {
         {
             if (playerData.name != null)
             {
-                //Player newNetworkPlayer = Instantiate(playerPrefab);
-                //players[playerData.id] = newNetworkPlayer;
+                GameObject playerShip = (GameObject)Instantiate(Resources.Load("Prefabs/Player"));
+                Player newNetworkPlayer = playerShip.GetComponent<Player>();
+                players[playerData.id] = newNetworkPlayer;
             }
         }
 
@@ -97,6 +97,7 @@ public class LocalGameManager : MonoBehaviour {
         location.R = localPlayer.shipInstance.transform.rotation.eulerAngles.z;
         packet.Location = location;
         NetworkManager.NetworkInstance.socketManager.Send(packet);
+
     }
 
     void UpdatePlayers()
@@ -117,10 +118,18 @@ public class LocalGameManager : MonoBehaviour {
         
     }
 
+    /*
     private void SpawnNetworkPlayerShips() {
         foreach (NetworkPlayer networkPlayer in world.networkPlayers.Values) {
-            //networkPlayer.SpawnShip(ship);
+            networkPlayer.SpawnShip(ship);
         }
+    }
+    */
+    public void Connected()
+    {
+        //yield return null;
+
+        Flag = true;
     }
 
 }

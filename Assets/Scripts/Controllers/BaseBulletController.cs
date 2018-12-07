@@ -5,20 +5,12 @@ using UnityEngine;
 public class BaseBulletController : MonoBehaviour
 {
 
-
     public float BulletSpeed    { get; } = 300;
     public float BullteLifetime       { get; } = 1.0f;
     public float ShotInterval   { get; } = 0.2f;
 
     private GameController gameController;
 
-    /*readonly float _shotInterval = 0.2f;
-
-    public float ShotInterval
-    {
-        get { return _shotInterval; }
-    }
-    */
     void Start()
     {
 

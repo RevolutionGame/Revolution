@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     public Ship shipInstance;
     Ship Ship;
 
+   
   
 
     public uint Id
@@ -83,6 +84,12 @@ public class Player : MonoBehaviour
         }
         else if (sceneName == "RevolutionScene")
         {
+
+            //Fill in spawn position array and assign spawn position based off of PlayerID;
+            //Temporary code:
+            //SpawnPosition = new Vector3(0, 0, 0);
+            //SpawnRotation = new Vector3(0, 0, 0);
+
             //Assign Spawn position and Spawn rotation based off of Player ID
             /*
             Positions[0, 0] = new Vector3((radius * Mathf.Cos(0)), (radius * Mathf.Sin(0)), 0);
