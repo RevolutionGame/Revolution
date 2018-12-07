@@ -35,20 +35,12 @@ public class LocalGameManager : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
-        //NetworkManager.Instance.socketManager.OnReadyUp();
 
-        GameObject smallAsteroid = Resources.Load<GameObject>("Prefabs/SmallAsteroid");
+        //NetworkManager.Instance.socketManager.OnReadyUp();
 
         GameObject playerShip = Resources.Load<GameObject>("Prefabs/Player");
 
         Instantiate(playerShip);
-
-        Instantiate(smallAsteroid,
-        new Vector3(Random.Range(-4.0f, 4.0f),
-            Random.Range(-4.0f, 4.0f), 0),
-        Quaternion.Euler(0, 0, Random.Range(-0.0f, 359.0f)));
-
-
 
 //        Instantiate(playerShip, new Vector3(Random.Range(-4.0f, 4.0f), Random.Range(-4.0f, 4.0f), 0), Quaternion.Euler(0, 0, Random.Range(-0.0f, 359.0f)));
 

@@ -13,7 +13,6 @@ public class GameController : MonoBehaviour {
 
     private LocalPlayer player;
 
-
     public int MinimumAsteroidRemaining = 10;
     private int MaxAsteroidsSpawnable;
     private int AsteroidsRemaining;
@@ -24,13 +23,14 @@ public class GameController : MonoBehaviour {
     
 
 	// Use this for initialization
-	void Start () {
-
+	void Start ()
+    {
+        /*
         GameObject PlayerObject =
             GameObject.FindWithTag("Player");
 
         player =
-            PlayerObject.GetComponent<LocalPlayer>();
+            PlayerObject.GetComponent<LocalPlayer>();*/
 
         largeAsteroid = Resources.Load<GameObject>("Prefabs/LargeAsteroid");
         mediumAsteroid = Resources.Load<GameObject>("Prefabs/MediumAsteroid");
@@ -40,20 +40,25 @@ public class GameController : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
 		
 	}
 
-   void BeginGame(){
+   void BeginGame()
+    {
+
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
+
+        SpawnRevolutionAsteroids();
 
         if (sceneName == "FreeRoamScene")
         {
             //SpawnFreeAsteroids();
         }else if (sceneName == "RevolutionScene")
         {
-            SpawnRevolutionAsteroids();
+            //SpawnRevolutionAsteroids();
         }
    }
 
@@ -97,9 +102,10 @@ public class GameController : MonoBehaviour {
         }
     }
 
-    void SpawnRevolutionAsteroidsWithConnection(int ID, int sectors, float[,] vectors) //[ID, (size, x, y, angle)]
-                                                                                       // The angle in vector[ID,3] must be < 360/sectors
+    void SpawnRevolutionAsteroidsWithConnection(int ID, int sectors, float[,] vectors)                                                                               
     {
+        //[ID, (size, x, y, angle)]    
+        // The angle in vector[ID,3] must be < 360/sectors
 
         AsteroidSize = (int)vectors[ID, 0];
         
