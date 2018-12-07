@@ -5,15 +5,19 @@ using UnityEngine;
 public partial class Ship : MonoBehaviour {
 
     public MonoBehaviour controller;
-    public GameObject Bullet;
+    public GameObject[] Bullets;
  
 	//Use this for initialization
     void Start ()
     {
         gameObject.AddComponent<RevolutionController>();
 
-        Bullet = Resources.Load<GameObject>("Prefabs/Bullet");
+        Bullets = new GameObject[10];
 
+        
+        Bullets[1] = Resources.Load<GameObject>("Prefabs/Bullet");
+
+        
         InvokeRepeating("Fire", 0.5f, 0.2f);
 
     }
@@ -49,7 +53,7 @@ public partial class Ship : MonoBehaviour {
     {
 
         Debug.Log("Fire");
-        Instantiate(Bullet, this.transform.position, transform.rotation );
+        Instantiate(Bullets[1], this.transform.position, transform.rotation );
     }
 
 }

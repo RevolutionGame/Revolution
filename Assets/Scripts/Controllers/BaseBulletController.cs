@@ -8,6 +8,9 @@ public class BaseBulletController : MonoBehaviour
     public float lifetime = 1.0f;
     private GameController gameController;
 
+    float GunDelay;
+    float ShotInterval;
+
     // Use this for initialization
     void Start()
     {
