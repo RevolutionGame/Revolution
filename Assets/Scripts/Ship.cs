@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Ship Class controlls the actual Ship objects in game. They may be attached to
+/// either a Player object or a NetworkPlayer object. Ship is responsible for
+/// creating projectiles/bullets and moving itself across the game world
+/// </summary>
 public partial class Ship : MonoBehaviour {
 
     public MonoBehaviour controller;
@@ -49,7 +54,7 @@ public partial class Ship : MonoBehaviour {
 
     void SetInterval()
     {
-        interval = Bullets[0].GetComponent<BaseBulletController>().ShotInterval;
+        interval = Bullets[BulletId].GetComponent<BaseBulletController>().ShotInterval;
     }
 	
 	// Update is called once per frame
@@ -78,9 +83,9 @@ public partial class Ship : MonoBehaviour {
     {
 
         Debug.Log("Fire");
-        Bullet = Instantiate(Bullets[0], this.transform.position, transform.rotation );
+        Bullet = Instantiate(Bullets[BulletId], this.transform.position, transform.rotation );
         
-        //Setting Parent of bullet to ship causes matrix effect on bullets
+        //TODO Setting Parent of bullet to ship causes matrix effect on bullets
         //Bullet.transform.SetParent(this.transform);
     }
 
