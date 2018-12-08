@@ -45,11 +45,16 @@ public partial class Ship : MonoBehaviour {
         //Auto fires the selected Bullet afetr a 0.5 second delay
         InvokeRepeating("Fire", 0.5f, interval);
 
+
     }
 
     void Update()
     {
-
+        //for quick testing purposes only
+        if(Input.GetKeyDown("space"))
+        {
+            Fire();
+        }
     }
 
     void SetInterval()

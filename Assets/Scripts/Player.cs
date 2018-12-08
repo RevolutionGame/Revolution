@@ -39,6 +39,7 @@ public class Player : MonoBehaviour
         //-----------------------------------------------------------------------
         shipInstance = Instantiate(shipPrefab, new Vector3(0, -3, 0), transform.rotation);
 
+
         /*TODO This method hangs when no connection is made, add try/catch blocks
          where neccesary*/
         if (this.id == NetworkManager.NetworkInstance.socketManager.localId)

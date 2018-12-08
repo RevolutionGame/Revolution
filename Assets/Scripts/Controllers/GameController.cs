@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour {
     GameObject smallAsteroid;
     GameObject mediumAsteroid;
     GameObject largeAsteroid;
+    GameObject redUpgrade;
 
     //public NetworkManager networkManager;
 
@@ -35,6 +36,7 @@ public class GameController : MonoBehaviour {
         largeAsteroid = Resources.Load<GameObject>("Prefabs/LargeAsteroid");
         mediumAsteroid = Resources.Load<GameObject>("Prefabs/MediumAsteroid");
         smallAsteroid = Resources.Load<GameObject>("Prefabs/SmallAsteroid");
+        redUpgrade = Resources.Load<GameObject>("Prefabs/RedUpgrade");
 
         BeginGame();
 	}
@@ -51,7 +53,9 @@ public class GameController : MonoBehaviour {
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
 
-        SpawnRevolutionAsteroids();
+        //SpawnRevolutionAsteroids();
+
+        TestAsteroidsAndUpgrades();
 
         if (sceneName == "FreeRoamScene")
         {
@@ -61,6 +65,28 @@ public class GameController : MonoBehaviour {
             //SpawnRevolutionAsteroids();
         }
    }
+
+    
+    void TestAsteroidsAndUpgrades()
+    {
+        MaxAsteroidsSpawnable = 10;
+       
+        StartCoroutine(FakeServerPulse(2));
+
+    }
+
+    //Repeatedly spawns an asteroids every delaytime secondsto emulate server activity
+    IEnumerator FakeServerPulse(int delaytime)
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(delaytime);
+            int sectors = Random.Range(0, 9);
+            int size = Random.Range(0, 4);
+            SpawnRevolutionAsteroidsProd(sectors, size);
+        }
+    }
+        
 
     void SpawnRevolutionAsteroids()
     {
@@ -150,9 +176,12 @@ public class GameController : MonoBehaviour {
 
     }
 
+    //Spawns asteroids only requiring the size of asteroid and number of sectors. Splits circle into sectors
+    //and spawns an identical asteroid in each sector.
     void SpawnRevolutionAsteroidsProd(int sectors, int size) //[ID, (size, x, y, angle)]                                                                                
    {
 
+        
         AsteroidSize = size;
 
         //float radius = Mathf.Sqrt(((Mathf.Pow(vectors[ID, 1], 2) + Mathf.Pow(vectors[ID, 2], 2))));
@@ -185,6 +214,13 @@ public class GameController : MonoBehaviour {
             if (AsteroidSize == 2)
             {
                 Instantiate(largeAsteroid,
+                            new Vector3(0, 0, 0),
+                            Quaternion.Euler(0, 0, angle));
+
+            }
+            if (AsteroidSize == 3)
+            {
+                Instantiate(redUpgrade,
                             new Vector3(0, 0, 0),
                             Quaternion.Euler(0, 0, angle));
 
@@ -244,7 +280,7 @@ public class GameController : MonoBehaviour {
 
     public void DestroyAsteroid(GameObject DestroyedAsteroid)
     {
-        Quaternion offset = Quaternion.FromToRotation(Vector3.up, DestroyedAsteroid.transform.rotation.eulerAngles);
+       // Quaternion offset = Quaternion.FromToRotation(Vector3.up, DestroyedAsteroid.transform.rotation.eulerAngles);
         if(DestroyedAsteroid.tag.Equals("SmallAsteroid"))
         {
             Destroy(DestroyedAsteroid);
@@ -256,16 +292,17 @@ public class GameController : MonoBehaviour {
             
            //SERVER: Must be updated with asteroid current position and send an offset of that vector to all clients
            //to instantiate the asteroid split vectors
-           Instantiate(smallAsteroid,
+          GameObject temp1= Instantiate(smallAsteroid,
               new Vector3(DestroyedAsteroid.transform.position.x,
                   DestroyedAsteroid.transform.position.y, 0),
-                  Quaternion.Euler(0, 0, offset.eulerAngles.z - 45));
+                  Quaternion.Euler(0, 0, DestroyedAsteroid.transform.rotation.z - 45));
+            
 
-            Instantiate(smallAsteroid,
+          GameObject temp2 =  Instantiate(smallAsteroid,
               new Vector3(DestroyedAsteroid.transform.position.x,
                   DestroyedAsteroid.transform.position.y, 0),
-                  Quaternion.Euler(0, 0, offset.eulerAngles.z + 45));
-              
+                  Quaternion.Euler(0, 0, DestroyedAsteroid.transform.rotation.z + 45));
+            
 
             Destroy(DestroyedAsteroid);
             //AsteroidsRemaining+=1;
@@ -280,22 +317,22 @@ public class GameController : MonoBehaviour {
             Instantiate(smallAsteroid,
                new Vector3(DestroyedAsteroid.transform.position.x,
                    DestroyedAsteroid.transform.position.y, 0),
-                   Quaternion.Euler(0, 0, offset.eulerAngles.z - 45));
+                   Quaternion.Euler(0, 0, DestroyedAsteroid.transform.rotation.z - 45));
 
             Instantiate(smallAsteroid,
               new Vector3(DestroyedAsteroid.transform.position.x,
                   DestroyedAsteroid.transform.position.y, 0),
-                  Quaternion.Euler(0, 0, offset.eulerAngles.z - 15));
+                  Quaternion.Euler(0, 0, DestroyedAsteroid.transform.rotation.z - 15));
 
             Instantiate(smallAsteroid,
                new Vector3(DestroyedAsteroid.transform.position.x,
                    DestroyedAsteroid.transform.position.y, 0),
-                   Quaternion.Euler(0, 0, offset.eulerAngles.z + 15));
+                   Quaternion.Euler(0, 0, DestroyedAsteroid.transform.rotation.z + 15));
 
             Instantiate(smallAsteroid,
               new Vector3(DestroyedAsteroid.transform.position.x,
                   DestroyedAsteroid.transform.position.y, 0),
-                  Quaternion.Euler(0, 0, offset.eulerAngles.z + 45));
+                  Quaternion.Euler(0, 0, DestroyedAsteroid.transform.rotation.z + 45));
 
 
             Destroy(DestroyedAsteroid);

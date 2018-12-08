@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Ship
   - LargeAsteroid
+  - MediumAsteroid
+  - RedUpgrade
   layers:
   - Default
   - TransparentFX
@@ -43,6 +45,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+<<<<<<< HEAD
   - name: Midground
     uniqueID: 1426699465
     locked: 0
+=======
+>>>>>>> CreatingUpgrades
