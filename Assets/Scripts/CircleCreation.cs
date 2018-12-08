@@ -25,7 +25,7 @@ public class CircleCreation : MonoBehaviour {
 
         for (int i = 0; i < lineRenderer.positionCount; i++)
         {
-            Vector3 pos = new Vector3(radius * Mathf.Cos(theta), radius * Mathf.Sin(theta), 0f);
+            Vector3 pos = new Vector3(radius * Mathf.Cos(theta), radius * Mathf.Sin(theta), 50f);
             lineRenderer.SetPosition(i, pos);
             theta += deltaTheta;
         }

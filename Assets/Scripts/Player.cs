@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
 
     void Start () {
 
-        shipInstance = Instantiate(shipPrefab, new Vector3(0, -3, 0), transform.rotation);
+        shipInstance = Instantiate(shipPrefab, new Vector3(0, -5, 0), transform.rotation);
 
         
         Camera.main.GetComponent<CameraController>().setTarget(shipInstance.transform);

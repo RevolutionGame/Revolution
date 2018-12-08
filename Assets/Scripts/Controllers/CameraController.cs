@@ -5,9 +5,12 @@ using UnityEngine;
 public class CameraController : MonoBehaviour {
 
     private Transform playerTransform;
-    public int depth = 0;
-    
+    public int depth = 10;
 
+    private void Awake()
+    {
+        
+    }
 
     // Update is called once per frame
     void LateUpdate () {
