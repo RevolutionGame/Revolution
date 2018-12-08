@@ -7,7 +7,10 @@ public class LocalGameManager : MonoBehaviour {
     public Player[] players = new Player[9];
     public Player playerPrefab;
     public Player localPlayer;
+<<<<<<< HEAD
    
+=======
+>>>>>>> ba2a758f3889a75a4d4b87f02ca65470ba617ebf
 
     public RevolutionController freeRoamController;
     public bool isEnabled = false;
@@ -36,26 +39,23 @@ public class LocalGameManager : MonoBehaviour {
     // Use this for initialization
     void Start() {
 
-        //NetworkManager.Instance.socketManager.OnReadyUp();
 
-      GameObject smallAsteroid = Resources.Load<GameObject>("Prefabs/SmallAsteroid");
+        //-----------------------------------------------------------------------
+        //***Load Player Prefab and grab Player Component so we can use it.
+        //***Here we are only creating the local player object. Use this method to 
+        //   create the remaining network players in lobby.
+        //-----------------------------------------------------------------------
+        /*TODO Consider placing the following two lines into a method that loops through
+         * and creates each players gameobject and then sets the proper values in the 
+         * Player/NetworkPlayer classes
+         */
+        GameObject playerShip = (GameObject)Instantiate(Resources.Load("Prefabs/Player"));
+        localPlayer = playerShip.GetComponent<Player>();
 
-      GameObject playerShip = Resources.Load<GameObject>("Prefabs/Player");
-      
-      Instantiate(playerShip);
-
-
-                localPlayer = playerShip.GetComponent<Player>();
-
-                localPlayer.Id = NetworkManager.NetworkInstance.socketManager.localId;
-        
-        //Instantiate(playerShip, new Vector3(Random.Range(-4.0f, 4.0f), Random.Range(-4.0f, 4.0f), 0), Quaternion.Euler(0, 0, Random.Range(-0.0f, 359.0f)));
-
+        localPlayer.Id = NetworkManager.NetworkInstance.socketManager.localId;
+       
         NetworkManager.NetworkInstance.socketManager.OnReadyUp();
         PopulateNetworkPlayers();
-
-        //localPlayer.SpawnShip(ship);
-        //localPlayer.Id = NetworkManager.NetworkInstance.socketManager.localId;
 
     }
 

@@ -2,28 +2,59 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Ship Class controlls the actual Ship objects in game. They may be attached to
+/// either a Player object or a NetworkPlayer object. Ship is responsible for
+/// creating projectiles/bullets and moving itself across the game world
+/// </summary>
 public partial class Ship : MonoBehaviour {
 
     public MonoBehaviour controller;
     public GameObject[] Bullets;
     GameObject Bullet;
- 
-	//Use this for initialization
+
+    public int BulletId { get; set; } = 0;
+
+    public float interval = 1.0f;
+
+    //Use this for initialization
+    private void Awake()
+    {
+
+        //-----------------------------------------------------------------------
+        //***Creates a "Bullet Array" and fills it with all available Bullet Prefabs
+        //***The DEFAULT bullet object is index 0 and uses the BaseBulletController 
+        //      Class. All subsequent bullet objects need a new prefab and possibly 
+        //      a new class derived from BaseBulletController.
+        //-----------------------------------------------------------------------
+        Bullets = new GameObject[10];
+        Bullets = Resources.LoadAll<GameObject>("Prefabs/Bullets/Bullet");
+
+    }
+
     void Start ()
     {
         gameObject.AddComponent<RevolutionController>();
 
-        Bullets = new GameObject[10];
+        //Grabs Shot interval from the selected bullet prefab
+        SetInterval();
 
-        Bullets[1] = Resources.Load<GameObject>("Prefabs/Bullet");
-       
-        InvokeRepeating("Fire", 0.5f, 0.2f);
+        /*TODO The method InvokeRepeating() needs to be placed into a timed function that waits for
+         the gamescene to load and a short "Start up" period befor the game 
+         kicks off.  */
+        //Auto fires the selected Bullet afetr a 0.5 second delay
+        InvokeRepeating("Fire", 0.5f, interval);
 
     }
 
     void Update()
     {
 
+    }
+
+    void SetInterval()
+    {
+        interval = Bullets[BulletId].GetComponent<BaseBulletController>().ShotInterval;
     }
 	
 	// Update is called once per frame
@@ -52,9 +83,9 @@ public partial class Ship : MonoBehaviour {
     {
 
         Debug.Log("Fire");
-        Bullet = Instantiate(Bullets[1], this.transform.position, transform.rotation );
+        Bullet = Instantiate(Bullets[BulletId], this.transform.position, transform.rotation );
         
-        //Setting Parent of bullet to ship causes matrix effect on bullets
+        //TODO Setting Parent of bullet to ship causes matrix effect on bullets
         //Bullet.transform.SetParent(this.transform);
     }
 
