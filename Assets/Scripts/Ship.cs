@@ -58,4 +58,6 @@ public partial class Ship : MonoBehaviour {
         //Bullet.transform.SetParent(this.transform);
     }
 
+   
+
 }
