@@ -7,10 +7,7 @@ public class LocalGameManager : MonoBehaviour {
     public Player[] players = new Player[9];
     public Player playerPrefab;
     public Player localPlayer;
-<<<<<<< HEAD
-   
-=======
->>>>>>> ba2a758f3889a75a4d4b87f02ca65470ba617ebf
+
 
     public RevolutionController freeRoamController;
     public bool isEnabled = false;
