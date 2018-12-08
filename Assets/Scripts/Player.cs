@@ -31,11 +31,11 @@ public class Player : MonoBehaviour
 
         //shipInstance.transform.position = new Vector2(50, 0);
 
-        if (this.id == NetworkManager.NetworkInstance.socketManager.localId)
-        {
+        //if (this.id == NetworkManager.NetworkInstance.socketManager.localId)
+        //{
             //shipInstance.gameObject.AddComponent<FreeRoamController>();
             //shipInstance.GetComponent<SpriteRenderer>().color = Color.red;
-        }
+        //}
     }
 
     public void Respawn(GameObject RespawnedShip)
