@@ -772,7 +772,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vertexCount: 40
   lineWidth: 0.2
-  radius: 6
+  radius: 12
 --- !u!4 &1872400017
 Transform:
   m_ObjectHideFlags: 0

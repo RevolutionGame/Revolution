@@ -9,10 +9,13 @@ using System;
 public class Player : MonoBehaviour
 {
     private uint id;
-    public Ship shipPrefab;
+    public GameObject[] ShipPrefabs;
+    public Ship ship;
     public Ship shipInstance;
-    public readonly int radius = 5;
+    public readonly int radius = 12;
     Ship Ship;
+
+
   
 
     public uint Id
@@ -34,6 +37,9 @@ public class Player : MonoBehaviour
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
 
+        ShipPrefabs = new GameObject[10];
+        ShipPrefabs = Resources.LoadAll<GameObject>("Prefabs/ShipPrefabs/");
+
         Vector3[] spawn = FindSpawnPosition(sceneName);
 
         //TODO Make Ship Prefab selection dynamic based on users selection or default 
@@ -44,11 +50,11 @@ public class Player : MonoBehaviour
         //-----------------------------------------------------------------------
         try
         {
-            shipInstance = Instantiate(shipPrefab, spawn[0], Quaternion.Euler(spawn[1].x, spawn[1].y, spawn[1].z));
+            shipInstance = Instantiate(ShipPrefabs[0], spawn[0], Quaternion.Euler(spawn[1].x, spawn[1].y, spawn[1].z)).GetComponent<Ship>();
         }
         catch (ArgumentNullException) {
             Debug.Log("spawn vector is null");
-            shipInstance = Instantiate(shipPrefab, new Vector3(0, -5, 0), transform.rotation);
+            shipInstance = Instantiate(ShipPrefabs[0], new Vector3(0, -12, 0), transform.rotation).GetComponent<Ship>();
         }
 
 
@@ -110,9 +116,9 @@ public class Player : MonoBehaviour
         }
         else if (sceneName == "RevolutionScene")
         {
-
+            
             //Assign Spawn position and Spawn rotation based off of id
-            Vector3[,] Positions = new Vector3[8,2]; //8 players max, for more plays increase the array size
+            Vector3[,] Positions = new Vector3[8,2]; //8 players max, for more players increase the array size
 
             Positions[0, 0] = new Vector3((radius * Mathf.Cos(0)), (radius * Mathf.Sin(0)), 0);
             Positions[0, 1] = new Vector3(0, 0, 90);

@@ -5,7 +5,7 @@ using UnityEngine;
 public class RevolutionController : MonoBehaviour {
 
     private Vector3 centerPoint;
-    private readonly int radius = 8;
+    private readonly int radius = 12;
 
     public int speed = 1;
 

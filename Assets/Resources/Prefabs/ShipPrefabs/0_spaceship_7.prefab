@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 114728500011688760}
   - component: {fileID: 70850861311108490}
   m_Layer: 0
-  m_Name: spaceship_7
+  m_Name: 0_spaceship_7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3eb4cf0579976049aa459028496b9c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  screenTop: 6
-  screenBottom: -6
+  screenTop: 12
+  screenBottom: -12
   screenLeft: -15
   screenRight: 15
