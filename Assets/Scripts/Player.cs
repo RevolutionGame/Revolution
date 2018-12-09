@@ -51,10 +51,20 @@ public class Player : MonoBehaviour
         try
         {
             shipInstance = Instantiate(ShipPrefabs[0], spawn[0], Quaternion.Euler(spawn[1].x, spawn[1].y, spawn[1].z)).GetComponent<Ship>();
+            if(sceneName == "FreeRoamScene")
+            {
+                //Adds the boundary crossing logic to ships on free roam. The values for the boundaries have to be calculated via radius
+                //shipInstance.gameObject.AddComponent<EuclideanTorus>();
+            }
         }
         catch (ArgumentNullException) {
             Debug.Log("spawn vector is null");
             shipInstance = Instantiate(ShipPrefabs[0], new Vector3(0, -12, 0), transform.rotation).GetComponent<Ship>();
+            if (sceneName == "FreeRoamScene")
+            {
+                //Adds the boundary crossing logic to ships on free roam. The values for the boundaries have to be calculated via radius
+                //shipInstance.gameObject.AddComponent<EuclideanTorus>();
+            }
         }
 
 
