@@ -51,6 +51,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c262396071534631bcf6f68f3dd2d9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shipPrefab: {fileID: 114118452553953870, guid: 236055fb118b89949bf4698f3928dd5b,
+  shipPrefab: {fileID: 114118452553953870, guid: defd6907f3b989d4b919577aa2b90e7c,
     type: 2}
   shipInstance: {fileID: 0}

@@ -295,13 +295,13 @@ public class GameController : MonoBehaviour {
           GameObject temp1= Instantiate(smallAsteroid,
               new Vector3(DestroyedAsteroid.transform.position.x,
                   DestroyedAsteroid.transform.position.y, 0),
-                  Quaternion.Euler(0, 0, DestroyedAsteroid.transform.rotation.z - 45));
+                  Quaternion.Euler(0, 0, 0));
             
 
           GameObject temp2 =  Instantiate(smallAsteroid,
               new Vector3(DestroyedAsteroid.transform.position.x,
                   DestroyedAsteroid.transform.position.y, 0),
-                  Quaternion.Euler(0, 0, DestroyedAsteroid.transform.rotation.z + 45));
+                  Quaternion.Euler(0, 0, 180));
             
 
             Destroy(DestroyedAsteroid);
@@ -317,22 +317,22 @@ public class GameController : MonoBehaviour {
             Instantiate(smallAsteroid,
                new Vector3(DestroyedAsteroid.transform.position.x,
                    DestroyedAsteroid.transform.position.y, 0),
-                   Quaternion.Euler(0, 0, DestroyedAsteroid.transform.rotation.z - 45));
+                   Quaternion.Euler(0, 0, 0));
 
             Instantiate(smallAsteroid,
               new Vector3(DestroyedAsteroid.transform.position.x,
                   DestroyedAsteroid.transform.position.y, 0),
-                  Quaternion.Euler(0, 0, DestroyedAsteroid.transform.rotation.z - 15));
+                  Quaternion.Euler(0, 0, 90));
 
             Instantiate(smallAsteroid,
                new Vector3(DestroyedAsteroid.transform.position.x,
                    DestroyedAsteroid.transform.position.y, 0),
-                   Quaternion.Euler(0, 0, DestroyedAsteroid.transform.rotation.z + 15));
+                   Quaternion.Euler(0, 0, 180));
 
             Instantiate(smallAsteroid,
               new Vector3(DestroyedAsteroid.transform.position.x,
                   DestroyedAsteroid.transform.position.y, 0),
-                  Quaternion.Euler(0, 0, DestroyedAsteroid.transform.rotation.z + 45));
+                  Quaternion.Euler(0, 0, 270));
 
 
             Destroy(DestroyedAsteroid);

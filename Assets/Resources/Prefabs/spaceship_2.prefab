@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 9509168}
   - component: {fileID: 114034077833338348}
   - component: {fileID: 50301984387950384}
-  - component: {fileID: 114795530602259668}
   - component: {fileID: 70260409138966896}
   m_Layer: 0
   m_Name: spaceship_2
@@ -157,19 +156,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
   Bullets: []
+  upgradeLevel: 0
   interval: 1
---- !u!114 &114795530602259668
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 147846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3eb4cf0579976049aa459028496b9c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  screenTop: 6
-  screenBottom: -6
-  screenLeft: 15
-  screenRight: -15
