@@ -68,6 +68,8 @@ public class LocalGameManager : MonoBehaviour {
 
     private void PopulateNetworkPlayers()
     {
+        Debug.Log("Player Data Hit");
+
         foreach (PlayerData playerData in NetworkManager.NetworkInstance.socketManager.players)
         {
             if (playerData.name != null)
