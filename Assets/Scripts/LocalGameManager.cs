@@ -8,6 +8,7 @@ public class LocalGameManager : MonoBehaviour {
     public Player playerPrefab;
     public Player localPlayer;
 
+
     public RevolutionController freeRoamController;
     public bool isEnabled = false;
 
@@ -27,6 +28,7 @@ public class LocalGameManager : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
+
 
         //-----------------------------------------------------------------------
         //***Load Player Prefab and grab Player Component so we can use it.
@@ -133,5 +135,6 @@ public class LocalGameManager : MonoBehaviour {
 
         Flag = true;
     }
+
 
 }

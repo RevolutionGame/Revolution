@@ -28,15 +28,20 @@ public class Player : MonoBehaviour
         set { playerName = value; }
     }
 
+
     void Start () {
+
 
         //TODO Make Ship Prefab selection dynamic based on users selection or default 
         //-----------------------------------------------------------------------
-        //Here The player ship is created using the selected Prefab, at radius 3
+        //Here The player ship is created using the selected Prefab, at radius 5
         //This still needs to be refined a bit. For now ship selection is preset
         //and the spawn position is still a bit iffy
         //-----------------------------------------------------------------------
-        shipInstance = Instantiate(shipPrefab, new Vector3(0, -3, 0), transform.rotation);
+        shipInstance = Instantiate(shipPrefab, new Vector3(0, -5, 0), transform.rotation);
+
+        Camera.main.GetComponent<CameraController>().setTarget(shipInstance.transform);
+
 
         /*TODO This method hangs when no connection is made, add try/catch blocks
          where neccesary*/
