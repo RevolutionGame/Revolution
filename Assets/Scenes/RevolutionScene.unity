@@ -438,7 +438,7 @@ MonoBehaviour:
   localPlayer: {fileID: 0}
   freeRoamController: {fileID: 0}
   isEnabled: 0
-  ship: {fileID: 114529689071195316, guid: 2b89785c86ad61441b465d317bb2c23c, type: 2}
+  ship: {fileID: 114034077833338348, guid: e2a563409f05b26429e07cb45c0d2ea2, type: 2}
   Flag: 0
 --- !u!1 &1232254033
 GameObject:
