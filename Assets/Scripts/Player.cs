@@ -65,6 +65,7 @@ public class Player : MonoBehaviour
                 {
                     shipInstance.UseRevolutionController();
                 }
+
                 Camera.main.GetComponent<CameraController>().setTarget(shipInstance.transform);
             }
         }
@@ -72,6 +73,7 @@ public class Player : MonoBehaviour
         {
             Debug.Log("No connection, using single player control set up for testing purposes.");
             shipInstance.UseRevolutionController();
+
             Camera.main.GetComponent<CameraController>().setTarget(shipInstance.transform);
         }
     }

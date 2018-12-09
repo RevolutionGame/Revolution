@@ -8,6 +8,8 @@ public class LocalGameManager : MonoBehaviour {
     public Player playerPrefab;
     public Player localPlayer;
 
+    GameObject mainCamera;
+
 
     public RevolutionController freeRoamController;
     public bool isEnabled = false;
@@ -21,6 +23,8 @@ public class LocalGameManager : MonoBehaviour {
 
     private void Awake()
     {
+
+        Camera.main.gameObject.AddComponent<CameraController>();
 
         NetworkManager.NetworkInstance.socketManager.onGameStart = EnableMovement;
 

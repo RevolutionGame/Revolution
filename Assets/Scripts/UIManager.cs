@@ -11,7 +11,7 @@ public class UIManager : MonoBehaviour
 {
 
     public GameObject networkManager;
-
+    public Player[] players = new Player[9];
 
 
     private GameObject mainpanel;
@@ -32,7 +32,7 @@ public class UIManager : MonoBehaviour
 
     public UserData MainPlayer;
     LoginData ld;
-
+    bool Flag = false;
 
 
 
@@ -71,12 +71,15 @@ public class UIManager : MonoBehaviour
         
         plate.GetComponent<Text>().text = "BlahBlah";
 
+        
+
     }
 
+    //TODO Add disconnect method when players exit the lobby early
     public void ConnectToLobby()
     {
-        //Make Connection to Server and Load Lobby
-       // NetworkManager.NetworkInstance.socketManager.Connect();
+        //Make Connection to Server and Load Lobby;
+        NetworkManager.networkInstance.socketManager.Connect(Connected);
 
     }
 
@@ -117,7 +120,7 @@ public class UIManager : MonoBehaviour
         PlayerProfile.Name = ld.data.name;
         PlayerProfile.Email = ld.data.email;
 
-        plate.GetComponent<Text>().text = PlayerProfile.Name;
+        //plate.GetComponent<Text>().text = PlayerProfile.Name;
 
         
         logbutton.SetActive(false);
@@ -132,6 +135,31 @@ public class UIManager : MonoBehaviour
 
         Debug.Log("result is " + ld.data.name);
 
+    }
+
+    private void PopulateNetworkPlayers()
+    {
+        Debug.Log("Player Data Hit");
+
+        foreach (PlayerData playerData in NetworkManager.NetworkInstance.socketManager.players)
+        {
+            if (playerData.name != null)
+            {
+                GameObject playerShip = (GameObject)Instantiate(Resources.Load("Prefabs/Player"));
+                Player newNetworkPlayer = playerShip.GetComponent<Player>();
+                players[playerData.id] = newNetworkPlayer;
+            }
+        }
+
+        //NetworkManager.NetworkInstance.socketManager.OnReadyUp();
+    }
+
+
+    public void Connected()
+    {
+        //yield return null;
+
+        Flag = true;
     }
 
     #region random methods

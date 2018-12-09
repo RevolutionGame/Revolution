@@ -28,7 +28,7 @@ public partial class Ship : MonoBehaviour {
         //      a new class derived from BaseBulletController.
         //-----------------------------------------------------------------------
         Bullets = new GameObject[10];
-        Bullets = Resources.LoadAll<GameObject>("Prefabs/Bullets/Bullet");
+        Bullets = Resources.LoadAll<GameObject>("Prefabs/Bullets/");
 
     }
 

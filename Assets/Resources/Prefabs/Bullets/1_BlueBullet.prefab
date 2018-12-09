@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114488745403604526}
   - component: {fileID: 61484414146231350}
   m_Layer: 0
-  m_Name: BlueBullet
+  m_Name: 1_BlueBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -57,7 +57,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1

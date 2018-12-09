@@ -15,6 +15,7 @@ public class CircleCreation : MonoBehaviour {
 
     }
 
+    //TODO Added line to get  this script in code
     private void CreateCircle()
     {
         lineRenderer.widthMultiplier = lineWidth;
@@ -33,22 +34,22 @@ public class CircleCreation : MonoBehaviour {
 
 
     // Draws circle in editor so its dimensions can be seen before playing game
-//#if UNITY_EDITOR
-//    private void OnDrawGizmos()
-//    {
-//        float deltaTheta = (2f * Mathf.PI) / vertexCount;
-//        float theta = 0f;
+    #if UNITY_EDITOR
+        private void OnDrawGizmos()
+        {
+            float deltaTheta = (2f * Mathf.PI) / vertexCount;
+            float theta = 0f;
 
-//        Vector3 oldPos = Vector3.zero;
-//        for(int i = 0; i <= vertexCount; i++)
-//        {
-//            Vector3 pos = new Vector3(radius * Mathf.Cos(theta), radius * Mathf.Sin(theta), 0f);
-//            Gizmos.DrawLine(oldPos, transform.position + pos);
-//            oldPos = transform.position + pos;
-//
-//            theta += deltaTheta;
-//        }
-//    }
-//#endif
+            Vector3 oldPos = Vector3.zero;
+            for (int i = 0; i <= vertexCount; i++)
+            {
+                Vector3 pos = new Vector3(radius * Mathf.Cos(theta), radius * Mathf.Sin(theta), 0f);
+                Gizmos.DrawLine(oldPos, transform.position + pos);
+                oldPos = transform.position + pos;
+
+                theta += deltaTheta;
+            }
+        }
+    #endif
 
 }
