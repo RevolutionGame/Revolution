@@ -17,7 +17,7 @@ public class CameraController : MonoBehaviour {
         if (playerTransform != null)
         {
             transform.position = playerTransform.position + new Vector3(0, 0, depth);
-            //transform.rotation = playerTransform.rotation.normalized;
+            transform.rotation = playerTransform.rotation.normalized;
         }
         else
         {
