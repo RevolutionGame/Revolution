@@ -34,7 +34,7 @@ public partial class Ship : MonoBehaviour {
 
     void Start ()
     {
-        gameObject.AddComponent<RevolutionController>();
+        //gameObject.AddComponent<RevolutionController>();
 
         //Grabs Shot interval from the selected bullet prefab
         SetInterval();
@@ -79,7 +79,7 @@ public partial class Ship : MonoBehaviour {
     public void UseRevolutionController()
     {
 
-        gameObject.GetComponent<FreeRoamController>();
+        Destroy(gameObject.GetComponent<FreeRoamController>());
         controller = gameObject.AddComponent<RevolutionController>();
         //transform.Rotate(new Vector3(0, 0, -180));
     }
