@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-//using SocketIO;
 using UnityEngine;
 using modelSpace;
 using UnityEngine.UI;
@@ -12,9 +11,15 @@ public class NetworkManager : MonoBehaviour{
 
     public SocketManager socketManager = new SocketManager();
 
-    public static NetworkManager NetworkInstance = null;
+    public static NetworkManager networkInstance;
+
+    public static NetworkManager NetworkInstance
+    {
+        get { return networkInstance ?? (networkInstance = new GameObject("NetworkManager").AddComponent<NetworkManager>()); }
+    }
 
     public class Player { public string email; public string pass; }
+
 
     ApiManager apiManager = new ApiManager();
 
@@ -32,7 +37,7 @@ public class NetworkManager : MonoBehaviour{
     void Awake()
     {
 
-        
+        /*
         #region Enforce Sigelton Pattern on Network Manager and ensure its persistant
         if (NetworkInstance == null)
         {
@@ -45,8 +50,9 @@ public class NetworkManager : MonoBehaviour{
 
         DontDestroyOnLoad(gameObject);
         #endregion
-
+        */
     }
+
     /* private static NetworkManager networkManager;
 
      private NetworkManager() { }
@@ -60,16 +66,13 @@ public class NetworkManager : MonoBehaviour{
 
     void Start()
     {
-        //DontDestroyOnLoad(socket);
+        DontDestroyOnLoad(this);
         //StartCoroutine(ConnectToServer());            
     }
 
-    /*
-    public static NetworkManager Instance
-    {
-        get { return instance ?? (instance = new GameObject("NetworkManager").AddComponent<NetworkManager>()); }
-    }
-    */
+    
+
+    
 
     /*
     public void SendLocationData(JSONObject json)
@@ -116,6 +119,7 @@ public class NetworkManager : MonoBehaviour{
         Debug.Log("Server says: " + evt.data);        
     }
     */
+
     public void UpdateWorldFromServer()
     {
         throw new System.NotImplementedException();

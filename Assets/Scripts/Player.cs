@@ -12,6 +12,9 @@ public class Player : MonoBehaviour
     public Ship shipInstance;
     Ship Ship;
 
+   
+  
+
     public uint Id
     {
         get { return id; }
@@ -25,12 +28,23 @@ public class Player : MonoBehaviour
         set { playerName = value; }
     }
 
+
     void Start () {
 
-        shipInstance = Instantiate(shipPrefab, new Vector3(0, -3, 0), transform.rotation);
 
-        //shipInstance.transform.position = new Vector2(50, 0);
+        //TODO Make Ship Prefab selection dynamic based on users selection or default 
+        //-----------------------------------------------------------------------
+        //Here The player ship is created using the selected Prefab, at radius 5
+        //This still needs to be refined a bit. For now ship selection is preset
+        //and the spawn position is still a bit iffy
+        //-----------------------------------------------------------------------
+        shipInstance = Instantiate(shipPrefab, new Vector3(0, -5, 0), transform.rotation);
 
+        Camera.main.GetComponent<CameraController>().setTarget(shipInstance.transform);
+
+
+        /*TODO This method hangs when no connection is made, add try/catch blocks
+         where neccesary*/
         if (this.id == NetworkManager.NetworkInstance.socketManager.localId)
         {
             //shipInstance.gameObject.AddComponent<FreeRoamController>();
@@ -38,20 +52,29 @@ public class Player : MonoBehaviour
         }
     }
 
+    //TODO No need to respawn in current game iteration. Possibly use in Free Roam mode?
     public void Respawn(GameObject RespawnedShip)
     {
         //Need to update server that ship was moved
-       // RespawnedShip.transform.position = SpawnPosition;
+        //RespawnedShip.transform.position = SpawnPosition;
         //RespawnedShip.transform.rotation = Quaternion.identity;
         //RespawnedShip.transform.Rotate(SpawnRotation);
     
-       // Trying out transform RotateAround
-       // RespawnedShip.transform.position = new Vector3(radius, 0, 0);
-       // RespawnedShip.transform.rotation = Quaternion.identity;
-       // RespawnedShip.transform.RotateAround(Vector3.zero, Vector3.back, -45);
+        // Trying out transform RotateAround
+        // RespawnedShip.transform.position = new Vector3(radius, 0, 0);
+        // RespawnedShip.transform.rotation = Quaternion.identity;
+        // RespawnedShip.transform.RotateAround(Vector3.zero, Vector3.back, -45);
 
     }
 
+
+    //TODO Sync the Spawn position method with the instanstiate in Start method above
+    //-----------------------------------------------------------------------
+    //Update this method to determine the ships proper spaw and output it to a
+    //variable that feeds into the vector3 argument in the ship instatiatiom 
+    //method above. Ships should spawn in equally spaced increments around the 
+    //circle. This ***EDIT THIS COMMENT AFTER THIS SECTION IS UPDATED***
+    //-----------------------------------------------------------------------
     public void FindSpawnPosition()
     {
         Scene currentScene = SceneManager.GetActiveScene();
@@ -66,6 +89,12 @@ public class Player : MonoBehaviour
         }
         else if (sceneName == "RevolutionScene")
         {
+
+            //Fill in spawn position array and assign spawn position based off of PlayerID;
+            //Temporary code:
+            //SpawnPosition = new Vector3(0, 0, 0);
+            //SpawnRotation = new Vector3(0, 0, 0);
+
             //Assign Spawn position and Spawn rotation based off of Player ID
             /*
             Positions[0, 0] = new Vector3((radius * Mathf.Cos(0)), (radius * Mathf.Sin(0)), 0);
@@ -99,7 +128,8 @@ public class Player : MonoBehaviour
         }
     }
 
-
+    /*TODO This Method is most likely not needed. Ships are now instantiated.
+      */
     public virtual void SpawnShip(Ship ship)
     {
         //this.Ship = ship;

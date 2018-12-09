@@ -76,7 +76,7 @@ public class UIManager : MonoBehaviour
     public void ConnectToLobby()
     {
         //Make Connection to Server and Load Lobby
-        NetworkManager.NetworkInstance.socketManager.Connect();
+       // NetworkManager.NetworkInstance.socketManager.Connect();
 
     }
 
