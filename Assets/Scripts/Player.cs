@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
 
 
 public class Player : MonoBehaviour
@@ -10,8 +11,8 @@ public class Player : MonoBehaviour
     private uint id;
     public Ship shipPrefab;
     public Ship shipInstance;
+    public readonly int radius = 5;
     Ship Ship;
-
   
 
     public uint Id
@@ -30,6 +31,10 @@ public class Player : MonoBehaviour
 
     void Start () {
 
+        Scene currentScene = SceneManager.GetActiveScene();
+        string sceneName = currentScene.name;
+
+        Vector3[] spawn = FindSpawnPosition(sceneName);
 
         //TODO Make Ship Prefab selection dynamic based on users selection or default 
         //-----------------------------------------------------------------------
@@ -37,17 +42,37 @@ public class Player : MonoBehaviour
         //This still needs to be refined a bit. For now ship selection is preset
         //and the spawn position is still a bit iffy
         //-----------------------------------------------------------------------
-        shipInstance = Instantiate(shipPrefab, new Vector3(0, -5, 0), transform.rotation);
-
-        Camera.main.GetComponent<CameraController>().setTarget(shipInstance.transform);
-
-
-        /*TODO This method hangs when no connection is made, add try/catch blocks
-         where neccesary*/
-        if (this.id == NetworkManager.NetworkInstance.socketManager.localId)
+        try
         {
-            //shipInstance.gameObject.AddComponent<FreeRoamController>();
-            //shipInstance.GetComponent<SpriteRenderer>().color = Color.red;
+            shipInstance = Instantiate(shipPrefab, spawn[0], Quaternion.Euler(spawn[1].x, spawn[1].y, spawn[1].z));
+        }
+        catch (ArgumentNullException) {
+            Debug.Log("spawn vector is null");
+            shipInstance = Instantiate(shipPrefab, new Vector3(0, -5, 0), transform.rotation);
+        }
+
+
+        /*Added try catch blocks so method does not hang.*/
+        try
+        {
+            if (this.id == NetworkManager.NetworkInstance.socketManager.localId)
+            {
+                if (sceneName == "FreeRoamScene")
+                {
+                    shipInstance.UseFreeRoamController();
+                }
+                else if(sceneName == "RevolutionScene")
+                {
+                    shipInstance.UseRevolutionController();
+                }
+                Camera.main.GetComponent<CameraController>().setTarget(shipInstance.transform);
+            }
+        }
+        catch (ArgumentNullException ex)
+        {
+            Debug.Log("No connection, using single player control set up for testing purposes.");
+            shipInstance.UseRevolutionController();
+            Camera.main.GetComponent<CameraController>().setTarget(shipInstance.transform);
         }
     }
 
@@ -74,11 +99,8 @@ public class Player : MonoBehaviour
     //method above. Ships should spawn in equally spaced increments around the 
     //circle. This ***EDIT THIS COMMENT AFTER THIS SECTION IS UPDATED***
     //-----------------------------------------------------------------------
-    public void FindSpawnPosition()
+    public Vector3[] FindSpawnPosition(string sceneName)
     {
-        Scene currentScene = SceneManager.GetActiveScene();
-        string sceneName = currentScene.name;
-
         if (sceneName == "FreeRoamScene")
         {
             //Fill in spawn position array and assign spawn position based off of PlayerID;
@@ -89,7 +111,8 @@ public class Player : MonoBehaviour
         else if (sceneName == "RevolutionScene")
         {
             //Assign Spawn position and Spawn rotation based off of Player ID
-            /*
+            Vector3[,] Positions = new Vector3[8,2];
+
             Positions[0, 0] = new Vector3((radius * Mathf.Cos(0)), (radius * Mathf.Sin(0)), 0);
             Positions[0, 1] = new Vector3(0, 0, 90);
 
@@ -114,11 +137,13 @@ public class Player : MonoBehaviour
             Positions[7, 0] = new Vector3((radius * Mathf.Cos(315*Mathf.Deg2Rad)), (radius * Mathf.Sin(315*Mathf.Deg2Rad)), 0);
             Positions[7, 1] = new Vector3(0, 0, 45);
 
-            SpawnPosition = Positions[PlayerID,0];
-            SpawnRotation = Positions[PlayerID, 1];
-            */
+            Vector3[] SpawnPosition = new Vector3[2];
+            SpawnPosition[0] = Positions[4, 0]; //Position
+            SpawnPosition[1] = Positions[4, 1]; //Rotation to face center
 
+            return (SpawnPosition);
         }
+        return (null);
     }
 
     /*TODO This Method is most likely not needed. Ships are now instantiated.

@@ -50,6 +50,7 @@ public class LocalGameManager : MonoBehaviour {
         localPlayer = playerShip.GetComponent<Player>();
 
         localPlayer.Id = NetworkManager.NetworkInstance.socketManager.localId;
+        Debug.Log("LocalPlayer.Id" + localPlayer.Id);
        
         NetworkManager.NetworkInstance.socketManager.OnReadyUp();
         PopulateNetworkPlayers();
