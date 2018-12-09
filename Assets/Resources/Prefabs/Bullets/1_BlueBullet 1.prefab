@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114324445062185932}
   - component: {fileID: 61830620879642292}
   m_Layer: 0
-  m_Name: 1_BlueBulletAdjusted
+  m_Name: 1_BlueBullet 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
