@@ -11,7 +11,9 @@ public partial class Ship : MonoBehaviour {
 
     public MonoBehaviour controller;
     public GameObject[] Bullets;
+    public int upgradeLevel = 0;
     GameObject Bullet;
+    
 
     public int BulletId { get; set; } = 0;
 
@@ -50,11 +52,22 @@ public partial class Ship : MonoBehaviour {
 
     void Update()
     {
-        //for quick testing purposes only
-        if(Input.GetKeyDown("space"))
+        if(upgradeLevel < 3)
         {
-            Fire();
+            BulletId = 0;
         }
+        else if(upgradeLevel >= 3 && upgradeLevel < 7)
+        {
+            BulletId = 1;
+        }else if(upgradeLevel >= 7)
+            {
+                BulletId = 2;
+            }
+        //for quick testing purposes only
+        //if(Input.GetKeyDown("space"))
+        //{
+        //    Fire();
+        //}
     }
 
     void SetInterval()
@@ -86,10 +99,9 @@ public partial class Ship : MonoBehaviour {
 
     public void Fire()
     {
-
-        Debug.Log("Fire");
-        Bullet = Instantiate(Bullets[BulletId], this.transform.position, transform.rotation );
-        
+            Debug.Log("Fire");
+            Bullet = Instantiate(Bullets[BulletId], this.transform.position, transform.rotation);
+               
         //TODO Setting Parent of bullet to ship causes matrix effect on bullets
         //Bullet.transform.SetParent(this.transform);
     }

@@ -9,15 +9,17 @@ public class UpgradeController : ObjectController {
 
         GetComponent<Rigidbody2D>().AddForce(transform.up * 25);
         GetComponent<Rigidbody2D>().angularVelocity = 90;
+        Destroy(gameObject, 30);
     }
 	
 	
-	private void onTriggerEnter2D(Collider collision){
-
-        if(collision.gameObject.tag.Equals("Ship"))
+	private void OnTriggerEnter2D(Collider2D collision){
+        //Upon pick up upgrades, increases upgrade level, which will decide which bullet is fired.
+        if (collision.gameObject.tag.Equals("Ship"))
         {
-
+            collision.gameObject.GetComponent<Ship>().upgradeLevel++;
+            Destroy(gameObject);
         }
-		
+        
 	}
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AsteroidController : ObjectController {
 
@@ -18,6 +19,9 @@ public class AsteroidController : ObjectController {
     void Start()
     {
 
+        Scene currentScene = SceneManager.GetActiveScene();
+        string sceneName = currentScene.name;
+
         // Get a reference to the game controller object and the script
         GameObject gameControllerObject =
             GameObject.FindWithTag("GameController");
@@ -25,7 +29,11 @@ public class AsteroidController : ObjectController {
         gameController =
             gameControllerObject.GetComponent<GameController>();
 
-
+        if(sceneName == "FreeRoamScene")
+        {
+            //Adds boundaries on freeroam. Code needs to be added to determine said boundaries
+            //gameObject.AddComponent<EuclideanTorus>();
+        }
         /*
         SpriteRenderer spriteRenderer;
         spriteRenderer = gameObject.AddComponent<SpriteRenderer>() as SpriteRenderer;
@@ -53,17 +61,21 @@ public class AsteroidController : ObjectController {
         {
             GetComponent<Rigidbody2D>().AddForce(transform.up * 150);
             GetComponent<Rigidbody2D>().angularVelocity = 90;
+            Destroy(gameObject, 15);
         }
         else if(gameObject.tag == "MediumAsteroid")
         {
             GetComponent<Rigidbody2D>().AddForce(transform.up * 100);
             GetComponent<Rigidbody2D>().angularVelocity = 60;
+            Destroy(gameObject, 20);
         }
         else if (gameObject.tag == "LargeAsteroid")
         {
             GetComponent<Rigidbody2D>().AddForce(transform.up * 50);
             GetComponent<Rigidbody2D>().angularVelocity = 30;
+            Destroy(gameObject, 30);
         }
+        
 
     }
 

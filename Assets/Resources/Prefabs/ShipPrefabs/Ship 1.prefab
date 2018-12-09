@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 212516292902262142}
   - component: {fileID: 114529689071195316}
   - component: {fileID: 50956406188808958}
-  - component: {fileID: 114351982680715316}
   - component: {fileID: 70144999243595552}
   m_Layer: 0
   m_Name: Ship 1
@@ -79,21 +78,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.05}
   m_Size: {x: 0.65, y: 0.75}
   m_Direction: 0
---- !u!114 &114351982680715316
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1286825989005178}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3eb4cf0579976049aa459028496b9c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  screenTop: 6
-  screenBottom: -6
-  screenLeft: -15
-  screenRight: 15
 --- !u!114 &114529689071195316
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -107,6 +91,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
   Bullets: []
+  upgradeLevel: 0
   interval: 1
 --- !u!212 &212516292902262142
 SpriteRenderer:
