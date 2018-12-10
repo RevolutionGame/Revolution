@@ -47,7 +47,7 @@ public class NetworkPlayer : MonoBehaviour {
         //-----------------------------------------------------------------------
         try
         {
-            shipInstance = Instantiate(ShipPrefabs[NetworkManager.networkInstance.socketManager], spawn[0], Quaternion.Euler(spawn[1].x, spawn[1].y, spawn[1].z)).GetComponent<Ship>();
+            shipInstance = Instantiate(ShipPrefabs[Id], spawn[0], Quaternion.Euler(spawn[1].x, spawn[1].y, spawn[1].z)).GetComponent<Ship>();
             if (sceneName == "FreeRoamScene")
             {
                 //Adds the boundary crossing logic to ships on free roam. The values for the boundaries have to be calculated via radius
