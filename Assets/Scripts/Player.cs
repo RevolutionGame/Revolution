@@ -50,7 +50,7 @@ public class Player : MonoBehaviour
         //-----------------------------------------------------------------------
         try
         {
-            shipInstance = Instantiate(ShipPrefabs[0], spawn[0], Quaternion.Euler(spawn[1].x, spawn[1].y, spawn[1].z)).GetComponent<Ship>();
+            shipInstance = Instantiate(ShipPrefabs[Id], spawn[0], Quaternion.Euler(spawn[1].x, spawn[1].y, spawn[1].z)).GetComponent<Ship>();
             if(sceneName == "FreeRoamScene")
             {
                 //Adds the boundary crossing logic to ships on free roam. The values for the boundaries have to be calculated via radius
@@ -59,7 +59,7 @@ public class Player : MonoBehaviour
         }
         catch (ArgumentNullException) {
             Debug.Log("spawn vector is null");
-            shipInstance = Instantiate(ShipPrefabs[0], new Vector3(0, -12, 0), transform.rotation).GetComponent<Ship>();
+            shipInstance = Instantiate(ShipPrefabs[Id], new Vector3(0, -12, 0), transform.rotation).GetComponent<Ship>();
             if (sceneName == "FreeRoamScene")
             {
                 //Adds the boundary crossing logic to ships on free roam. The values for the boundaries have to be calculated via radius
@@ -156,8 +156,8 @@ public class Player : MonoBehaviour
             Positions[7, 1] = new Vector3(0, 0, 45);
 
             Vector3[] SpawnPosition = new Vector3[2];
-            SpawnPosition[0] = Positions[4, 0]; //Position
-            SpawnPosition[1] = Positions[4, 1]; //Rotation to face center
+            SpawnPosition[0] = Positions[id, 0]; //Position
+            SpawnPosition[1] = Positions[id, 1]; //Rotation to face center
 
             return (SpawnPosition);
         }

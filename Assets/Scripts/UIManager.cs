@@ -21,7 +21,7 @@ public class UIManager : MonoBehaviour
 
     LocalPlayer PlayerProfile;
 
-    public Text plate;
+    Text plate;
 
     public GameObject NamePanel;
     GameObject NamePlate;
@@ -73,7 +73,10 @@ public class UIManager : MonoBehaviour
     void Start()
     {
 
-        //plate.GetComponent<Text>().text = "BlahBlah";
+        plate = GameObject.Find("LogInName").GetComponent<Text>();
+        plate.text = "Please Log In";
+
+
         NamePlate = Instantiate(Resources.Load<GameObject>("Prefabs/PlayerName"));
         //NamePlate.transform.parent = NamePanel.transform;
         NamePlate.GetComponent<Text>().text = "Test Name";

@@ -82,7 +82,7 @@ public class LocalGameManager : MonoBehaviour {
         {
             if (playerData.name != null && playerData.id != NetworkManager.NetworkInstance.socketManager.localId)
             {
-                GameObject playerShip = (GameObject)Instantiate(Resources.Load("Prefabs/Player"));
+                GameObject playerShip = (GameObject)Instantiate(Resources.Load("Prefabs/NetworkPlayer"));
                 Player newNetworkPlayer = playerShip.GetComponent<Player>();
                 newNetworkPlayer.Id = playerData.id;
                 players[playerData.id] = newNetworkPlayer;

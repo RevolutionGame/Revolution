@@ -794,7 +794,7 @@ Camera:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 0.5
+    width: 1
     height: 1
   near clip plane: -1000
   far clip plane: 1500
@@ -923,7 +923,7 @@ LineRenderer:
   m_ReflectionProbeUsage: 0
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: c7d4e13b0c3ff234f93526b4c6118827, type: 2}
+  - {fileID: 2100002, guid: accd5fcc9a227a641b875eb62f65a4e8, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1008,12 +1008,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1872400014}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38cba9881c2848b4083cf5f8d71ed552, type: 3}
+  m_Script: {fileID: 11500000, guid: c617b63b8528ebf4690d56545b0a4319, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   vertexCount: 40
   lineWidth: 0.2
-  radius: 0
+  radius: 12
 --- !u!4 &1872400017
 Transform:
   m_ObjectHideFlags: 0
