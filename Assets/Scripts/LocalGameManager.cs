@@ -119,7 +119,12 @@ public class LocalGameManager : MonoBehaviour {
             players[playerData.id].shipInstance.transform.rotation = Quaternion.Euler(new Vector3(0, 0, playerData.r));
             foreach(ActionType action in playerData.actions)
             {
-                switch(action)
+
+            }
+            int actionsToRemove = playerData.actions.Count;
+            for(int i = 0; i < actionsToRemove; i++)
+            {
+                switch (playerData.actions[i])
                 {
                     case ActionType.DespawnShip:
                         //TODO or whatever the code to destroy a ship is
@@ -134,7 +139,8 @@ public class LocalGameManager : MonoBehaviour {
                     case ActionType.HitPlayer:
                         break;
                 }
-            }
+            }           
+            playerData.actions.RemoveRange(0, actionsToRemove);
         }
     }
 
