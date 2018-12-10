@@ -196,6 +196,7 @@ public class UIManager : MonoBehaviour
         if (NetworkManager.NetworkInstance.socketManager.isReady)
         {
             StartGame(1);
+            Flag = false;
         }
     }
 
