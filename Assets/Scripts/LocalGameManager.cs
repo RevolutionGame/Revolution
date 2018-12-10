@@ -80,10 +80,11 @@ public class LocalGameManager : MonoBehaviour {
 
         foreach (PlayerData playerData in NetworkManager.NetworkInstance.socketManager.players)
         {
-            if (playerData.name != null)
+            if (playerData.name != null && playerData.id != NetworkManager.NetworkInstance.socketManager.localId)
             {
                 GameObject playerShip = (GameObject)Instantiate(Resources.Load("Prefabs/Player"));
                 Player newNetworkPlayer = playerShip.GetComponent<Player>();
+                newNetworkPlayer.Id = playerData.id;
                 players[playerData.id] = newNetworkPlayer;
             }
         }
@@ -114,34 +115,32 @@ public class LocalGameManager : MonoBehaviour {
     {
         foreach (PlayerData playerData in NetworkManager.NetworkInstance.socketManager.Players)
         {
-
-            Debug.Log($"PLAYER LOCATION: x: {playerData.x} y: {playerData.y} r: {playerData.r}");
-            players[playerData.id].shipInstance.transform.position = new Vector2(playerData.x, playerData.y);
-            players[playerData.id].shipInstance.transform.rotation = Quaternion.Euler(new Vector3(0, 0, playerData.r));
-            foreach(ActionType action in playerData.actions)
+            if(playerData.name != null)
             {
-
-            }
-            int actionsToRemove = playerData.actions.Count;
-            for(int i = 0; i < actionsToRemove; i++)
-            {
-                switch (playerData.actions[i])
+                Debug.Log($"PLAYER LOCATION: x: {playerData.x} y: {playerData.y} r: {playerData.r}");
+                players[playerData.id].shipInstance.transform.position = new Vector2(playerData.x, playerData.y);
+                players[playerData.id].shipInstance.transform.rotation = Quaternion.Euler(new Vector3(0, 0, playerData.r));
+                int actionsToRemove = playerData.actions.Count;
+                for (int i = 0; i < actionsToRemove; i++)
                 {
-                    case ActionType.DespawnShip:
-                        //TODO or whatever the code to destroy a ship is
-                        Destroy(players[playerData.id]);
-                        break;
-                    case ActionType.FireGun:
-                        break;
-                    case ActionType.SpawnShip:
-                        break;
-                    case ActionType.HitAsteroid:
-                        break;
-                    case ActionType.HitPlayer:
-                        break;
+                    switch (playerData.actions[i])
+                    {
+                        case ActionType.DespawnShip:
+                            //TODO or whatever the code to destroy a ship is
+                            Destroy(players[playerData.id]);
+                            break;
+                        case ActionType.FireGun:
+                            break;
+                        case ActionType.SpawnShip:
+                            break;
+                        case ActionType.HitAsteroid:
+                            break;
+                        case ActionType.HitPlayer:
+                            break;
+                    }
                 }
-            }           
-            playerData.actions.RemoveRange(0, actionsToRemove);
+                playerData.actions.RemoveRange(0, actionsToRemove);
+            }
         }
     }
 

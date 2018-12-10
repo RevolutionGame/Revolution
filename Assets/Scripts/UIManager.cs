@@ -101,6 +101,7 @@ public class UIManager : MonoBehaviour
     {
 
        SceneManager.LoadScene(scene);
+        NetworkManager.NetworkInstance.socketManager.OnReadyUp();
         
     }
 

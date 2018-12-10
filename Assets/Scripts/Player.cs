@@ -8,7 +8,7 @@ using System;
 
 public class Player : MonoBehaviour
 {
-    private uint id;
+    public uint id;
     public GameObject[] ShipPrefabs;
     //public Ship ship;
     public Ship shipInstance;
@@ -71,7 +71,7 @@ public class Player : MonoBehaviour
         /*Added try catch blocks so method does not hang.*/
         try
         {
-            if (this.id == NetworkManager.NetworkInstance.socketManager.localId)
+            if (id == NetworkManager.NetworkInstance.socketManager.localId)
             {
                 if (sceneName == "FreeRoamScene")
                 {
@@ -88,6 +88,7 @@ public class Player : MonoBehaviour
         catch (ArgumentNullException ex)
         {
             Debug.Log("No connection, using single player control set up for testing purposes.");
+            Debug.Log(ex.Message);
             shipInstance.UseRevolutionController();
 
             Camera.main.GetComponent<CameraController>().setTarget(shipInstance.transform);

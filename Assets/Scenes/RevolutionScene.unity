@@ -715,7 +715,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 39.199997, y: -13}
+  m_AnchoredPosition: {x: 39.200012, y: -13}
   m_SizeDelta: {x: 78.3, y: 26}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1227553676
@@ -891,77 +891,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1633040092
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1633040094}
-  - component: {fileID: 1633040093}
-  m_Layer: 0
-  m_Name: NetworkManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1633040093
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1633040092}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cabf0197d1674390b21cb9d4350b2e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  password: {fileID: 0}
-  mail: {fileID: 0}
-  MainPlayer:
-    id: 0
-    name: 
-    username: 
-    cell_number: 
-    email: 
-  players:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  playerStatuses:
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  lobbyStatus: {fileID: 0}
---- !u!4 &1633040094
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1633040092}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.0001236}
-  m_LocalScale: {x: 4.6599994, y: 4.6599994, z: 4.6599994}
-  m_Children: []
-  m_Father: {fileID: 2061756396}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1872400014
 GameObject:
   m_ObjectHideFlags: 0
@@ -1093,7 +1022,7 @@ Transform:
   m_LocalScale: {x: 31.099993, y: 31.099993, z: 0}
   m_Children: []
   m_Father: {fileID: 2061756396}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1992014125
 GameObject:
@@ -1285,7 +1214,6 @@ RectTransform:
   - {fileID: 951320106}
   - {fileID: 227036328}
   - {fileID: 1225152919}
-  - {fileID: 1633040094}
   - {fileID: 1872400017}
   - {fileID: 984575271}
   m_Father: {fileID: 0}

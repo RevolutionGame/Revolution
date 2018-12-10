@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class NetworkPlayer : Player {
 
-    int id;
+    //int id;
     public Ship ship;
 
-    public NetworkPlayer(int id) {
-        this.id = id;
-    }
+    //public NetworkPlayer(int id) {
+        //this.id = id;
+    //}
 
     
     public override void SpawnShip(Ship ship)

@@ -28,7 +28,8 @@ public struct PlayerData
 public class SocketManager
 {
 
-    const string URL = "ws://morning-reaches-89885.herokuapp.com/lobby";
+    //const string URL = "ws://morning-reaches-89885.herokuapp.com/lobby";
+    const string URL = "ws://localhost:8080/lobby";
     WebSocket socket;
     public Action onGameStart;
     public bool isReady = false;
@@ -87,7 +88,7 @@ public class SocketManager
             case BodyType.ReadyUp:
                 Debug.Log("Lobby is full");
                 isReady = true;
-                OnReadyUp();
+                //OnReadyUp();
                 break;
             case BodyType.GameStart:
                 Debug.Log("Starting Game");
@@ -113,7 +114,10 @@ public class SocketManager
         localId = packet.LobbyInfo.Id;
         foreach (PlayerInfo playerInfo in packet.LobbyInfo.Players)
         {
-            players[playerInfo.Id] = new PlayerData(playerInfo.Id, playerInfo.Name);
+            if (localId != playerInfo.Id)
+            {
+                players[playerInfo.Id] = new PlayerData(playerInfo.Id, playerInfo.Name);
+            }
         }
     }
 
