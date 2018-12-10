@@ -91,7 +91,7 @@ using modelSpace;
             Debug.Log("login complete");
             }
 
-        }
+       }
 
     public IEnumerator CreateUser(string email, string fullName, string username, string playerCellNumber, string pass)
     {
@@ -122,6 +122,101 @@ using modelSpace;
 
 
             Debug.Log("created user");
+        }
+
+    }
+
+    public IEnumerator GetScoreBoard() {
+
+        //returns an array of scores with player info inside
+
+        reqObj.Clear();
+
+        UnityWebRequest www = UnityWebRequest.Post(apiUrl + "/scores/player/get", reqObj);
+
+        yield return www.SendWebRequest();
+
+        if (www.isNetworkError || www.isHttpError) {
+            Debug.Log(www.error);
+        }
+        else {
+            Debug.Log(www.downloadHandler.text);
+
+            ScoreData scoreData = JsonUtility.FromJson<ScoreData>(www.downloadHandler.text);
+
+            yield return scoreData;
+
+
+        }
+
+    }
+
+
+    public IEnumerator GetPlayerScore(int playerId)
+    {
+
+
+        //use player id to get score
+
+
+        reqObj.Clear();
+
+        reqObj.Add("id", playerId.ToString());
+     
+
+        UnityWebRequest www = UnityWebRequest.Post(apiUrl + "/scores/player/get", reqObj);
+
+        yield return www.SendWebRequest();
+
+        if (www.isNetworkError || www.isHttpError)
+        {
+            Debug.Log(www.error);
+        }
+        else
+        {
+            Debug.Log(www.downloadHandler.text);
+
+            ScoreData scoreData = JsonUtility.FromJson<ScoreData>(www.downloadHandler.text);
+
+            yield return scoreData;
+
+
+            Debug.Log("created user");
+        }
+
+    }
+
+
+    public IEnumerator UpdatePlayerField(string field,string value,string playeremail)
+    {
+
+        //fields match the fields in UserData e.g(name,username,email,shiptype,weapontype)
+
+        reqObj.Clear();
+
+        reqObj.Add("field", field);
+        reqObj.Add("value", value);
+        reqObj.Add("email", playeremail);
+
+
+        UnityWebRequest www = UnityWebRequest.Post(apiUrl + "/player/update", reqObj);
+
+        yield return www.SendWebRequest();
+
+        if (www.isNetworkError || www.isHttpError)
+        {
+            Debug.Log(www.error);
+        }
+        else
+        {
+            Debug.Log(www.downloadHandler.text);
+
+            MsgData msgData = JsonUtility.FromJson<MsgData>(www.downloadHandler.text);
+
+            yield return msgData;
+
+
+            Debug.Log(msgData.msg);
         }
 
     }

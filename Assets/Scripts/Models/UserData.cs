@@ -10,6 +10,8 @@ namespace modelSpace
         public string username;
         public string cell_number;
         public string email;
+        public int shiptype;
+        public int weapontype;
 
 
         public int Id
@@ -41,6 +43,23 @@ namespace modelSpace
             set { email = value; }
 
         }
+
+        public int Shiptype
+        {
+
+            get { return shiptype; }
+            set { shiptype = value; }
+
+        }
+
+        public int Weapontype
+        {
+
+            get { return weapontype; }
+            set { weapontype = value; }
+
+        }
+
 
 
 
