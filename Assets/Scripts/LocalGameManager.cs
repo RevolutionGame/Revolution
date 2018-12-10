@@ -97,14 +97,14 @@ public class LocalGameManager : MonoBehaviour {
 
     void SendLocation()
     {
-        RevProtocol.Packet packet = new RevProtocol.Packet();
-        packet.BodyType = RevProtocol.BodyType.PlayerLocation;
-        RevProtocol.PlayerLocation location = new RevProtocol.PlayerLocation();
+        Packet packet = new Packet();
+        packet.BodyType = BodyType.PlayerLocation;
+        PlayerLocation location = new PlayerLocation();
         location.Id = NetworkManager.NetworkInstance.socketManager.localId;
         location.X = localPlayer.shipInstance.transform.position.x;
         location.Y = localPlayer.shipInstance.transform.position.y;
         location.R = localPlayer.shipInstance.transform.rotation.eulerAngles.z;
-        packet.Location = location;
+        packet.PlayerLocation = location;
         NetworkManager.NetworkInstance.socketManager.Send(packet);
 
     }
@@ -117,6 +117,24 @@ public class LocalGameManager : MonoBehaviour {
             Debug.Log($"PLAYER LOCATION: x: {playerData.x} y: {playerData.y} r: {playerData.r}");
             players[playerData.id].shipInstance.transform.position = new Vector2(playerData.x, playerData.y);
             players[playerData.id].shipInstance.transform.rotation = Quaternion.Euler(new Vector3(0, 0, playerData.r));
+            foreach(ActionType action in playerData.actions)
+            {
+                switch(action)
+                {
+                    case ActionType.DespawnShip:
+                        //TODO or whatever the code to destroy a ship is
+                        Destroy(players[playerData.id]);
+                        break;
+                    case ActionType.FireGun:
+                        break;
+                    case ActionType.SpawnShip:
+                        break;
+                    case ActionType.HitAsteroid:
+                        break;
+                    case ActionType.HitPlayer:
+                        break;
+                }
+            }
         }
     }
 
@@ -140,6 +158,4 @@ public class LocalGameManager : MonoBehaviour {
 
         Flag = true;
     }
-
-
 }

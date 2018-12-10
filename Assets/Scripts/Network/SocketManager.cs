@@ -12,6 +12,7 @@ public struct PlayerData
     public float x;
     public float y;
     public float r;
+    public List<ActionType> actions;
 
     public PlayerData(uint id, string name)
     {
@@ -20,6 +21,7 @@ public struct PlayerData
         x = 0f;
         y = 0f;
         r = 0f;
+        actions = new List<ActionType>();
     }
 }
 
@@ -54,14 +56,14 @@ public class SocketManager
         {
             if (e.IsBinary)
             {
-                RevProtocol.Packet packet = RevProtocol.Packet.Parser.ParseFrom(e.RawData);
+                Packet packet = Packet.Parser.ParseFrom(e.RawData);
                 ParseMessage(packet);
             }
         };
         socket.OnOpen += (sender, e) =>
         {
-            RevProtocol.Packet packet = new RevProtocol.Packet();
-            packet.BodyType = RevProtocol.BodyType.RequestSlot;
+            Packet packet = new Packet();
+            packet.BodyType = BodyType.RequestSlot;
             Send(packet);
 
             onSuccess();
@@ -70,65 +72,86 @@ public class SocketManager
         socket.Connect();
     }
 
-    void ParseMessage(RevProtocol.Packet packet)
+    void ParseMessage(Packet packet)
     {
         switch (packet.BodyType)
         {
-            case RevProtocol.BodyType.LobbyInfo:
+            case BodyType.LobbyInfo:
                 Debug.Log("SOCKETMANAGER: Lobby Info");
                 OnLobbyInfo(packet);
                 break;
-            case RevProtocol.BodyType.PlayerJoin:
+            case BodyType.PlayerJoin:
                 Debug.Log("SOCKETMANAGER: Player Join");
                 OnPlayerJoin(packet);
                 break;
-            case RevProtocol.BodyType.Readyup:
+            case BodyType.ReadyUp:
                 Debug.Log("Lobby is full");
                 isReady = true;
                 break;
-            case RevProtocol.BodyType.GameStart:
+            case BodyType.GameStart:
                 Debug.Log("Starting Game");
                 onGameStart();
                 break;
-            case RevProtocol.BodyType.PlayerLocation:
+            case BodyType.PlayerLocation:
                 Debug.Log("Player Location");
-                UpdateLocation(packet.Location.Id, packet.Location);
+                UpdateLocation(packet.PlayerLocation.Id, packet.PlayerLocation);
+                break;
+            case BodyType.PlayerAction:
+                OnAction(packet.PlayerAction);
                 break;
         }
     }
 
-    private PlayerData PlayerFromPacket(RevProtocol.PlayerInfo playerInfo)
+    private PlayerData PlayerFromPacket(PlayerInfo playerInfo)
     {
         return new PlayerData(playerInfo.Id, playerInfo.Name);
     }
 
-    private void OnLobbyInfo(RevProtocol.Packet packet)
+    private void OnLobbyInfo(Packet packet)
     {
         localId = packet.LobbyInfo.Id;
-        foreach (RevProtocol.PlayerInfo playerInfo in packet.LobbyInfo.Players)
+        foreach (PlayerInfo playerInfo in packet.LobbyInfo.Players)
         {
             players[playerInfo.Id] = new PlayerData(playerInfo.Id, playerInfo.Name);
         }
     }
 
-    private void OnPlayerJoin(RevProtocol.Packet packet)
+    private void OnPlayerJoin(Packet packet)
     {
         players[packet.PlayerInfo.Id] = new PlayerData(packet.PlayerInfo.Id, packet.PlayerInfo.Name);
     }
 
     public void OnReadyUp()
     {
-        RevProtocol.Packet packet = new RevProtocol.Packet();
-        packet.BodyType = RevProtocol.BodyType.PlayerReady;
+        Packet packet = new Packet();
+        packet.BodyType = BodyType.PlayerReady;
         Send(packet);
     }
 
-    public void Send(RevProtocol.Packet packet)
+    public void Send(Packet packet)
     {
         this.socket.Send(packet.ToByteArray());
     }
 
-    private void UpdateLocation(uint id, RevProtocol.PlayerLocation location)
+    public void OnAction(PlayerAction playerAction)
+    {
+        switch(playerAction.ActionType)
+        {
+            case ActionType.DespawnShip:
+                players[playerAction.PlayerTarget].actions.Add(ActionType.DespawnShip);
+                break;
+            case ActionType.FireGun:
+                break;
+            case ActionType.HitAsteroid:
+                break;
+            case ActionType.HitPlayer:
+                break;
+            case ActionType.SpawnShip:
+                break;
+        }
+    }
+
+    private void UpdateLocation(uint id, PlayerLocation location)
     {
         players[id].x = location.X;
         players[id].y = location.Y;
