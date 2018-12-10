@@ -22,8 +22,12 @@ public class UIManager : MonoBehaviour
 
     LocalPlayer PlayerProfile;
 
-    public TMP_Text NamePlate;
+    //public TMP_Text NamePlate;
     public Text plate;
+
+    public GameObject NamePanel;
+    GameObject NamePlate;
+    GameObject Name;
 
     ApiManager apiManager = new ApiManager();
 
@@ -33,6 +37,8 @@ public class UIManager : MonoBehaviour
     public UserData MainPlayer;
     LoginData ld;
     bool Flag = false;
+
+    private bool isReady = false;
 
 
 
@@ -68,11 +74,21 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
-        
-        plate.GetComponent<Text>().text = "BlahBlah";
 
-        
+        //plate.GetComponent<Text>().text = "BlahBlah";
+        NamePlate = Instantiate(Resources.Load<GameObject>("Prefabs/PlayerName"));
+        //NamePlate.transform.parent = NamePanel.transform;
+        NamePlate.GetComponent<Text>().text = "Test Name";
 
+
+    }
+
+    void Update()
+    {
+        if (Flag)
+        {
+            UpdateUI();
+        }
     }
 
     //TODO Add disconnect method when players exit the lobby early
@@ -160,6 +176,27 @@ public class UIManager : MonoBehaviour
         //yield return null;
 
         Flag = true;
+    }
+
+    private void OnReadyUp()
+    {
+        this.isReady = true;
+    }
+
+    private void UpdateUI()
+    {
+        foreach (PlayerData player in NetworkManager.NetworkInstance.socketManager.Players)
+        {
+            if (player.name != null)
+            {
+                //TODO Attach this to player nameplate prefab in lobby menu
+                //players[player.id].text = player.name;
+            }
+        }
+        if (NetworkManager.NetworkInstance.socketManager.isReady)
+        {
+            StartGame(2);
+        }
     }
 
     #region random methods
