@@ -43,9 +43,9 @@ public class BaseBulletController : MonoBehaviour
 
         if(collision.gameObject.tag.Equals("Ship"))
         {
-            //Decrement health of ship based on bulletupgrade, when ships health reaches 0 destroy ship
-            //gameController.DestroyShip(collision.gameObject);
-            //Destroy(gameObject);
+            //Decrement health of ship based on bulletupgrade, when ships health reaches 0 destroy ship (Not Implemented)
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
         }
 
         if (collision.gameObject.tag.Equals("SmallAsteroid") || collision.gameObject.tag.Equals("MediumAsteroid") ||

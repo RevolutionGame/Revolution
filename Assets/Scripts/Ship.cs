@@ -99,8 +99,11 @@ public partial class Ship : MonoBehaviour {
 
     public void Fire()
     {
-            Debug.Log("Fire");
-            Bullet = Instantiate(Bullets[BulletId], this.transform.position, transform.rotation);
+
+        Vector3 offset = transform.rotation * new Vector3(0, 1.0f, 0);
+
+        Debug.Log("Fire");
+            Bullet = Instantiate(Bullets[BulletId], this.transform.position + offset, transform.rotation);
                
         //TODO Setting Parent of bullet to ship causes matrix effect on bullets
         //Bullet.transform.SetParent(this.transform);
