@@ -8,6 +8,7 @@ namespace modelSpace
         public string msg;
         public string error;
         public UserData data;
+        public ScoreData[] PlayerScore;
 
 
     }

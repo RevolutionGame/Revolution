@@ -186,6 +186,41 @@ using modelSpace;
 
     }
 
+    public IEnumerator AddPlayerScore(string email, int score)
+    {
+
+
+        //use player id to get score
+
+
+        reqObj.Clear();
+
+        reqObj.Add("email", email);
+        reqObj.Add("score", score.ToString());
+
+
+        UnityWebRequest www = UnityWebRequest.Post(apiUrl + "/player/addScore", reqObj);
+
+        yield return www.SendWebRequest();
+
+        if (www.isNetworkError || www.isHttpError)
+        {
+            Debug.Log(www.error);
+        }
+        else
+        {
+            Debug.Log(www.downloadHandler.text);
+
+            ScoreData scoreData = JsonUtility.FromJson<ScoreData>(www.downloadHandler.text);
+
+            yield return scoreData;
+
+
+            Debug.Log("created user");
+        }
+
+    }
+
 
     public IEnumerator UpdatePlayerField(string field,string value,string playeremail)
     {
