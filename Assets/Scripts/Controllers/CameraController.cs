@@ -16,7 +16,8 @@ public class CameraController : MonoBehaviour {
     void LateUpdate () {
         if (playerTransform != null)
         {
-            transform.position = playerTransform.position + new Vector3(0, 0, depth);
+            transform.position = playerTransform.position - Vector3.Scale(playerTransform.position, new Vector3(.5f,.5f,1) );
+            //transform.position = playerTransform.position + new Vector3(0, 0, depth);
             transform.rotation = playerTransform.rotation.normalized;
         }
         else
