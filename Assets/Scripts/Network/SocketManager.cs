@@ -29,7 +29,8 @@ public class SocketManager
 {
 
     //const string URL = "ws://morning-reaches-89885.herokuapp.com/lobby";
-    const string URL = "ws://localhost:8080/lobby";
+    //const string URL = "ws://localhost:8080/lobby";
+    const string URL = "ws://young-lowlands-93365.herokuapp.com/lobby";
     WebSocket socket;
     public Action onGameStart;
     public Action<ObjectLocation> onWorldInfo;

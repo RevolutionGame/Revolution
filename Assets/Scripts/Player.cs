@@ -156,8 +156,8 @@ public class Player : MonoBehaviour
             Positions[7, 1] = new Vector3(0, 0, 45);
 
             Vector3[] SpawnPosition = new Vector3[2];
-            SpawnPosition[0] = Positions[4, 0]; //Position
-            SpawnPosition[1] = Positions[4, 1]; //Rotation to face center
+            SpawnPosition[0] = Positions[id, 0]; //Position
+            SpawnPosition[1] = Positions[id, 1]; //Rotation to face center
 
             return (SpawnPosition);
         }

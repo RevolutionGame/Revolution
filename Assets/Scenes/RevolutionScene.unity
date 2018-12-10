@@ -215,7 +215,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -16.839996, y: -15}
+  m_AnchoredPosition: {x: -16.839966, y: -15}
   m_SizeDelta: {x: 33.679993, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &296298681
@@ -794,7 +794,7 @@ Camera:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 0.5
+    width: 1
     height: 1
   near clip plane: -1000
   far clip plane: 1500
@@ -923,7 +923,7 @@ LineRenderer:
   m_ReflectionProbeUsage: 0
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: c7d4e13b0c3ff234f93526b4c6118827, type: 2}
+  - {fileID: 2100000, guid: 4c3e45dfb856541ebab8624d9c7c1867, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1008,12 +1008,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1872400014}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38cba9881c2848b4083cf5f8d71ed552, type: 3}
+  m_Script: {fileID: 11500000, guid: b13d222a90ef041d48ec7efc28f44d40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   vertexCount: 40
   lineWidth: 0.2
-  radius: 0
+  radius: 12
 --- !u!4 &1872400017
 Transform:
   m_ObjectHideFlags: 0
