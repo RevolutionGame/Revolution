@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
 {
     private uint id;
     public GameObject[] ShipPrefabs;
-    public Ship ship;
+    //public Ship ship;
     public Ship shipInstance;
     public readonly int radius = 12;
     Ship Ship;
