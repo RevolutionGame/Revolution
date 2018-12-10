@@ -1,15 +1,15 @@
 ﻿using System;
 namespace modelSpace
 {
-    [System.Serializable]
-    public class LoginData
-    {
 
+    [System.Serializable]
+    public class MsgData
+    {
         public string msg;
         public string error;
-        public UserData data;
-        public ScoreData[] PlayerScore;
-
+      
 
     }
+
 }
+
