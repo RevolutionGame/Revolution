@@ -30,24 +30,26 @@ public static partial class RevProtocolReflection {
           "ZWFwb25faWQYBSABKA0iNQoJTG9iYnlJbmZvEgoKAmlkGAEgASgNEhwKB3Bs",
           "YXllcnMYAiADKAsyCy5QbGF5ZXJJbmZvIk0KDlBsYXllckxvY2F0aW9uEgoK",
           "AmlkGAEgASgNEg4KBmhlYWx0aBgCIAEoDRIJCgF4GAMgASgCEgkKAXkYBCAB",
-          "KAISCQoBchgFIAEoAiJ2Cg5PYmplY3RMb2NhdGlvbhIRCglvYmplY3RfaWQY",
-          "ASABKA0SIAoLb2JqZWN0X3R5cGUYAiABKA4yCy5PYmplY3RUeXBlEgkKAXgY",
-          "AyABKAISCQoBeRgEIAEoAhIJCgFyGAUgASgCEg4KBmhlYWx0aBgGIAEoDSIt",
-          "CglXb3JsZEluZm8SIAoHb2JqZWN0cxgBIAMoCzIPLk9iamVjdExvY2F0aW9u",
-          "IuoBCgZQYWNrZXQSHAoJYm9keV90eXBlGAEgASgOMgkuQm9keVR5cGUSIgoL",
-          "cGxheWVyX2luZm8YAiABKAsyCy5QbGF5ZXJJbmZvSAASIAoKbG9iYnlfaW5m",
-          "bxgDIAEoCzIKLkxvYmJ5SW5mb0gAEioKD3BsYXllcl9sb2NhdGlvbhgEIAEo",
-          "CzIPLlBsYXllckxvY2F0aW9uSAASIAoKd29ybGRfaW5mbxgFIAEoCzIKLldv",
-          "cmxkSW5mb0gAEiYKDXBsYXllcl9hY3Rpb24YBiABKAsyDS5QbGF5ZXJBY3Rp",
-          "b25IAEIGCgRib2R5KtQBCghCb2R5VHlwZRIICgROT05FEAASEAoMUkVRVUVT",
-          "VF9TTE9UEAESDwoLUExBWUVSX0pPSU4QAhIVChFQTEFZRVJfRElTQ09OTkVD",
-          "VBADEg4KCkxPQkJZX0lORk8QBBIQCgxQTEFZRVJfUkVBRFkQBRIOCgpXT1JM",
-          "RF9JTkZPEAYSDgoKR0FNRV9TVEFSVBAHEgwKCEdBTUVfRU5EEAgSEwoPUExB",
-          "WUVSX0xPQ0FUSU9OEAkSEQoNUExBWUVSX0FDVElPThAKEgwKCFJFQURZX1VQ",
-          "EAsqXgoKQWN0aW9uVHlwZRIMCghGSVJFX0dVThAAEhAKDERFU1BBV05fU0hJ",
-          "UBABEg4KClNQQVdOX1NISVAQAhIQCgxISVRfQVNURVJPSUQQAxIOCgpISVRf",
-          "UExBWUVSEAQqRwoKT2JqZWN0VHlwZRIQCgxBU1RFUk9JRF9CSUcQABITCg9B",
-          "U1RFUk9JRF9NRURJVU0QARISCg5BU1RFUk9JRF9TTUFMTBACYgZwcm90bzM="));
+          "KAISCQoBchgFIAEoAiKLAQoOT2JqZWN0TG9jYXRpb24SEQoJb2JqZWN0X2lk",
+          "GAEgASgNEiAKC29iamVjdF90eXBlGAIgASgOMgsuT2JqZWN0VHlwZRIJCgF4",
+          "GAMgASgCEgkKAXkYBCABKAISCQoBchgFIAEoAhITCgtudW1fc2VjdG9ycxgG",
+          "IAEoDRIOCgZoZWFsdGgYByABKA0iLQoJV29ybGRJbmZvEiAKB29iamVjdHMY",
+          "ASADKAsyDy5PYmplY3RMb2NhdGlvbiKWAgoGUGFja2V0EhwKCWJvZHlfdHlw",
+          "ZRgBIAEoDjIJLkJvZHlUeXBlEiIKC3BsYXllcl9pbmZvGAIgASgLMgsuUGxh",
+          "eWVySW5mb0gAEiAKCmxvYmJ5X2luZm8YAyABKAsyCi5Mb2JieUluZm9IABIq",
+          "Cg9wbGF5ZXJfbG9jYXRpb24YBCABKAsyDy5QbGF5ZXJMb2NhdGlvbkgAEiAK",
+          "CndvcmxkX2luZm8YBSABKAsyCi5Xb3JsZEluZm9IABImCg1wbGF5ZXJfYWN0",
+          "aW9uGAYgASgLMg0uUGxheWVyQWN0aW9uSAASKgoPb2JqZWN0X2xvY2F0aW9u",
+          "GAcgASgLMg8uT2JqZWN0TG9jYXRpb25IAEIGCgRib2R5KukBCghCb2R5VHlw",
+          "ZRIICgROT05FEAASEAoMUkVRVUVTVF9TTE9UEAESDwoLUExBWUVSX0pPSU4Q",
+          "AhIVChFQTEFZRVJfRElTQ09OTkVDVBADEg4KCkxPQkJZX0lORk8QBBIQCgxQ",
+          "TEFZRVJfUkVBRFkQBRIOCgpXT1JMRF9JTkZPEAYSDgoKR0FNRV9TVEFSVBAH",
+          "EgwKCEdBTUVfRU5EEAgSEwoPUExBWUVSX0xPQ0FUSU9OEAkSEQoNUExBWUVS",
+          "X0FDVElPThAKEgwKCFJFQURZX1VQEAsSEwoPT0JKRUNUX0xPQ0FUSU9OEAwq",
+          "XgoKQWN0aW9uVHlwZRIMCghGSVJFX0dVThAAEhAKDERFU1BBV05fU0hJUBAB",
+          "Eg4KClNQQVdOX1NISVAQAhIQCgxISVRfQVNURVJPSUQQAxIOCgpISVRfUExB",
+          "WUVSEAQqRwoKT2JqZWN0VHlwZRIQCgxBU1RFUk9JRF9CSUcQABITCg9BU1RF",
+          "Uk9JRF9NRURJVU0QARISCg5BU1RFUk9JRF9TTUFMTBACYgZwcm90bzM="));
     descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
         new pbr::FileDescriptor[] { },
         new pbr::GeneratedClrTypeInfo(new[] {typeof(global::BodyType), typeof(global::ActionType), typeof(global::ObjectType), }, new pbr::GeneratedClrTypeInfo[] {
@@ -55,9 +57,9 @@ public static partial class RevProtocolReflection {
           new pbr::GeneratedClrTypeInfo(typeof(global::PlayerInfo), global::PlayerInfo.Parser, new[]{ "Id", "Name", "Score", "ShipId", "WeaponId" }, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::LobbyInfo), global::LobbyInfo.Parser, new[]{ "Id", "Players" }, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::PlayerLocation), global::PlayerLocation.Parser, new[]{ "Id", "Health", "X", "Y", "R" }, null, null, null),
-          new pbr::GeneratedClrTypeInfo(typeof(global::ObjectLocation), global::ObjectLocation.Parser, new[]{ "ObjectId", "ObjectType", "X", "Y", "R", "Health" }, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::ObjectLocation), global::ObjectLocation.Parser, new[]{ "ObjectId", "ObjectType", "X", "Y", "R", "NumSectors", "Health" }, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::WorldInfo), global::WorldInfo.Parser, new[]{ "Objects" }, null, null, null),
-          new pbr::GeneratedClrTypeInfo(typeof(global::Packet), global::Packet.Parser, new[]{ "BodyType", "PlayerInfo", "LobbyInfo", "PlayerLocation", "WorldInfo", "PlayerAction" }, new[]{ "Body" }, null, null)
+          new pbr::GeneratedClrTypeInfo(typeof(global::Packet), global::Packet.Parser, new[]{ "BodyType", "PlayerInfo", "LobbyInfo", "PlayerLocation", "WorldInfo", "PlayerAction", "ObjectLocation" }, new[]{ "Body" }, null, null)
         }));
   }
   #endregion
@@ -92,6 +94,7 @@ public enum BodyType {
   [pbr::OriginalName("PLAYER_LOCATION")] PlayerLocation = 9,
   [pbr::OriginalName("PLAYER_ACTION")] PlayerAction = 10,
   [pbr::OriginalName("READY_UP")] ReadyUp = 11,
+  [pbr::OriginalName("OBJECT_LOCATION")] ObjectLocation = 12,
 }
 
 public enum ActionType {
@@ -1016,6 +1019,7 @@ public sealed partial class ObjectLocation : pb::IMessage<ObjectLocation> {
     x_ = other.x_;
     y_ = other.y_;
     r_ = other.r_;
+    numSectors_ = other.numSectors_;
     health_ = other.health_;
     _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
   }
@@ -1080,8 +1084,19 @@ public sealed partial class ObjectLocation : pb::IMessage<ObjectLocation> {
     }
   }
 
+  /// <summary>Field number for the "num_sectors" field.</summary>
+  public const int NumSectorsFieldNumber = 6;
+  private uint numSectors_;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public uint NumSectors {
+    get { return numSectors_; }
+    set {
+      numSectors_ = value;
+    }
+  }
+
   /// <summary>Field number for the "health" field.</summary>
-  public const int HealthFieldNumber = 6;
+  public const int HealthFieldNumber = 7;
   private uint health_;
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public uint Health {
@@ -1109,6 +1124,7 @@ public sealed partial class ObjectLocation : pb::IMessage<ObjectLocation> {
     if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(X, other.X)) return false;
     if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Y, other.Y)) return false;
     if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(R, other.R)) return false;
+    if (NumSectors != other.NumSectors) return false;
     if (Health != other.Health) return false;
     return Equals(_unknownFields, other._unknownFields);
   }
@@ -1121,6 +1137,7 @@ public sealed partial class ObjectLocation : pb::IMessage<ObjectLocation> {
     if (X != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(X);
     if (Y != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Y);
     if (R != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(R);
+    if (NumSectors != 0) hash ^= NumSectors.GetHashCode();
     if (Health != 0) hash ^= Health.GetHashCode();
     if (_unknownFields != null) {
       hash ^= _unknownFields.GetHashCode();
@@ -1155,8 +1172,12 @@ public sealed partial class ObjectLocation : pb::IMessage<ObjectLocation> {
       output.WriteRawTag(45);
       output.WriteFloat(R);
     }
-    if (Health != 0) {
+    if (NumSectors != 0) {
       output.WriteRawTag(48);
+      output.WriteUInt32(NumSectors);
+    }
+    if (Health != 0) {
+      output.WriteRawTag(56);
       output.WriteUInt32(Health);
     }
     if (_unknownFields != null) {
@@ -1181,6 +1202,9 @@ public sealed partial class ObjectLocation : pb::IMessage<ObjectLocation> {
     }
     if (R != 0F) {
       size += 1 + 4;
+    }
+    if (NumSectors != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeUInt32Size(NumSectors);
     }
     if (Health != 0) {
       size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Health);
@@ -1210,6 +1234,9 @@ public sealed partial class ObjectLocation : pb::IMessage<ObjectLocation> {
     }
     if (other.R != 0F) {
       R = other.R;
+    }
+    if (other.NumSectors != 0) {
+      NumSectors = other.NumSectors;
     }
     if (other.Health != 0) {
       Health = other.Health;
@@ -1246,6 +1273,10 @@ public sealed partial class ObjectLocation : pb::IMessage<ObjectLocation> {
           break;
         }
         case 48: {
+          NumSectors = input.ReadUInt32();
+          break;
+        }
+        case 56: {
           Health = input.ReadUInt32();
           break;
         }
@@ -1418,6 +1449,9 @@ public sealed partial class Packet : pb::IMessage<Packet> {
       case BodyOneofCase.PlayerAction:
         PlayerAction = other.PlayerAction.Clone();
         break;
+      case BodyOneofCase.ObjectLocation:
+        ObjectLocation = other.ObjectLocation.Clone();
+        break;
     }
 
     _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -1494,6 +1528,17 @@ public sealed partial class Packet : pb::IMessage<Packet> {
     }
   }
 
+  /// <summary>Field number for the "object_location" field.</summary>
+  public const int ObjectLocationFieldNumber = 7;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public global::ObjectLocation ObjectLocation {
+    get { return bodyCase_ == BodyOneofCase.ObjectLocation ? (global::ObjectLocation) body_ : null; }
+    set {
+      body_ = value;
+      bodyCase_ = value == null ? BodyOneofCase.None : BodyOneofCase.ObjectLocation;
+    }
+  }
+
   private object body_;
   /// <summary>Enum of possible cases for the "body" oneof.</summary>
   public enum BodyOneofCase {
@@ -1503,6 +1548,7 @@ public sealed partial class Packet : pb::IMessage<Packet> {
     PlayerLocation = 4,
     WorldInfo = 5,
     PlayerAction = 6,
+    ObjectLocation = 7,
   }
   private BodyOneofCase bodyCase_ = BodyOneofCase.None;
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1535,6 +1581,7 @@ public sealed partial class Packet : pb::IMessage<Packet> {
     if (!object.Equals(PlayerLocation, other.PlayerLocation)) return false;
     if (!object.Equals(WorldInfo, other.WorldInfo)) return false;
     if (!object.Equals(PlayerAction, other.PlayerAction)) return false;
+    if (!object.Equals(ObjectLocation, other.ObjectLocation)) return false;
     if (BodyCase != other.BodyCase) return false;
     return Equals(_unknownFields, other._unknownFields);
   }
@@ -1548,6 +1595,7 @@ public sealed partial class Packet : pb::IMessage<Packet> {
     if (bodyCase_ == BodyOneofCase.PlayerLocation) hash ^= PlayerLocation.GetHashCode();
     if (bodyCase_ == BodyOneofCase.WorldInfo) hash ^= WorldInfo.GetHashCode();
     if (bodyCase_ == BodyOneofCase.PlayerAction) hash ^= PlayerAction.GetHashCode();
+    if (bodyCase_ == BodyOneofCase.ObjectLocation) hash ^= ObjectLocation.GetHashCode();
     hash ^= (int) bodyCase_;
     if (_unknownFields != null) {
       hash ^= _unknownFields.GetHashCode();
@@ -1586,6 +1634,10 @@ public sealed partial class Packet : pb::IMessage<Packet> {
       output.WriteRawTag(50);
       output.WriteMessage(PlayerAction);
     }
+    if (bodyCase_ == BodyOneofCase.ObjectLocation) {
+      output.WriteRawTag(58);
+      output.WriteMessage(ObjectLocation);
+    }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(output);
     }
@@ -1611,6 +1663,9 @@ public sealed partial class Packet : pb::IMessage<Packet> {
     }
     if (bodyCase_ == BodyOneofCase.PlayerAction) {
       size += 1 + pb::CodedOutputStream.ComputeMessageSize(PlayerAction);
+    }
+    if (bodyCase_ == BodyOneofCase.ObjectLocation) {
+      size += 1 + pb::CodedOutputStream.ComputeMessageSize(ObjectLocation);
     }
     if (_unknownFields != null) {
       size += _unknownFields.CalculateSize();
@@ -1656,6 +1711,12 @@ public sealed partial class Packet : pb::IMessage<Packet> {
           PlayerAction = new global::PlayerAction();
         }
         PlayerAction.MergeFrom(other.PlayerAction);
+        break;
+      case BodyOneofCase.ObjectLocation:
+        if (ObjectLocation == null) {
+          ObjectLocation = new global::ObjectLocation();
+        }
+        ObjectLocation.MergeFrom(other.ObjectLocation);
         break;
     }
 
@@ -1717,6 +1778,15 @@ public sealed partial class Packet : pb::IMessage<Packet> {
           }
           input.ReadMessage(subBuilder);
           PlayerAction = subBuilder;
+          break;
+        }
+        case 58: {
+          global::ObjectLocation subBuilder = new global::ObjectLocation();
+          if (bodyCase_ == BodyOneofCase.ObjectLocation) {
+            subBuilder.MergeFrom(ObjectLocation);
+          }
+          input.ReadMessage(subBuilder);
+          ObjectLocation = subBuilder;
           break;
         }
       }

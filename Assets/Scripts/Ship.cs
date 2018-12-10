@@ -78,7 +78,7 @@ public partial class Ship : MonoBehaviour {
 	// Update is called once per frame
     void FixedUpdate () {
 
-        Debug.Log("Position: " + transform.position.ToString());
+        //Debug.Log("Position: " + transform.position.ToString());
 
     }
 

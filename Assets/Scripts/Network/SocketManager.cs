@@ -32,6 +32,7 @@ public class SocketManager
     const string URL = "ws://localhost:8080/lobby";
     WebSocket socket;
     public Action onGameStart;
+    public Action<ObjectLocation> onWorldInfo;
     public bool isReady = false;
     public uint localId;
 
@@ -100,6 +101,14 @@ public class SocketManager
                 break;
             case BodyType.PlayerAction:
                 OnAction(packet.PlayerAction);
+                break;
+            case BodyType.ObjectLocation:
+                Debug.Log("Object Location");
+                onWorldInfo(packet.ObjectLocation);
+                break;
+            case BodyType.GameEnd:
+                NetworkManager.NetworkInstance.socketManager.socket.Close();
+                this.isReady = false;                
                 break;
         }
     }

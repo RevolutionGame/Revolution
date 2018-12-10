@@ -13,7 +13,7 @@ public class GameController : MonoBehaviour {
     //public NetworkManager networkManager;
 
     private LocalPlayer player;
-
+    public List<ObjectLocation> objectsToSpawn = new List<ObjectLocation>();
     public int MinimumAsteroidRemaining = 10;
     private int MaxAsteroidsSpawnable;
     private int AsteroidsRemaining;
@@ -32,22 +32,31 @@ public class GameController : MonoBehaviour {
 
         player =
             PlayerObject.GetComponent<LocalPlayer>();*/
-
         largeAsteroid = Resources.Load<GameObject>("Prefabs/LargeAsteroid");
         mediumAsteroid = Resources.Load<GameObject>("Prefabs/MediumAsteroid");
         smallAsteroid = Resources.Load<GameObject>("Prefabs/SmallAsteroid");
         redUpgrade = Resources.Load<GameObject>("Prefabs/RedUpgrade");
-
+        NetworkManager.networkInstance.socketManager.onWorldInfo = OnWorldInfo;
         BeginGame();
 	}
 	
 	// Update is called once per frame
-	void Update ()
+	void FixedUpdate ()
     {
-		
-	}
+        int numberOfObjectsToSpawn = objectsToSpawn.Count;
+        for(int i = 0; i < numberOfObjectsToSpawn; i++) 
+        {
+            SpawnRevolutionAsteroidsProd((int)objectsToSpawn[i].NumSectors, (int)objectsToSpawn[i].ObjectType);
+        }
+        objectsToSpawn.RemoveRange(0, numberOfObjectsToSpawn);
+    }
 
-   void BeginGame()
+    void OnWorldInfo(ObjectLocation objectLocation)
+    {
+        objectsToSpawn.Add(objectLocation);
+    }
+
+    void BeginGame()
     {
 
         Scene currentScene = SceneManager.GetActiveScene();
@@ -71,7 +80,7 @@ public class GameController : MonoBehaviour {
     {
         MaxAsteroidsSpawnable = 10;
        
-        StartCoroutine(FakeServerPulse(2));
+        //StartCoroutine(FakeServerPulse(2));
 
     }
 
@@ -225,10 +234,7 @@ public class GameController : MonoBehaviour {
                             Quaternion.Euler(0, 0, angle));
 
             }
-        }
-
-
-
+        }               
     }
 
     void SpawnFreeAsteroids(){
