@@ -1008,9 +1008,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1872400014}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9f743e63457170409eed381e295ea26, type: 3}
+  m_Script: {fileID: 11500000, guid: 38cba9881c2848b4083cf5f8d71ed552, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  vertexCount: 40
+  lineWidth: 0.2
+  radius: 0
 --- !u!4 &1872400017
 Transform:
   m_ObjectHideFlags: 0

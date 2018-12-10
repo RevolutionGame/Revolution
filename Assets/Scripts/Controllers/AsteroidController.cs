@@ -83,11 +83,11 @@ public class AsteroidController : ObjectController {
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        /*if (collision.gameObject.tag.Equals("Ship"))
+        if (collision.gameObject.tag.Equals("Ship"))
         {
-            //gameController.DestroyShip(collision.gameObject);
+            Destroy(collision.gameObject);
         }
-        */
+        
 
     }
 }
