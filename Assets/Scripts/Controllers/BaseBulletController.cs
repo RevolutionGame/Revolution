@@ -5,9 +5,9 @@ using UnityEngine;
 public class BaseBulletController : MonoBehaviour
 {
 
-    public float BulletSpeed    { get; } = 300;
-    public float BullteLifetime       { get; } = 1.0f;
-    public float ShotInterval   { get; } = 0.2f;
+    public float BulletSpeed    { get; } = 600;
+    public float BullteLifetime       { get; } = 2.5f;
+    public float ShotInterval   { get; } = 1f;
 
     private GameController gameController;
 

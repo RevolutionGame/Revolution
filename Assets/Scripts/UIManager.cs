@@ -10,7 +10,6 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
 
-    public GameObject networkManager;
     public Player[] players = new Player[9];
 
 
@@ -22,7 +21,6 @@ public class UIManager : MonoBehaviour
 
     LocalPlayer PlayerProfile;
 
-    //public TMP_Text NamePlate;
     public Text plate;
 
     public GameObject NamePanel;
@@ -49,7 +47,7 @@ public class UIManager : MonoBehaviour
         if(NetworkManager.NetworkInstance == null)
         {
             //Create an instance of Network Manager if none exist
-            Instantiate(networkManager);
+            //Instantiate(networkManager);
 
         }
 

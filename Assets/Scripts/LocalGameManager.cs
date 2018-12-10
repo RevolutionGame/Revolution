@@ -15,7 +15,6 @@ public class LocalGameManager : MonoBehaviour {
     public bool isEnabled = false;
 
     public Ship ship;
-    //public NetworkManager networkManager;
     private int localID;
     private World world = new World();
 
@@ -45,13 +44,15 @@ public class LocalGameManager : MonoBehaviour {
          */
         GameObject playerShip = (GameObject)Instantiate(Resources.Load("Prefabs/Player"));
         localPlayer = playerShip.GetComponent<Player>();
-
+        
 
         //TODO move to UIManager
+        /*
         while (!Flag)
         {
             NetworkManager.NetworkInstance.socketManager.Connect(Connected);
         }
+        */
 
         localPlayer.Id = NetworkManager.NetworkInstance.socketManager.localId;
         Debug.Log("LocalPlayer.Id" + localPlayer.Id);

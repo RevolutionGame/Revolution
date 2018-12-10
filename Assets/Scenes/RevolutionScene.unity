@@ -1082,9 +1082,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9f743e63457170409eed381e295ea26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vertexCount: 40
-  lineWidth: 0.2
-  radius: 12
 --- !u!4 &1872400017
 Transform:
   m_ObjectHideFlags: 0

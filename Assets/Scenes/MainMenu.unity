@@ -2266,11 +2266,9 @@ GameObject:
   - component: {fileID: 719024826}
   - component: {fileID: 719024825}
   - component: {fileID: 719024824}
-  - component: {fileID: 719024831}
   - component: {fileID: 719024830}
   - component: {fileID: 719024823}
   - component: {fileID: 719024827}
-  - component: {fileID: 719024828}
   - component: {fileID: 719024829}
   m_Layer: 5
   m_Name: Canvas
@@ -2357,7 +2355,7 @@ RectTransform:
   - {fileID: 1561517772}
   - {fileID: 1941926742}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2375,7 +2373,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4265e8726ba184a41a692410a4ca9081, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  networkManager: {fileID: 0}
   players:
   - {fileID: 0}
   - {fileID: 0}
@@ -2396,17 +2393,6 @@ MonoBehaviour:
     username: 
     cell_number: 
     email: 
---- !u!114 &719024828
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 719024822}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73acdcc87c2a0c8438b31448fbcfa673, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!222 &719024829
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2441,48 +2427,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &719024831
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 719024822}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cabf0197d1674390b21cb9d4350b2e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  password: {fileID: 2106428315}
-  mail: {fileID: 306851834}
-  MainPlayer:
-    id: 0
-    name: 
-    username: 
-    cell_number: 
-    email: 
-  players:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  playerStatuses:
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  lobbyStatus: {fileID: 0}
 --- !u!1 &733345055
 GameObject:
   m_ObjectHideFlags: 0
@@ -4771,77 +4715,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1253372822}
   m_CullTransparentMesh: 0
---- !u!1 &1253441933
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1253441934}
-  - component: {fileID: 1253441935}
-  m_Layer: 0
-  m_Name: NetworkManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1253441934
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1253441933}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 269.2624, y: 150.66078, z: 3.7685406}
-  m_LocalScale: {x: 0.9817851, y: 0.9817851, z: 0.9817851}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1253441935
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1253441933}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cabf0197d1674390b21cb9d4350b2e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  password: {fileID: 0}
-  mail: {fileID: 0}
-  MainPlayer:
-    id: 0
-    name: 
-    username: 
-    cell_number: 
-    email: 
-  players:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  playerStatuses:
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  lobbyStatus: {fileID: 0}
 --- !u!1 &1290093920
 GameObject:
   m_ObjectHideFlags: 0
@@ -5303,7 +5176,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1334874172
 GameObject:
@@ -8248,7 +8121,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4265e8726ba184a41a692410a4ca9081, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  networkManager: {fileID: 1253441933}
   players:
   - {fileID: 0}
   - {fileID: 0}
@@ -8468,7 +8340,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000061035156, y: 0}
+  m_AnchoredPosition: {x: 0.000030517578, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2066915713
